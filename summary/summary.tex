@@ -13,14 +13,37 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 
+% Style, theme and looks
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\setlength\parindent{0pt}
+
 % Miscellaneous
 \usepackage{etoolbox}
 \robustify\(
 \robustify\)
 
-\title{Chapter summaries in MAT2400 - Real analysis}
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\title{
+  \normalfont \normalsize
+  \textsc{University of Oslo}\\ [25pt]
+  \horrule{0.5pt} \\ [0.4cm]
+  \huge Chapter summaries in MAT2400 - Real analysis
+  \horrule{2.0pt} \\ [0.5cm]
+}
 \author{Ivar Stangeby}
-
+\date{\normalsize\today}
 
 \begin{document}
 \maketitle

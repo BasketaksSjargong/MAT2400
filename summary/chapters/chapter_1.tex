@@ -1,7 +1,39 @@
 \chapter{Preliminaries: Proofs, Sets, and Functions}
 
 \section{Proofs}
+
+\subsubsection{Implication}
+Many mathematical statements are on the form \textit{If A, then B}. These are
+denoted \( A \Rightarrow B \). If \( A \Rightarrow B \) then it is not neccessarily
+so that \( B \Rightarrow A \). That is, these two mean different things.
+Note that \( A \Rightarrow B \) is logically equivalent to \( \sim B \Rightarrow \sim A \).
+
+\subsubsection{Equivalence}
+If it is true that \( A \Rightarrow B \) and \( B \Rightarrow A \). Then we call these
+statements equivalent. This is denoted \( A \Longleftrightarrow B \).
+When proving that two statements are equivalent, it is often easier to prove that
+they both imply eachother. That is, by proving \( A \Rightarrow B \) and \( B \Rightarrow A \), you have proven that \( A \Longleftrightarrow B \).
+
+\subsubsection{Methods of proof}
+There are several ways of proving mathematical hypotheses.
+\begin{enumerate}
+    \item 
+Instead of proving \( A \Rightarrow B \), prove \( \sim B \Rightarrow \sim A \).
+This is called a \textit{contrapositive proof}.
+    \item
+Another common method of proof is \textit{proof by contradiction}. Assume the opposite of what you want to prove, and by showing that this leads to a contradiction, our assumption must be false, and hence the original hypothesis is true.
+    \item
+When dealing with natural numbers, the go-to method of proof is \textit{proof by induction}. Show that a statement holds for a given number, and then show that if it holds for an arbitrary number \(n\), it must also hold for the successor \( n+1 \).
+\end{enumerate}
+This list is of course non-exhaustive, but these are some of the more common methods one should consider when faced with a problem to solve. 
+
 \section{Sets and boolean operations}
+
+A set is a collection of mathematical objects. It may be finite, it may be infinite.
+\( A \) is a subset of \( B \) if all the elements in \( A \) are also in \( B \). This is denoted \( A \subseteq B \).
+Two sets are equal if they contain exactly the same elements. This is denoted \( A = B \), where \( A \) and \( B \) are sets. If \( A \) is a subset of \( B \) and \( B \) is a subset of \( A \), the sets are equal.
+
+The set that contains no elements is called the empty set and is denoted \( \emptyset \).
 \section{Families of sets}
 \section{Functions}
 \section{Relations and partitions}
