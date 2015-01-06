@@ -8,17 +8,32 @@
 \usepackage{fourier}
 \usepackage[english]{babel}
 
+% Mathematical typesetting
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+% Miscellaneous
+\usepackage{etoolbox}
+\robustify\(
+\robustify\)
+
 \title{Chapter summaries in MAT2400 - Real analysis}
 \author{Ivar Stangeby}
 
+
 \begin{document}
 \maketitle
+\tableofcontents
 
 % Preliminaries: Proofs, Sets and Functions
 \input{./chapters/chapter_1.tex}
 
 % Metric Spaces
 \input{./chapters/chapter_2.tex}
+
+% Space of continuous funtions
+\input{./chapters/chapter_3.tex}
 
 \end{document}
 
