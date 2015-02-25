@@ -1,0 +1,151 @@
+%        File: solution.tex
+%     Created: Tue Feb 24 01:00 PM 2015 C
+% Last Change: Tue Feb 24 01:00 PM 2015 C
+%
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\newtheorem{prb}{Problem}
+
+\title{
+  \huge MAT2400\\
+  \centering{Assignment 1}
+  \author{Ivar Stangeby}
+  \date{\today}
+}
+\begin{document}
+\maketitle
+\begin{prb}
+  Show that a strictly increasing function $f: \mathbb{N} \rightarrow
+  \mathbb{N}$ must satisfy $f(n) \geq n, \forall n \in \mathbb{N}$.
+\end{prb}
+
+\paragraph{Solution: }
+Assume that $f: \mathbb{N} \rightarrow \mathbb{N}$ is a strictly increasing
+function.  By the definition of a strictly increasing function we know that
+\begin{equation}
+  \notag
+  f(n + 1) > f(n), \forall n \in \mathbb{N}.
+\end{equation}
+
+We can now, since we are working with the natural numbers, easily show this
+inductively.  Let us first show the base case.
+\begin{align*}
+  \label{eq:}
+  f(1) \geq 1  
+\end{align*}
+
+This is intuitively true, because $1$ is defined as the least element of the
+set of natural numbers.  Assuming that we have verified this as true for all
+$n$ up to and including some number $k$.  We know want to show that it then
+follows that it must be true for $k + 1$. 
+By assumption:
+\begin{equation}
+  \notag
+  f(k) \geq k
+\end{equation}
+Using the standard metric in $\mathbb{R}$ we can see that for any two pairs of successive
+integer numbers, 
+\begin{align*}
+  \inf\left\{ d(k, k+1) \mid k \in \mathbb{N} \right \} = 1 \\
+  \intertext{ where,}
+  d(x, y) = |x - y|
+\end{align*}
+
+That is, the smallest distance possible with two different numbers is 1.  It
+then follows that
+\begin{align*}
+  \label{eq:}
+  f(k+1) > f(k) + 1 \geq k+1 \\
+  f(k+1) \geq k+1
+\end{align*}
+as we wanted to show.  Thus, by the induction principle, a strictly increasing
+function from $\mathbb{N}$ to $\mathbb{N}$, must neccessary satisfy $f(n) \geq
+n, \forall n \in \mathbb{N}$.
+
+\begin{prb}
+Let $\left( X, d) \right)$ be a complete metric space. Let $B(x, r)$ denote the open ball
+centered at $x \in X$ with radius $r$, i.e., 
+\begin{equation}
+  \notag
+  B(x, r) = \left\{ y \in X \mid d(x, y) < r \right\},
+\end{equation}
+and $\overline{B}\left( x, r \right)$ the closed ball of radius $r$, i.e.,
+\begin{equation}
+  \notag
+  \overline{B}\left( x, r \right) = \left\{ y \in X \mid d(x, y) \leq r \right\}.
+\end{equation}
+For any set $C \in X$, let $\overline{C}$ denote its closure.
+Is it true that for any complete metric space $X$, 
+\begin{equation}
+  \label{eq:condition}
+  \overline{B\left( x, r \right)} = \overline{B}\left( x, r \right)?
+\end{equation}
+\end{prb}
+
+\paragraph{Solution: }
+
+Consider the discrete metric,
+\begin{equation}
+  \notag
+  d(x, y) = \begin{cases}
+    0 & \text{if } x = y \\
+    1 & \text{if } x \neq y
+  \end{cases}
+\end{equation}
+
+We can show that \eqref{eq:condition} does not neccessarily hold under the
+discrete metric.  Lets assume we take the radius $r$ to be $1$.  The open ball
+$B(x, r)$ is then any two points with less than a distance $r$ between.  Thus
+the open ball only contains the point $x$. In that case, taking the closure of
+this open ball changes nothing, and we're left with just the point $x$.
+However, the closed ball $\overline{B}\left( x, r \right)$ has to be the
+entirety of our space $X$, since the distance between two points are allowed to
+be $1$.  Thus, if we let our metric space be $(X, d)$ with $X = \mathbb{R}$ and
+$d$ the discrete metric \eqref{eq:condition} does not hold. We then have a
+complete metric space $(R, d)$. We then have a complete metric space $(R, d)$.
+
+\begin{prb}
+Let $\ell$ be the set of sequences of real numbers where only a finite number of terms
+are different from zero,
+\begin{equation}
+  \notag
+  \ell = \left\{ \left\{ x_n \right\}_{n=1}^{\infty} \mid x_i = 0 \text{ for all but a finite number of $i$'s} \right\}.
+\end{equation}
+For $x = \left\{ x_n \right\}$ and $y = \left\{ y_n \right\}$ in $\ell$, define
+\begin{equation}
+  \notag 
+  d(x, y) = \sup_{n\in\mathbb{N}} |x_n - y_n|.
+\end{equation}
+\end{prb}
+
+\paragraph{a)}
+
+To show that $d$ is a metric on $\ell$ we must show the three properties of a metric function.
+\begin{enumerate}
+  \item Positivity:
+    Since the metric is defined as the biggest difference between to
+    corresponding elemnts from $\left\{ x_n \right\}$ and $\left\{ y_n
+    \right\}$, the metric must neccesarily satisfy the property of positivity
+    since there does exists a finite number of non-zero elements in each sequence.
+    Thus, $d(x, y) \geq 0$ with equality only if $x = y$. 
+  \item Symmetry:
+    
+    \begin{equation}
+      \notag
+      d(x, y) = \sup_{n\in\mathbb{N}} |x_n - y_n| = \sup_{n\in\mathbb{N}}|y_n - x_n| = d(y, x).
+    \end{equation}
+    Thus the metric is symmetric.
+
+  \item Triangle Inequality:
+    Want to show that given three sequences $x, y, z$, the metric satisfies
+    \begin{equation}
+      \notag
+      d(x, z) \leq d(x, y) + d(y, z).
+    \end{equation}
+    The trival case, if $x = y = z$, we know that $d(x, y) = d(y, z) = d(x, z) = 0$.
+\end{enumerate}
+\end{document}
+
+
