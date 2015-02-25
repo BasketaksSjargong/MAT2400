@@ -144,8 +144,21 @@ To show that $d$ is a metric on $\ell$ we must show the three properties of a me
       \notag
       d(x, z) \leq d(x, y) + d(y, z).
     \end{equation}
-    The trival case, if $x = y = z$, we know that $d(x, y) = d(y, z) = d(x, z) = 0$.
+    The trivial case, when $x = y = z$ is just that, trivial. Thus we assume
+    that $x, y$ and $z$ are not equal.
+        
 \end{enumerate}
+
+\paragraph{b)}
+
+Letting $u_k \in \ell$ be defined as
+\begin{equation}
+  u_k = \left\{ 1, \frac{1}{2}, \dots, \frac{1}{k}, 0, 0, 0, \dots \right\}
+\end{equation}
+we want to show that $\left\{ u_k \right\}_{k=1}^{\infty}$ is a Cauchy sequence
+in $(\ell, d)$. We can do this using a traditional $\varepsilon-N$-proof.
+We want to show that for all $\varepsilon > 0$ there exists an $N \in \mathbb{N}$ such that
+for all integers $m, n > N, d(u_m, u_n) \leq \varepsilon$.
 \end{document}
 
 
