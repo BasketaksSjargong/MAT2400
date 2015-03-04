@@ -92,7 +92,10 @@ By induction we have now shown that $f$ satisfies $f(n+1) \geq n$ for all $n$.
     d(x, y) = \sup\limits_{n\in\mathbb{N}} \left| x_n - y_n\right|.
   \end{equation}
 \end{prb}
-\paragraph{a)}
+
+\begin{sol}
+\item\paragraph{a)} % Needs to add an \item to avoid missing-item error
+                    % for some obscure reason
 
 To show that $d$ defines a metric on $\ell$ we have to show the three
 properties a metric should satisfy. These are \textit{positivity, symmetry} and
@@ -150,8 +153,6 @@ are given, we can always find an $N$ such that $m, n > N \Longrightarrow d(u_m,
 u_n) < \varepsilon$. Because of this, $\left\{ u_k \right\}_{n=1}^{\infty}$ is
 Cauchy.
 
-An alternative, but equivalent, way of doing it would be to generate the sequence
-
 \paragraph{c)}
 
 For $\left\{ u_k \right\}_{k=1}^{\infty}$ to converge we would have to find a
@@ -159,8 +160,10 @@ sequence in $\ell$ it converges to. If $\left\{ u_k \right\}_{k=1}^{\infty}$
 were to converge it would have to be to the harmonic sequence, $\left\{
 \frac{1}{k} \right\}_{k=1}^{\infty}$ because it is the only sequence where
 elements are equal to the elements of the sequence $\left\{ u_k
-\right\}_{k=1}^{\infty}$. But since the harmonic sequence is not a memeber of
-$\ell$ it does not converge.
+\right\}_{k=1}^{\infty}$. Since the the sequence neccessarily has to converge
+to a single unique point we know that the harmonic sequence is the only such
+point. But since the harmonic sequence is not a member of $\ell$ it does not
+converge.
 
 \paragraph{d)}
 Define $c_0$ to be the space of sequences of real numbers whose limit are 0.
@@ -191,6 +194,7 @@ Thus, we can always chose the sequences we need to satisfy the definition of
 
 The limit of the sequence $u_k$, containing an infinite amount of zeroes, is
 zero.  That is $u_k \longrightarrow 0$. This means that $u_k \in c_0$.
+\end{sol}
 
 \begin{prb}
   Let $X = \left( 0, \infty \right) \subset \mathbb{R}$ and let $d : X \times X \longrightarrow \mathbb{R}$ be defined as
@@ -200,11 +204,12 @@ zero.  That is $u_k \longrightarrow 0$. This means that $u_k \in c_0$.
   \end{equation}
 \end{prb}
 
-\paragraph{a)}
-We want to show that $d$ is a metric, and that $\left( X, d \right)$ is complete.
-First, we need to show the three properties of a metric function. The first two, positivity and symmetry
-are trivial.
-For the triangle inequality, we observe the following:
+\begin{sol}
+\item\paragraph{a)}
+We want to show that $d$ is a metric, and that $\left( X, d \right)$ is
+complete.  First, we need to show the three properties of a metric function.
+The first two, positivity and symmetry are trivial.  For the triangle
+inequality, we observe the following:
 
 \begin{align*}
   d(x, z) &= | \ln(x) - \ln(z)| = | \ln(x) + \ln(y) - \ln(y) - \ln(z) | \\
@@ -249,9 +254,10 @@ Evaluating this, we get the inequality we wanted $f$ to satisfy, namely
 \begin{equation}
   \notag
   d(f(x), f(y)) < kd(x, y), \quad 0 < k < 1
-\end{equation}
-Therefore, by Banach's fix point theorem, $f$ has one unique fixed point.
+  \end{equation}
+  Therefore, by Banach's fix point theorem, $f$ has one unique fixed point.
 
+\end{sol}
 \end{document}
 
 
