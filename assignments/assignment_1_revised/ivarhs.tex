@@ -1,0 +1,239 @@
+%        File: ivarhs.tex
+%     Created: Mon Mar 02 07:00 PM 2015 C
+% Last Change: Mon Mar 02 07:00 PM 2015 C
+%
+\documentclass[a4paper]{article}
+
+% Mathematical typsetting
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Language and encoding
+\usepackage[utf8]{inputenc}
+
+% Using theoremstyles for minisectioning
+% Avoid clunky section commands for solutions of problems
+\newtheorem{prb}{Problem}
+\theoremstyle{definition}
+\newtheorem{sol}{Solution}
+
+% Title
+\title{
+  \huge{\textsc{Mandatory Assignment  MAT2400}} \\
+  \textsc{University of Oslo}
+}
+\author{Ivar Haugaløkken Stangeby}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{prb}
+  Assume $f : \mathbb{N} \rightarrow \mathbb{N}$ is a strictly increasing function.
+  Show that $f$ satisfies $f(n) \geq n$ for all $n$.
+\end{prb}
+
+\begin{sol}
+This obviously holds for $n = 1$, since $1$ is the least element of
+$\mathbb{N}$.  Assume now that we have shown $f(n) \geq n$ for all $n$ up to
+some $n = k$.  Since $f(k+1) > f(k)$, by the assumption that $f$ is strictly
+increasing we can easily see that $f(k+1) - f(k) > 1$. This is because for two
+elements to be unequal in $\mathbb{N}$, they must differ by at least $1$.
+
+\begin{equation}
+  \notag
+  f(k+1) > f(k) \geq k \Longrightarrow f(k+1) \geq k + 1.
+\end{equation}
+Thus it must neccessarily hold for $n = k+1$ as well.
+By induction we have now shown that $f$ satisfies $f(n+1) \geq n$ for all $n$.
+\end{sol}
+
+\begin{prb}
+  Assume $\left( X, d \right)$ a complete metric space. Prove or disprove that the closure of
+  an open ball $\overline{ B\left( x, r \right)}$ is equal to the closed ball
+  $\overline{ B }\left( x, r \right)$ for all complete metric spaces.
+\end{prb}
+
+\begin{sol}
+  We can disprove the above by looking at a complete space under the discrete metric.
+  Let us first introduce the metric $d : X \times X \rightarrow \left\{ 0, 1 \right\}$, defined
+  as
+  \begin{equation}
+    \notag
+    d(x, y) = \begin{cases}
+                0, & x = y \\
+                1, & x \neq y
+              \end{cases}
+  \end{equation}
+
+  To construct a counter example, assume that we look at open at closed balls
+  around a point $x$, with a radius $r = 1$. By observation we see that the
+  closure of the open ball around $x$ is just $x$ itself, 
+  \begin{equation}
+    \notag
+    \overline{ B\left( x, r \right)} = x
+  \end{equation}
+  where as the closed ball around $x$ is the whole of $X$. 
+  \begin{equation}
+    \notag
+    \overline{B}\left( x, r \right) = X.
+  \end{equation}
+
+  We have now, using the discrete metric $d$ and a radius $r = 1$ constructed a
+  metric space where the statement initially given does not hold.
+\end{sol}
+
+\begin{prb}
+  Define $\ell$ to be the set of all sequences of real numbers where only a
+  finite number of elements are non-zero. Furthermore, for $x = \left\{ x_n \right\}$ and
+  $y = \left\{ y_n \right\}$ in $\ell$, define
+  \begin{equation}
+    \notag
+    d(x, y) = \sup\limits_{n\in\mathbb{N}} \left| x_n - y_n\right|.
+  \end{equation}
+\end{prb}
+\paragraph{a)}
+
+To show that $d$ defines a metric on $\ell$ we have to show the three
+properties a metric should satisfy. These are \textit{positivity, symmetry} and
+\textit{the triangle inequality.} The first two, positivity and symmetry follow
+directly from the definition of absolute value.  The triangle inequality is a
+bit trickier to show. We want $d$ to satisfy the following relation:
+
+\begin{equation}
+  \notag
+  d(x, z) \leq d(x, y) + d(y, z).
+\end{equation}
+Written out, this becomes:
+
+\begin{equation}
+  \notag
+  \sup\limits_{n\in\mathbb{N}} \left| x_n - z_n\right| \leq \sup\limits_{n\in\mathbb{N}} \left| x_n - y_n\right| +  \sup\limits_{n\in\mathbb{N}} \left| y_n - z_n\right|.
+\end{equation}
+We know that for some $i, j, k \in \mathbb{N}$:
+
+\begin{align*}
+  \label{eq:}
+  &d(x, z) = \left| x_i - z_i \right| \\
+  &d(x, y) = \left| x_j - y_j \right| \\
+  &d(y, z) = \left| y_k - z_k \right| \\
+\end{align*}
+Intuitively, these absolute values should obey the triangle inequality for real
+numbers, but I can't say I've managed to completely convince myself. I have
+therefore not been able to construct a full fledged proof for $d$ being a
+metric on $\ell$.
+
+\paragraph{b)}
+Let $u_k \in \ell$ be defined as
+\begin{equation}
+  \notag
+  u_k = \left\{ 1, \frac{1}{2}, \frac{1}{3}, \cdots, \frac{1}{k}, 0, 0, 0, \cdots \right\}.
+\end{equation}
+To show that $\left\{ u_k \right\}_{ k = 1 }^{\infty}$ is Cauchy we want to
+show that for all $\varepsilon > 0$ there exists an $N \in \mathbb{N}$ such
+that for all $m, n > N$, it is implied that $d\left( x_n, x_m \right) <
+\varepsilon$.
+
+Given two sequences $u_n$ and $u_m$, the distance between them is given as
+following (assuming $m > n$).
+
+\begin{align*}
+  \notag
+  d(u_n, u_m) &= \sup_{i\in\mathbb{N}}\left| u_{n_{i}} - u_{m_{i}} \right| \\ 
+              &= | u_{n_{n+1}} - u_{m_{n+1}} | \\
+              &= | 0 - \frac{1}{n+1} |\\
+              &= \frac{1}{n+1}
+\end{align*}
+Since a number on this form can me made as arbitrarily close to zero by chosing
+$n$ arbitrarily large, we have shown that no matter what $\varepsilon > 0$ we
+are given, we can always find an $N$ such that $m, n > N \Longrightarrow d(u_m,
+u_n) < \varepsilon$. Because of this, $\left\{ u_k \right\}_{n=1}^{\infty}$ is
+Cauchy.
+
+An alternative, but equivalent, way of doing it would be to generate the sequence
+
+\paragraph{c) - This one is not yet complete}
+
+One way of check whether $\left\{ u_k \right\}$ is convergent would be to look
+at the compactness, and therefore indirectly, the completeness of $\ell$. If
+one can show that $\ell$ is compact, then by definition of \textit{complete},
+all Cauchy sequences in $\ell$ must converge.  Since $\left\{ u_k \right\}$ is
+Cauchy, it would follow that also $\left\{ u_k \right\}$ converges.
+
+Another, perhaps simpler way is to show that we can find a subsequence of
+$\left\{ u_k \right\}$, and show that it converges to a point $a$ in $\ell$. If
+this is the case, then the original sequence $\left\{ u_k \right\}$ must also
+converge to $a$. Doing it this way we don't have to show anything about the
+completeness or compactness of $\ell$.  In order for $\left\{ u_k \right\}$ to
+converge to $a$, the real sequence $\left\{ d(u_k, a)\right\}$ must converge to
+$0$.\\ Rephrased:
+
+\begin{equation}
+  \notag 
+  \left\{ u_k \right\} \longrightarrow a \Longleftrightarrow \left\{ d(u_k, a) \right\} \longrightarrow 0
+\end{equation}
+
+If we let $a$ be equal to the null-sequence in $\ell$. That is
+\begin{equation}
+  \notag
+  a = \left\{ 0, 0, 0, \ldots \right\}
+\end{equation}
+
+I feel there is some clever result here that I haven't yet discovered. 
+\paragraph{d)}
+Define $c_0$ to be the space of sequences of real numbers whose limit are 0.
+\begin{equation}
+  \notag
+  c_{0} = \left\{ \left\{ x_n \right\}_{n=1}^{\infty} \mid \lim\limits_{n\rightarrow\infty} x_n = 0 \right\}.
+\end{equation}
+To show that $\left( c_0, d \right)$ is a complete metric space, we must show
+that all Cauchy sequences in $\left( c_0, d \right)$ converge.
+
+We know by definition of $c_0$ that all its elements are sequences of real
+numbers that converge to $0$.  If a sequence of real numbers converges to zero,
+it is also Cauchy. Therefore, it follows that $c_0$ is a complete metric space.
+
+\paragraph{e)}
+
+By the definition of $c_0$ it is clear that $\ell \subset c_0$.  $\ell$ is
+dense in $c_0$ if and only if for every $x \in c_0$ and for all $\varepsilon >
+0$ there exists a $y \in \ell$ such that $d(x, y) < \varepsilon$.  Intuitively
+this seems reasonable, since we know a sequence $x$ converges to $0$, and $y$
+contains an infinite number of $0$'s.
+\begin{align*}
+x &= \left\{ x_1, x_2, x_3, \ldots \right\} \longrightarrow 0\\
+y &= \left\{ y_1, y_2, y_3, \ldots, y_n, 0, 0, 0, \ldots \right\} \longrightarrow 0
+\end{align*}
+Thus, we can always chose the sequences we need to satisfy the definition of
+\textit{dense}.  Therefore, $\ell$ is dense in $c_0$.
+
+The limit of the sequence $u_k$, containing an infinite amount of zeroes, is
+zero.  That is $u_k \longrightarrow 0$. This means that $u_k \in c_0$.
+
+\begin{prb}
+  Let $X = \left( 0, \infty \right) \subset \mathbb{R}$ and let $d : X \times X \longrightarrow \mathbb{R}$ be defined as
+  \begin{equation}
+    \notag
+    d(x, y) = | \ln(x) - \ln(y)|
+  \end{equation}
+\end{prb}
+
+\paragraph{a)}
+We want to show that $d$ is a metric, and that $\left( X, d \right)$ is complete.
+First, we need to show the three properties of a metric function. The first two, positivity and symmetry
+are trivial.
+For the triangle inequality, we observe the following:
+
+\begin{align*}
+  d(x, z) &= | \ln(x) - \ln(z)| = | \ln(x) + \ln(y) - \ln(y) - \ln(z) | \\
+          &\leq |\ln x - \ln(y) | + |\ln(y) - \ln(z) | \\
+          &= d(x, y) + d(y, z)
+\end{align*}
+Thus $d$ is a metric on $X$. To show that $\left( X, d \right)$ is complete, we
+must show that all Cauchy sequences converge.
+
+\end{document}
+
+
+
+
