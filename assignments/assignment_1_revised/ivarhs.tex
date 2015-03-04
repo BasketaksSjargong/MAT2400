@@ -152,34 +152,16 @@ Cauchy.
 
 An alternative, but equivalent, way of doing it would be to generate the sequence
 
-\paragraph{c) - This one is not yet complete}
+\paragraph{c)}
 
-One way of check whether $\left\{ u_k \right\}$ is convergent would be to look
-at the compactness, and therefore indirectly, the completeness of $\ell$. If
-one can show that $\ell$ is compact, then by definition of \textit{complete},
-all Cauchy sequences in $\ell$ must converge.  Since $\left\{ u_k \right\}$ is
-Cauchy, it would follow that also $\left\{ u_k \right\}$ converges.
+For $\left\{ u_k \right\}_{k=1}^{\infty}$ to converge we would have to find a
+sequence in $\ell$ it converges to. If $\left\{ u_k \right\}_{k=1}^{\infty}$
+were to converge it would have to be to the harmonic sequence, $\left\{
+\frac{1}{k} \right\}_{k=1}^{\infty}$ because it is the only sequence where
+elements are equal to the elements of the sequence $\left\{ u_k
+\right\}_{k=1}^{\infty}$. But since the harmonic sequence is not a memeber of
+$\ell$ it does not converge.
 
-Another, perhaps simpler way is to show that we can find a subsequence of
-$\left\{ u_k \right\}$, and show that it converges to a point $a$ in $\ell$. If
-this is the case, then the original sequence $\left\{ u_k \right\}$ must also
-converge to $a$. Doing it this way we don't have to show anything about the
-completeness or compactness of $\ell$.  In order for $\left\{ u_k \right\}$ to
-converge to $a$, the real sequence $\left\{ d(u_k, a)\right\}$ must converge to
-$0$.\\ Rephrased:
-
-\begin{equation}
-  \notag 
-  \left\{ u_k \right\} \longrightarrow a \Longleftrightarrow \left\{ d(u_k, a) \right\} \longrightarrow 0
-\end{equation}
-
-If we let $a$ be equal to the null-sequence in $\ell$. That is
-\begin{equation}
-  \notag
-  a = \left\{ 0, 0, 0, \ldots \right\}
-\end{equation}
-
-I feel there is some clever result here that I haven't yet discovered. 
 \paragraph{d)}
 Define $c_0$ to be the space of sequences of real numbers whose limit are 0.
 \begin{equation}
@@ -231,6 +213,44 @@ For the triangle inequality, we observe the following:
 \end{align*}
 Thus $d$ is a metric on $X$. To show that $\left( X, d \right)$ is complete, we
 must show that all Cauchy sequences converge.
+
+\paragraph{b)}
+
+Given a differentiable function $f: X \longrightarrow X$ that satisfy the following:
+\begin{equation}
+  \label{eq:condition}
+  x\left|f'(x)\right| \leq kf(x), \quad 0 < k < 1.
+\end{equation}
+We want to show that $f$ has a unique fixed point.  If we can show $f$ to be a
+contraction, it follows from the completeness of $X$ that we can apply Banachs
+fix point theorem.  For $f$ to be a contraction, we want it to satisfy the
+following inequality,
+\begin{equation}
+  \notag
+  d(f(x), f(y)) < kd(x, y), \quad 0 < k < 1
+\end{equation}
+If we define an auxilliary function $h(t)$ as
+\begin{equation}
+  \notag
+  h(t) = \frac{d}{dt} \ln\left(f(t)\right)  = \frac{f'(x)}{f(x)}
+\end{equation} 
+we can use this to show the contraction property.  Rearranging
+\eqref{eq:condition} we get
+\begin{equation}
+  \notag
+  \frac{\left| f'(x)\right|}{f(x)} \leq \frac{k}{x}.
+\end{equation}
+We then see that we can rephrase the contraction property of $f$ in terms of $h(t)$.
+\begin{equation}
+  \notag
+  \left| \int\limits_{x}^{y} h(t) \, dt  \right|  \leq \left| \int\limits_{x}^{y} \frac{k}{t} \, dt \right|.
+\end{equation}
+Evaluating this, we get the inequality we wanted $f$ to satisfy, namely
+\begin{equation}
+  \notag
+  d(f(x), f(y)) < kd(x, y), \quad 0 < k < 1
+\end{equation}
+Therefore, by Banach's fix point theorem, $f$ has one unique fixed point.
 
 \end{document}
 
