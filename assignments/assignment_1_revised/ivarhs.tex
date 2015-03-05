@@ -18,6 +18,9 @@
 \theoremstyle{definition}
 \newtheorem{sol}{Solution}
 
+% Newcommands
+\newcommand{\horrule}[1]{\noindent\rule{\linewidth}{#1}}
+
 % Title
 \title{
   \huge{\textsc{Mandatory Assignment  MAT2400}} \\
@@ -28,10 +31,12 @@
 
 \begin{document}
 \maketitle
+\horrule{0.5pt}
 \begin{prb}
   Assume $f : \mathbb{N} \rightarrow \mathbb{N}$ is a strictly increasing function.
   Show that $f$ satisfies $f(n) \geq n$ for all $n$.
 \end{prb}
+\horrule{0.5pt}
 
 \begin{sol}
 This obviously holds for $n = 1$, since $1$ is the least element of
@@ -48,11 +53,13 @@ Thus it must neccessarily hold for $n = k+1$ as well.
 By induction we have now shown that $f$ satisfies $f(n+1) \geq n$ for all $n$.
 \end{sol}
 
+\horrule{0.5pt}
 \begin{prb}
   Assume $\left( X, d \right)$ a complete metric space. Prove or disprove that the closure of
   an open ball $\overline{ B\left( x, r \right)}$ is equal to the closed ball
   $\overline{ B }\left( x, r \right)$ for all complete metric spaces.
 \end{prb}
+\horrule{0.5pt}
 
 \begin{sol}
   We can disprove the above by looking at a complete space under the discrete metric.
@@ -83,6 +90,7 @@ By induction we have now shown that $f$ satisfies $f(n+1) \geq n$ for all $n$.
   metric space where the statement initially given does not hold.
 \end{sol}
 
+\horrule{0.5pt}
 \begin{prb}
   Define $\ell$ to be the set of all sequences of real numbers where only a
   finite number of elements are non-zero. Furthermore, for $x = \left\{ x_n \right\}$ and
@@ -92,6 +100,7 @@ By induction we have now shown that $f$ satisfies $f(n+1) \geq n$ for all $n$.
     d(x, y) = \sup\limits_{n\in\mathbb{N}} \left| x_n - y_n\right|.
   \end{equation}
 \end{prb}
+\horrule{0.5pt}
 
 \begin{sol}
 \item\paragraph{a)} % Needs to add an \item to avoid missing-item error
@@ -175,7 +184,7 @@ that all Cauchy sequences in $\left( c_0, d \right)$ converge.
 We know by definition of $c_0$ that all its elements are sequences of real
 numbers that converge to $0$.  If a sequence of real numbers converges to zero,
 it is also Cauchy. Therefore, it follows that $c_0$ is a complete metric
-space.\footnote{Captain Hindsight strikes again. What I've written here does
+space.\footnote{Captain Hindsight: What I've written here does
 not actually prove anything, but I haven't had time to correct it. I've looked at
 the convergence of the elements of the sequence, rather than the sequence itself.}
 
@@ -192,13 +201,14 @@ y &= \left\{ y_1, y_2, y_3, \ldots, y_n, 0, 0, 0, \ldots \right\} \longrightarro
 \end{align*}
 Thus, we can always chose the sequences we need to satisfy the definition of
 \textit{dense}.  Therefore, $\ell$ is dense in $c_0$.\footnote{Captain
-Hindsight: This is also a bit vague, and could've used further elaboration.}
+Hindsight strikes again. This is also a bit vague, and could've used further elaboration.}
 
 The limit of the sequence $u_k$, containing an infinite amount of zeroes, is
 zero.  That is $u_k \longrightarrow 0$. This means that $u_k \in c_0$.
 \end{sol}
 
 \pagebreak
+\horrule{0.5pt}
 \begin{prb}
   Let $X = \left( 0, \infty \right) \subset \mathbb{R}$ and let $d : X \times X \longrightarrow \mathbb{R}$ be defined as
   \begin{equation}
@@ -206,6 +216,7 @@ zero.  That is $u_k \longrightarrow 0$. This means that $u_k \in c_0$.
     d(x, y) = | \ln(x) - \ln(y)|.
   \end{equation}
 \end{prb}
+\horrule{0.5pt}
 
 \begin{sol}
 \item\paragraph{a)}
@@ -229,7 +240,7 @@ become arbitrarily close to each other, which in turn means, that there exists
 a point $a$ such that $d(x_m, a) < \varepsilon/2$ and $d(x_n, a) <
 \varepsilon/2$. Therefore $x$ converges to $a$.  Since $x$ was any arbitrary
 Cauchy sequence in $X$ this holds for all Cauchy sequences in X, and therefore
-$X$ under the metric $d$ is a complete space.
+$X$ under the metric $d$ is a complete space. 
 
 \paragraph{b)}
 
@@ -250,9 +261,9 @@ following inequality,
 If we define an auxilliary function $h(t)$ as
 \begin{equation}
   \notag
-  h(t) = \frac{d}{dt} \ln\left(f(t)\right)  = \frac{f'(x)}{f(x)}
+  h(t) = \frac{d}{dt} \ln\left(f(t)\right)  = \frac{f'(x)}{f(x)}, 
 \end{equation} 
-we can use this to show the contraction property.  Rearranging
+we can use $h(t)$ to show the contraction property of $f$. Rearranging
 \eqref{eq:condition} we get
 \begin{equation}
   \notag
