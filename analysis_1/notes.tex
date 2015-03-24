@@ -2,7 +2,13 @@
 %     Created: Tue Mar 24 01:00 PM 2015 C
 % Last Change: Tue Mar 24 01:00 PM 2015 C
 %
-\documentclass[a4paper, twocolumn]{article}
+\documentclass[a4paper, twocolumn]{report}
+
+\usepackage[]{amsthm} 
+\usepackage[]{amsmath} 
+\usepackage[]{amssymb} 
+
+\newtheorem{defn}{Definition}
 
 \title{
   \textsc{University of Oslo} \\
@@ -40,8 +46,32 @@ any use from them, then that is great.
 \end{@twocolumnfalse}
 ]
 
+\chapter{Starting at the beginning: the natural numbers.}
+\label{ch:natural_numbers}
 
+In order for us to start exploring the various properties of the real numbers,
+which is what real analysis is concerned with, we are going to have to start
+from the very beginning.  That is the natural numbers, denoted $\mathbb{N}$.
+From these natural numbers, we can construct the integers, $\mathbb{Z}$, the
+rationals $\mathbb{Q}$, the real numbers $\mathbb{R}$, and finally; the complex
+numbers $\mathbb{C}$. The latter being the main focus of the subject Complex
+Analysis.
 
+\section{The Peano axioms}
+One of the most standard ways of defining the natural numbers, is in terms of
+the \textit{Peano axioms}. One can also define natural numbers through the
+notion of cardinality.
+
+\begin{defn}
+  A \textit{natural number} is any element of the set
+  \begin{equation}
+    \notag
+    \mathbb{N} = \left\{ 0, 1, 2, 3, 4, \cdots \right\},
+  \end{equation}
+  which is the set of all the numbers created by starting with 0 and then
+  counting forward indefinitely. We call $\mathbb{N}$ the \textit{set of all
+  natural numbers}.
+\end{defn}
 
 \end{document}
 
