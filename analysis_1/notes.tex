@@ -9,6 +9,8 @@
 \usepackage[]{amssymb} 
 
 \newtheorem{defn}{Definition}
+\newtheorem{axm}{Axiom}
+\newtheorem{prp}{Proposition}
 
 \title{
   \textsc{University of Oslo} \\
@@ -62,7 +64,7 @@ One of the most standard ways of defining the natural numbers, is in terms of
 the \textit{Peano axioms}. One can also define natural numbers through the
 notion of cardinality.
 
-\begin{defn}
+\begin{defn}[Informal]
   A \textit{natural number} is any element of the set
   \begin{equation}
     \notag
@@ -73,6 +75,40 @@ notion of cardinality.
   natural numbers}.
 \end{defn}
 
+In order for us to rigorously define the set of natural numbers, we're going to
+use the two fundamental concepts of \textit{the number 0} and the
+\textit{increment operation}.  These will be covered in the Peano Axioms.
+We will use $n++$ to denote the \textit{successor} of $n$. 
+
+Starting with the first two: 
+\begin{axm}
+  0 is a natural number.
+\end{axm}
+\begin{axm}
+  If $n$ is a natural number, then $n++$ is also a natural number.
+\end{axm}
+
+Now, in order to avoid having to deal with incredibly long strings of $+$'es. We're going to use an auxilliary definition.
+\begin{defn}
+  We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
+\end{defn}
+We can based off of this, propse the following:
+
+\begin{prp}
+  3 is a natural number.
+\end{prp}
+\begin{proof}
+  By Axiom 1, 0 is a natural number.
+  It then follows by Axiom 2 that both 1, 2, and 3 are natural numbers.
+\end{proof}
+
+In order for us to avoid the problem of having the successive numbers wrap
+around to previous numbers, we impose a new axiom, namely:
+
+\begin{axm}
+  0 is not the successor of any natural number: i.e., we have $n++ \neq 0$ for
+  every natural number $n$.
+\end{axm}
 \end{document}
 
 
