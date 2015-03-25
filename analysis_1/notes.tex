@@ -8,19 +8,22 @@
 \usepackage[]{amsmath} 
 \usepackage[]{amssymb} 
 \usepackage[draft]{todonotes} 
+\usepackage[]{hyperref} 
+\usepackage[]{enumerate} 
 \setlength{\marginparwidth}{2cm}
 
 \newcounter{dummy} \numberwithin{dummy}{section}
 \newcounter{axmcntr} \numberwithin{axmcntr}{chapter}
-\newtheorem{defn}[dummy]{Definition}
 \newtheorem{axm}[axmcntr]{Axiom}
 \newtheorem{prp}[dummy]{Proposition}
 \newtheorem{asm}[dummy]{Assumption}
 \newtheorem{lma}[dummy]{Lemma}
 \newtheorem{crl}[dummy]{Corollary}
 \newtheorem*{crl*}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}[dummy]{Definition}
 
-\newcommand{\dplus}{{+}{+}}
+\newcommand{\dplus}{{+}{+}} % Double unary plus sign.
 
 
 \title{
@@ -142,7 +145,6 @@ We can, equipped with this new axiom, show for example the following:
 
 Assuming the following axiom allows us to rule out any behaviour where the
 successors wrap around, but not to $0$, i.e., $5++ = 1$.
-
 \begin{axm}
   Different natural numbers must have different successors; i.e., if $n, m$ are
   natural numbers and $n \neq m$, then $n++ \neq m++$. Equivalently, if $n++ =
@@ -330,6 +332,7 @@ Again, this is not obvious.
 \end{proof}
 We can now easily show the following result:
 \begin{crl*}
+  \label{crl_plusone}
   For all natural numbers $n$, $n\dplus = n + 1$.    
 \end{crl*}
 \begin{proof}
@@ -390,6 +393,7 @@ We now want to look at how natural numbers interacts with positivity. First, a d
 
 This leads to the following proposition.
 \begin{prp}
+  \label{prp_228}
   If $a$ is positive and $b$ is a natural number, then $a + b$ is positive (and hence $b + a$ is also, by Proposition 2.2.4).
 \end{prp}
 \begin{proof}
@@ -405,10 +409,104 @@ This leads to the following proposition.
 \end{proof}
 
 \begin{crl}
+  \label{crl_229}
   If $a$ and $b$ are natural numbers such that $a + b = 0$, then $a = 0$ and $b = 0$. 
 \end{crl}
+\begin{proof}
+  Assume for contradiction that $a \neq 0$ and $b \neq 0$.  Since $a \neq 0$
+  then it is positive by definition, and then it follows by \ref{prp_228} that
+  $a + b$ is positive.  The same argument for $b \neq 0$. Therefore, our
+  assumptionds leads to contradictions. In other words, $a = 0, b = 0$.
+\end{proof}
 
+\begin{lma}
+  Let $a$ be a positive number. Then there exists exactly one natural number
+  $b$ such that $b\dplus = a$.
+\end{lma}
+\begin{proof}
+  See Exercise 2.2.2.
+\end{proof}
 
+We can now, since we have a notion of addition, proceed with defining a notion
+of order on the natural numbers.
+\begin{defn}[Ordering of the natural numbers]
+  Let $n$ and $m$ be natural numbers. We say that $n$ is \textit{greater than
+  or equal to} $m$, and write $n \geq m$ or $m \leq n$, if and only if we have
+  $n = m + a$ for some natural number $a$.  We say that $n$ is \textit{strictly
+  greater than} $m$ and write $n > m$ or $m < n$, if and only if $n \geq m$ or
+  $m \leq n$ and $n \neq m$.
+\end{defn}
+
+An example would be $8 > 5$ because $ 8 = 5 + 3$ and $ 8 \neq 5$.  Another
+important thing to note is that $n\dplus > n$ for all natural numbers $n$.
+This means that there are no largest natural number $n$, because the next
+number $n\dplus$ is always larger.
+
+\begin{prp}[Basic properties of order for natural numbers]
+  \label{prp_2212}
+  Let $a, b, c$ be natural numbers. Then
+  \begin{enumerate}[(a)]
+    \item 
+      (Order is reflexive) $a\geq a.$
+    \item 
+      (Order is transitive) If $a \geq b$ and $b \geq c$, then $a \geq c$.
+    \item 
+      (Order is anti-symmetric) If $a \geq b$ and $b \geq a$, then $a = b$.
+    \item
+      (Addition preserves order) $a \geq b$ if and only if $a + c \geq b + c$.
+    \item
+      $ a < b $ if and only if $ a++ \leq b$.
+    \item 
+      $a < b$ if and only if $ b = a + d$ for some \textrm{positive} number $d$.
+  \end{enumerate}
+\end{prp}
+\begin{proof}
+  See Exercise 2.2.3.
+\end{proof}
+
+\begin{prp}[Trichotomy of order for natural numbers]
+  Let $a$ and $b$ be natural numbers. Then exactly one of the following
+  statements is true: $a < b, a = b$ or $a > b$.
+\end{prp}
+\begin{proof}
+  The gaps of this proof will be filled in Exercise 2.2.4.
+
+  The first step is going to be showing that no more than one of the statements
+  can hold at any given time.  That is, assuming $a < b$, then $a \neq b$ by
+  definition. If $a > b$, then $ a \neq b$ by definition.  Assuming $a < b$ and
+  $b > a$, we have $ a = b + m$ and $b = a + n$. Substituting we get $ a = a +
+  n + m$, and using the cancellation law for addition we get $0 = n + m$. By
+  \ref{crl_229} we get $n = 0$ and $m = 0$, thus $a = b$ which is a
+  contradiction. Therefore only one of the statements may apply at any given
+  time.
+
+  We must now show that at least one of the statemements must apply. Keeping
+  $b$ fixed we induct on $a$. Considering the base case where $a = 0$ yields $0
+  \leq b$ for all $b$.  In other words, either $0 = b$ or $0 < b$.  For the
+  inductive hypothesis we assume shown that at least one of the three holds for
+  two natural numbers $a$ and $b$. We now want to show that it must neccesarily
+  hold at least one for $a\dplus$ and $b$.
+
+  If $a < b$ then $a\dplus \leq b$, thus $a\dplus = b$ or $a\dplus < b$ by
+  \ref{prp_2212} If $a = b$ then $a\dplus = a + 1 = b + 1$ and thus by
+  definition of the ordering of natural numbers, we have $a\dplus > b$.  If $a
+  > b$ then $a = b + n$ for some number $n$. It then follows that $a\dplus = (b
+  + n)\dplus$ which in turn is equal to $b + (n\dplus) = b + (n + 1)$. In other
+  words, by definition $a\dplus > b$.  This closes the induction.
+\end{proof}
+
+Armed with the previous proposition, we can now obtain a stronger version of
+the principle of induction.
+
+\begin{prp}[Strong principle of induction]
+  \label{prp_2214}
+  Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an
+  arbitrary natural number $m$. Suppose that for each $m \geq m_0$, we have the
+  following implication: if $P(m')$ is true for all natural numbers $m_0 \leq
+  m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$
+  is true, since in this case the hypothesis is vacuous.) Then we can conclude
+  that $P(m)$ is true for all natural numbers $m \geq m_0$.
+\end{prp}
 \end{document}
 
 
