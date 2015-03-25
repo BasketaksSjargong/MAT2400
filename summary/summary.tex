@@ -29,6 +29,15 @@
 \numberwithin{table}{section}
 \setlength\parindent{0pt}
 
+% Maths related command definitions
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{procedure}{Procedure}
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{axiom}{Axioms}
+
 % Miscellaneous
 \usepackage{etoolbox}
 \robustify\(
@@ -48,6 +57,7 @@
 \begin{document}
 \maketitle
 \tableofcontents
+
 % Preliminaries: Proofs, Sets and Functions
 \input{./chapters/chapter_1.tex}
 

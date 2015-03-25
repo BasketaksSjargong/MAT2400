@@ -1,10 +1,38 @@
 \chapter{Metric Spaces}
 
 \section{Definitions and examples}
+
+\begin{definition}
+  A metric space $\left( X, d \right)$ consists of a non-empty set $X$ and a
+  function $d: X\times X \rightarrow [0, \infty )$ such that:
+  \begin{enumerate}
+    \item (Positivity) $\forall x, y \in X, d(x, y) \geq 0$ with equality if and only if $x=y$
+    \item (Symmetry) $\forall x, y \in X, d(x, y) = d(y, x)$
+    \item (Triangle inequality) $\forall x, y, z \in X$
+      \begin{equation}
+        \notag
+        d(x, y) \leq d(x, z) + d(y, x)
+      \end{equation}
+  \end{enumerate}
+  A function $d$ satisfying conditions 1-3, is called a metric on $X$. 
+\end{definition}
+
+\begin{definition}
+  Assume that $\left( X, d_X \right)$ and $\left( Y, d_Y \right)$ are metric
+  spaces. An isometry from $\left( X, d_X \right)$ to $\left( Y, d_Y \right)$
+  is a bijection $i : X \rightarrow Y$ such that $d_X\left( x, y \right) =
+  d_Y\left( i(x), i(y) \right)$ for all $x, y \in X$.  We say that $\left( X,
+  d_X \right)$ and $\left(Y, d_Y \right)$ are isometric if there exists an
+  isometry from $(X, d_X)$ to $\left( Y, d_Y \right)$.
+\end{definition}
+
+
 \section{Convergence and Continuity}
 \section{Open and closed sets}
 \section{Complete spaces}
 \section{Compact Sets}
 \section{An alternative description of compactness}
 \section{The completion of a metric space}
+
+
 

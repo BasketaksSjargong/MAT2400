@@ -194,18 +194,62 @@ elements.
 Since we can chose such a subsequence for any sequence in $\ell$, the metric
 space $\left( \ell, d \right)$ is compact. It then follows, that since every compact metric space is complete, and
 in a complete space all Cauchy sequences converge, thus $\left\{ u_k \right\}$ must converge.
-\begin{defn}
-  A subset $K$ of a metric space $\left( X, d \right)$ is called compact if every sequence in $K$ has a subsequence converging to a point in $K$.
-  The space $(X, d)$ is compact if $X$ is a compact set, i.e. if all sequences in $X$ has a convergent subsequence.
-\end{defn}
-\begin{prp}
-  Every compact metric space is complete.
-\end{prp}
 
-\begin{defn}
-  A metric space is called complete if all Cauchy sequences converge.
-\end{defn}
+\paragraph{d)}
 
+Let $c_0$ be defined as follows:
+\begin{equation}
+  \notag
+  c_{0} = \left\{ \left\{ x_n \right\}_{n=1}^{\infty} \mid \lim\limits_{n\rightarrow\infty} x_{n} = 0 \right\}
+\end{equation}
+In order to show that $c_0$ is a compact space under the metric $d$ we have to
+show that all Cauchy sequences in $c_0$ converge.  
+
+Assume then that $x \in c_{0}$ is Cauchy.
+This means that for all $\varepsilon$ there exists an $N \in \mathbb{N}$ such that given $m, n > N, d(x_n, x_m) < \varepsilon$.
+
+\paragraph{e)}
+
+$\ell$ is dense in $c_{0}$ if and only if for each $x \in c_{0}$ there is a
+sequence $\left\{ y_n \right\}$ from $\ell$ converging to $x$.  Thus we want to
+show that given an $x$ from $c_{0}$, we can always produce a sequence $\left\{
+y_{n} \right\}$ from $\ell$ converging to $x$.  Observe that the sequence
+$\left\{ 0, 0, 0, \dots \right\}$ from $\ell$ satisfies this for all sequences
+$x \in c_{0}$.  If $\left\{ y_n \right\}$ are to converge to $x$ means that
+
+\begin{equation}
+  \notag
+  \lim\limits_{n\rightarrow \infty} d(y_{n}, x_{n}) = 0
+\end{equation}
+
+Since all sequences in $c_{0}$ converge to zero, the distance between elements
+in the sequence $y_{n}$ and $x$ must tend to zero. Thus, $\ell$ is dense in
+$c_{0}$.
+
+\begin{prb}
+  Let $X$ denote the open interval $\left( 0, \infty \right) \subset \mathbb{R}$. Let $d: X \times X \rightarrow \mathbb{R}$ be defined as
+  \begin{equation}
+    \notag
+    d(x, y) = \left|\ln(x) - \ln(y)\right|.
+  \end{equation}
+\end{prb}
+
+\paragraph{Solution:}
+\paragraph{a)}
+Again, to show that $d$ is a metric we must show the three properties.
+The first two, positivity and symmetry are trivial. We need to show that the triangle inequality holds.
+That is,
+
+\begin{align*}
+  \label{eq:}
+    d(x, z) &= \left|\ln(x) - \ln(z)\right| \\
+    &= \left|\ln(x) - \ln(y) + \ln(y) - \ln(z)\right|\\
+    &= \left|\ln\left(\frac{x}{y}\right) + \ln\left( \frac{y}{z} \right)\right| \leq \left|\ln\left( \frac{x}{y} \right)\right| + \left|\ln\left( \frac{y}{z} \right)\right| \\
+    &= \left|\ln\left( x \right) - \ln\left( y \right)\right| + \left|\ln\left( y \right) - \ln\left( z \right)\right|\\
+    &= d(x, y) + d(y, z)
+\end{align*}
+
+Thus, $d$ is a metric on $X$. 
 \end{document}
 
 

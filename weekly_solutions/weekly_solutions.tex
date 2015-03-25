@@ -1,0 +1,29 @@
+%        File: weekly_solutions.tex
+%     Created: Mon Mar 23 04:00 PM 2015 C
+% Last Change: Mon Mar 23 04:00 PM 2015 C
+%
+\documentclass[a4paper]{article}
+\usepackage[]{amsthm} 
+\usepackage[]{amsmath} 
+\usepackage[]{amssymb} 
+
+\usepackage[utf8]{inputenc} 
+
+\newtheorem{prb}{Oppgave}
+\begin{document}
+\section{Uke 7}
+\begin{prb}
+  La $a_n = \arctan\left( n \right)\sin\left( \frac{n\pi}{2} \right)$.
+  Finn $\lim\sup_{n\rightarrow\infty}a_n$ og $\lim\inf_{n\rightarrow\infty}a_n$.
+\end{prb}
+La $M_{n} = \sup \left\{ a_k \mid k \geq n \right\}$ og $m_n = \inf\left\{ a_k \mid k\geq n \right\}$.
+Ser at når $k = 4l+1$ så er $\sin\left( \frac{k\pi}{2}\right) = \sin\left( 2\pi k + \frac{pi}{2} \right) = 1$.
+Siden $\arctan(n)$ er en monotont voksende funksjon vil det si at det holder å se på ledd på formen
+$\arctan\left( k \right) \cdot 1$. Vet da at $\sup\left\{ a_k \mid k\geq n \right\} = \sup\left\{ \arctan\left( k \right)\mid k\geq n \right\} = \frac{\pi}{2} = M_n$.
+
+Da blir $\lim\sup_{n\rightarrow\infty} a_n = \lim_{n \rightarrow \infty} M_n = \frac{\pi}{2}$.
+For $\lim\inf$ må vi se på når $\sin\left( \frac{k\pi}{2} \right) = -1$, og av samme grunn får vi at
+$\lim\inf_{n\rightarrow\infty}a_n = \lim_{n \rightarrow \infty} m_n = -\frac{\pi}{2}$.
+\end{document}
+
+

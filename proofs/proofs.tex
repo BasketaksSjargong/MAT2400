@@ -1,0 +1,45 @@
+%        File: proofs.tex
+%     Created: Mon Mar 16 10:00 AM 2015 C
+% Last Change: Mon Mar 16 10:00 AM 2015 C
+%
+
+\documentclass[a4paper]{report}
+
+
+\usepackage[utf8]{inputenc} 
+
+\usepackage[]{amsmath} 
+\usepackage[]{amsthm} 
+\usepackage[]{amssymb} 
+
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\chapter{Series of Functions}
+
+\begin{prop}
+  \begin{equation}
+    \notag
+    \lim\limits_{n\rightarrow\infty} a_{n} = b
+  \end{equation}
+  if and only if
+  \begin{equation}
+    \notag
+    \lim\limits_{n\rightarrow\infty}\sup a_{n} = \lim\limits_{n\rightarrow\infty}\inf a_{n} = b
+  \end{equation}
+\end{prop}
+\begin{proof}
+  \item\paragraph{Proving the left implication first}
+  Assuming $\lim\limits_{n\rightarrow\infty}\sup a_{n} = \lim\limits_{n\rightarrow\infty}\inf a_{n} = b$.
+  We then have
+  \begin{equation}
+    \notag
+    m_{n} < a_{n} < M_{n}
+  \end{equation}
+
+\end{proof}
+
+\end{document}
+
+
