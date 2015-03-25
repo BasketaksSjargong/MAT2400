@@ -599,12 +599,46 @@ the principle of induction.
       then there exists a natural number $d$ such that $b + c = (a + c) + d$.
       Using associativity and the law of cancellation, this simplifies to $b =
       a + d$, which in turn means that $a < b$. We have now shown the
-      contrapositive of the right implication.
+      contrapositive of the right implication. Thus the right implication holds.
 
+      Now to show the left implication.  Assume that $a + c \geq b + c$. We see
+      that there exist a natural number $d$ such that $a + c = (b + c) + d$
+      (equality when $d = 0$). Using associativity and the law of
+      cancellation, we get $a = b + d$.  This is the definition of
+      \textit{greater than}, therefore we can conclude that $a \geq b$. 
       
+      We have now shown both implications and the statement holds.
 
-  \end{enumerate}  
+    \item $a < b$ if and only if $a\dplus \leq b$.\\
+      [0.2cm]
+      Assume $a < b$, then by definition there exists a positive number $c$
+      such that $ b = a + c$.  Substituting this into the right hand side we
+      achieve $a\dplus \leq a + c$. Rephrased, $a + 1 \leq a + c$. This clearly
+      holds true for any positive number $c$. (Can be shown rigorously by
+      mathematical induction).
+
+      Now, assume that $a\dplus \leq b$. In other words, there exists a natural
+      number $d$ such that $ b = (a\dplus) + d$. ($d$ is allowed to be zero).
+      Using the law of associativity we can deduce that $b = a + (1 + d)$. In
+      other words, the definition of $ a < b$.
+
+      The two implications have been shown and the statement holds.
+    
+    \item $a < b$ if and only if $b = a + d$ for some positive number $d$.\\
+      [0.2cm]
+      Assume $a < b$. From the definition, we get $a \leq b$ and $ a \neq b$.
+      $a \leq b$ means that there must exist a natural number $n$ such that $a
+      + n = b$.  In the case where $n = 0$, $a = b$ which is a contradiction of
+      our assumption, therefore $n$ must be positive by definition of positive
+      since it is not equal to $0$.  Let $d = n$, and we have shown that $a <
+      b$ if $b = a + d$ for some positive number $d$.
+
+      Now, assume that $b = a + d$ for some positive number $d$. Since $d$ is
+      not $0$ by definition, we know that $b \neq a$. Therefore, we have both $
+      a \leq b$ as well as $a \neq b$.  This is the definition of $a < b$, and
+      we are done.
+
+  \end{enumerate}
 \end{sltn}
 \end{document}
-
 
