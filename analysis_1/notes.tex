@@ -10,10 +10,13 @@
 \usepackage[draft]{todonotes} 
 \setlength{\marginparwidth}{2cm}
 
-\newtheorem{defn}{Definition}
-\newtheorem{axm}{Axiom}
-\newtheorem{prp}{Proposition}
-
+\newcounter{dummy} \numberwithin{dummy}{section}
+\newcounter{axmcntr} \numberwithin{axmcntr}{chapter}
+\newtheorem{defn}[dummy]{Definition}
+\newtheorem{axm}[axmcntr]{Axiom}
+\newtheorem{prp}[dummy]{Proposition}
+\newtheorem{asm}[dummy]{Assumption}
+\newtheorem{lma}[dummy]{Lemma}
 
 
 \title{
@@ -51,6 +54,7 @@ any use from them, then that is great.
 \end{abstract}
 \end{@twocolumnfalse}
 ]
+\chapter{Introduction}
 
 \chapter{Starting at the beginning: the natural numbers.}
 \label{ch:natural_numbers}
@@ -181,6 +185,121 @@ We're now equipped with the tools required to deal with propositions of the foll
   that $P(n++)$ also must be true. If this is the case, we have shown, using
   mathematical induction that $P(n)$ is true for every natural number $n$.
 \end{proof}
+
+The previous five axioms are known as the \textit{Peano Axioms} for the natural
+numbers.  We now want to more rigorously define the kind of number system we
+are to refer to as the \textit{natural numbers}.
+
+\begin{asm}[Informal]
+  There exists a number system $\mathbb{N}$, whose elements we will call
+  \textrm{natural numbers}, for which Axioms 1-5, are true.
+\end{asm}
+
+This number system is what we refer to as \textit{the} natural number system.
+But one should not rule out the possibility that there are more than one
+natural number system. But as long as these are \textit{isomorphic} one can
+consider them as equal.
+
+With only this, rather simplistic definition of natural numbers, the five
+axioms, some axioms from set theory we can build all other number systems,
+create functions and do the algebra and calculus that we are used to.
+
+An very common question now arises, and this is about the finiteness or
+infiniteness of the natural number system.  How can something infinite come
+from something strictly finite?  One can easily show that all the natural
+numbers are finite. It is clear that $0$ is finite. If $n$ is finite, then
+clearly $n++$ is finite. Therefore all natural numbers are finite.  It then
+follows that infinity is not a natural numbers. There are other number systems
+that admit the infinite numbers.  
+
+It is an interesting fact that the definition of $\mathbb{N}$ is
+\textit{axiomatic} rather than \textit{constructive}. This means, that so far
+we're only conserned with what the natural numbers are, not what they do, what
+they measure or what they can be used for.
+
+As long as a mathematical model obeys the previous axioms, it is of no concern
+whether which mathematical model is ``true''. It is this form of
+\textit{abstractness} that makes mathematics so useful. One does not
+neccesarily need a concrete model, because the numbers can be understood
+abstractly through the use of axioms.
+
+As a consequence of the axioms previously discussed, we can now define
+sequences \textit{recursively}.  That is, start with some base value and then
+building the next value in the sequence by means of a function.  This leads to
+the following:
+
+\begin{prp}[Recursive definitions]
+  Suppose for each natural number $n$, we have some function $f_n:\mathbb{N}
+  \rightarrow \mathbb{N}$ from the natural numbers to the natural numbers. Let
+  $c$ be a natural number.  Then we can assign a unique natural number $a_n$ to
+  each natural number $n$, such that $a_0 = c$ and $a_{n++} = f_{n}\left( a_n
+  \right)$ for each natural number $n$. 
+\end{prp}
+\begin{proof}
+  Using induction, we verify the base case. We clearly see that this procedure
+  gives a single value to $a_0$, namely $c$. (We know from axiom 3 that $a_0$
+  won't be redefined.) Suppose now inductively that the procedure gives a
+  single value to $a_n$. Then it gives a single value to $a_{n++}$, namely
+  $a_{n++} = f_n\left( a_n \right)$. (We know from axiom 4 that $a_{n++}$ won't
+  be redefined.) This completes the induction, since $a_n$ is defined for every
+  natural number $n$, with a single value assigned to each $a_n$.
+\end{proof}
+
+Equipped with the tools that are recursive definitions we can now define
+multiple operations on the set of natural numbers. Up until now, we've only
+dealt with one, being the increment operation.
+
+\section{Addition}
+
+Currently our number system does not support any more advanced operations than
+incrementing a number.  We now turn our heads to addition. The operation is
+simple. To add $3$ to $5$, we simply increment $5$ three times. This is one
+increment more than adding $2$ to $5$, which is one increment more than adding
+$1$ to $5$, which is one increment more than adding $0$ to $5$. We can
+therefore easily give a recursive definition of addition.
+
+\begin{defn}[Addition of natural numbers]
+  Let $m$ be a natural number. To add zero to $m$, we define $0 + m = m$. Now
+  suppose inductively that we have defined how to add $n$ to $m$. Then we can
+  add $n++$ to $m$ by defining $(n++) + m = (n + m)++$.        
+\end{defn}
+
+For example, $2 + 3 = (3++)++ = 4++ = 5$. By using the priciple of mathematical
+induction, we see that we now have defined $n + m$ for every natural number
+$n$. We are specializing the previous general discussion about recursive
+definitions to the setting where $a_{n} = n + m$, and $f_{n}\left( a_n \right)
+= a_{n}++$.
+
+It's worth noting that this definition is actually \textit{asymmetric}. That
+is, while yielding the same result, $3 + 5$ is incrementing $5$ three times,
+where as $5 + 3$ is incrementing $3$ five times. We shall soon see, that it is
+a general fact that $a + b = b + a$ for all natural numbers $a, b$. 
+
+One can easily prove, using the first two axioms and the principle of
+mathematical induction to show that the sum of two natural numbers us again a
+natural number.
+
+At the present moment, we have only two facts about addition. However, this is
+perfectly sufficient to deduce everything else we know about addition. Starting
+with some basic lemmas.
+
+\begin{lma}
+  For any natural number $n$, $n + 0 = n$. 
+\end{lma}
+
+This lemma is not obvious from our previous definition, since we still do not
+know that $a + b = b + a$. 
+
+\begin{proof}
+  Using induction. The base case $0 + 0 = 0$ follows from the definition of
+  addition of natural numbers.  $0 + m = m$ for all natural numbers, and $0$ is
+  known to be a natural number.  Suppose inductively that $n + 0 = n$. We now
+  wish to show that $(n++) + 0 = n++$. By definition of addition yields that
+  $(n++) + 0$ is equal to $(n + 0)++$, which is equal to $n++$ since $n + 0 =
+  n$. This closes the induction.
+\end{proof}
+
+
 \end{document}
 
 
