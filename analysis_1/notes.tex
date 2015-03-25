@@ -7,10 +7,14 @@
 \usepackage[]{amsthm} 
 \usepackage[]{amsmath} 
 \usepackage[]{amssymb} 
+\usepackage[draft]{todonotes} 
+\setlength{\marginparwidth}{2cm}
 
 \newtheorem{defn}{Definition}
 \newtheorem{axm}{Axiom}
 \newtheorem{prp}{Proposition}
+
+
 
 \title{
   \textsc{University of Oslo} \\
@@ -59,6 +63,7 @@ rationals $\mathbb{Q}$, the real numbers $\mathbb{R}$, and finally; the complex
 numbers $\mathbb{C}$. The latter being the main focus of the subject Complex
 Analysis.
 
+\todo{Replace all occurances of $++$ with a proper unary plus sign. To remove wonky spacing.}
 \section{The Peano axioms}
 One of the most standard ways of defining the natural numbers, is in terms of
 the \textit{Peano axioms}. One can also define natural numbers through the
@@ -88,7 +93,8 @@ Starting with the first two:
   If $n$ is a natural number, then $n++$ is also a natural number.
 \end{axm}
 
-Now, in order to avoid having to deal with incredibly long strings of $+$'es. We're going to use an auxilliary definition.
+Now, in order to avoid having to deal with incredibly long strings of $+$'es.
+We're going to use an auxilliary definition.
 \begin{defn}
   We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
 \end{defn}
@@ -109,6 +115,72 @@ around to previous numbers, we impose a new axiom, namely:
   0 is not the successor of any natural number: i.e., we have $n++ \neq 0$ for
   every natural number $n$.
 \end{axm}
+
+We can, equipped with this new axiom, show for example the following:
+
+\begin{prp}
+  $4$ is not equal to $0$.
+\end{prp}
+\begin{proof}
+  By definition, $4 = 3++$. By the first two axioms, $3$ is a natural number.
+  Thus, since $0$ is not the successor of any natural number, $3++ \neq 0$,
+  i.e., $4 \neq 0$. 
+\end{proof}
+
+Assuming the following axiom allows us to rule out any behaviour where the
+successors wrap around, but not to $0$, i.e., $5++ = 1$.
+
+\begin{axm}
+  Different natural numbers must have different successors; i.e., if $n, m$ are
+  natural numbers and $n \neq m$, then $n++ \neq m++$. Equivalently, if $n++ =
+  m++$, then we must have $n = m$.
+\end{axm}
+
+We can now prove extensions of the previous proposition where we do not have zeroes
+on the right hand side of the equation.
+
+\begin{prp}
+  $6$ is not equal to $2$.
+\end{prp}
+\begin{proof}
+  Assume for contradiction that $6 = 2$. By the previous axiom we must have
+  $5++ = 1++$.  Applying the same axiom again, we have $5 = 1$ so that $4++ =
+  0++$. But, this leads to a contradiction, because by the same axiom, $4 = 0$.
+  This contradicts our previously proven proposition.
+\end{proof}
+
+Assume now that we are presented with a weird number system
+\begin{equation}
+  \notag
+  \mathbb{N} = \left\{ 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, \dots \right\}.
+\end{equation}
+Even though this set contains real numbers, which we haven't defined or talked
+about yet, it satisfies all the previous axioms. But this is not the number
+system we're interested in. We want our set of natural numbers to only be
+containing all the numbers that can be directly derived from $0$ just using the
+successor operation.
+
+We want to introduce some axiom that does not allow other forms of successors to occur.
+Therefore we introduce the following:
+
+\todo{Strictly speaking, this axiom is not an axiom but an \textit{axiom schema}.}
+\begin{axm}[Principle of mathematical induction]
+  Let $P\left( n \right)$ be any property pertaining to a natural number $n$.
+  Suppose that $P\left( 0 \right)$ is true, and suppose that whenever $P\left(
+  n \right)$ is true, $P(n++)$ is also true. Then $P(n)$ is true for every
+  natural number $n$. 
+\end{axm}
+
+We're now equipped with the tools required to deal with propositions of the following form:
+\begin{prp}
+  A certain property $P(n)$ is true for every natural number $n$.  
+\end{prp}
+\begin{proof}
+  Using induction, we show the base case of $P(0)$. Assume, for the sake of
+  induction, that $P(n)$ is true. We now want to show that it has to follow
+  that $P(n++)$ also must be true. If this is the case, we have shown, using
+  mathematical induction that $P(n)$ is true for every natural number $n$.
+\end{proof}
 \end{document}
 
 
