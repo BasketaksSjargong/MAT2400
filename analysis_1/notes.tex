@@ -7,10 +7,8 @@
 \usepackage[]{amsthm} 
 \usepackage[]{amsmath} 
 \usepackage[]{amssymb} 
-\usepackage[draft]{todonotes} 
 \usepackage[]{hyperref} 
 \usepackage[]{enumerate} 
-\setlength{\marginparwidth}{2cm}
 
 \newcounter{dummy} \numberwithin{dummy}{section}
 \newcounter{exercise} \numberwithin{exercise}{section}
@@ -72,12 +70,10 @@ solutions to selected exercises.
 
 This document is mainly for my own good and well being, but if anyone can find
 any use from them, then that is great.
-
 \end{abstract}
 \end{@twocolumnfalse}
 ]
 \chapter{Introduction}
-
 \chapter{Starting at the beginning: the natural numbers.}
 \label{ch:natural_numbers}
 
@@ -89,7 +85,7 @@ rationals $\mathbb{Q}$, the real numbers $\mathbb{R}$, and finally; the complex
 numbers $\mathbb{C}$. The latter being the main focus of the subject Complex
 Analysis.
 
-\todo{Replace all occurances of $++$ with a proper unary plus sign. To remove wonky spacing.}
+%TODO - Replace all occurances of double binary plus with double unary plus \dplus
 \section{The Peano axioms}
 One of the most standard ways of defining the natural numbers, is in terms of
 the \textit{Peano axioms}. One can also define natural numbers through the
@@ -152,7 +148,6 @@ We can, equipped with this new axiom, show for example the following:
   Thus, since $0$ is not the successor of any natural number, $3++ \neq 0$,
   i.e., $4 \neq 0$. 
 \end{proof}
-
 Assuming the following axiom allows us to rule out any behaviour where the
 successors wrap around, but not to $0$, i.e., $5++ = 1$.
 \begin{axm}
@@ -188,7 +183,6 @@ successor operation.
 We want to introduce some axiom that does not allow other forms of successors to occur.
 Therefore we introduce the following:
 
-\todo{Strictly speaking, this axiom is not an axiom but an \textit{axiom schema}.}
 \begin{axm}[Principle of mathematical induction]
   Let $P\left( n \right)$ be any property pertaining to a natural number $n$.
   Suppose that $P\left( 0 \right)$ is true, and suppose that whenever $P\left(
@@ -568,6 +562,48 @@ the principle of induction.
   (b\dplus)\dplus$. From axiom 4 we know that $c = b\dplus$. This closes the
   induction.
 
+\end{sltn}
+
+\begin{exc}
+  Prove \ref{prp_2212}. (Hint: You will need many of the preceding propositions, corollaries and lemmas.)
+\end{exc}
+\begin{sltn}
+  Proving basic properties of order for natural numbers.
+  \begin{enumerate}[(a)]
+    \item $a \geq a$. \\
+      [0.2cm]
+      From the assumption, we have $a = a$ or $a > a$. For $a > a$ there must
+      exist a positive number $ b $ such that $a = a + b$. Using the law of
+      cancellation, we get $b = 0$, which contradicts the fact that $b$ is
+      positive. Therefore $a = a$, which always holds. In any case, we're done.
+
+    \item If $a \geq b$ and $b \geq c$, then $a \geq c$.\\
+      [0.2cm]
+      From the assumption, there exists natural numbers $m$ and $n$ such that
+      $a = b + m$ and $b = c + n$. Substituting we get $a = (c + n) + m$.
+      Using the associativity of addition of we get $a = c + (n + m)$. Since
+      $(n + m)$ is a natural number, by definition $ a \geq c$.
+
+    \item If $a \geq b$ and $b \geq a$ then $a = b$. \\
+      [0.2cm]
+      If $a \geq b$, then there exist a natural number $c$ such that $a = b +
+      c$.  Also, if $b \geq a$ then there exists a natural number $d$ such that
+      $b = a + d$.  Substituting we get $a = (a + d) + c$. Using the
+      associativity of the natural numbers, we have $a = a + (d + c)$. The law
+      of cancellation gives $0 = (d + c)$. From \ref{crl_229} we have $d = 0$,
+      $c = 0$.  Again, substituting yields $a = 0 + b = b$ and $b = 0 + a = a$.
+
+    \item $a \geq b$ if and only if $a + c \geq b + c$.\\
+      [0.2cm]
+      We argue contrapositively.  Assume that $a + c < b + c$. By definition,
+      then there exists a natural number $d$ such that $b + c = (a + c) + d$.
+      Using associativity and the law of cancellation, this simplifies to $b =
+      a + d$, which in turn means that $a < b$. We have now shown the
+      contrapositive of the right implication.
+
+      
+
+  \end{enumerate}  
 \end{sltn}
 \end{document}
 
