@@ -17,6 +17,10 @@
 \newtheorem{prp}[dummy]{Proposition}
 \newtheorem{asm}[dummy]{Assumption}
 \newtheorem{lma}[dummy]{Lemma}
+\newtheorem{crl}[dummy]{Corollary}
+\newtheorem*{crl*}{Corollary}
+
+\newcommand{\dplus}{{+}{+}}
 
 
 \title{
@@ -41,6 +45,11 @@ namely Analysis I and II. There is absolutely nothing wrong with the text book
 offered at my university, it is brilliantly written, but I have been exposed to
 the writings of Terence Tao before, and therefore I wish to give his books a
 try.
+
+The first part of this document related to the book Analysis I, is going to be
+mostly involved in building a solid foundation for the concepts discussed in
+Analysis II. The material included from Analysis I is very similar to the
+curriculum of the subject MAT1140 at the University of Oslo.
 
 The structure of this document is going to be me writing down the results
 encountered throughout the text books along the proofs I find extra intriguing.
@@ -298,6 +307,106 @@ know that $a + b = b + a$.
   $(n++) + 0$ is equal to $(n + 0)++$, which is equal to $n++$ since $n + 0 =
   n$. This closes the induction.
 \end{proof}
+
+\begin{lma}
+  For any natural numbers $n$ and $m$, $n + (m++) = (n + m)++$.
+\end{lma}
+
+Again, this is not obvious. 
+
+\begin{proof}
+  We induct on $n$, keeping $m$ fixed. Considering the base case $n = 0$. We
+  therefore have to prove $ 0 + (m\dplus) = (0 + m)\dplus$. By definition of
+  addition, we have $0 + (m\dplus) = m\dplus$ and $0 + m = m$. So, both sides
+  are equal to $m\dplus$ and are thus equal. Assuming now, that we have shown
+  $n + (m\dplus) = (n + m)\dplus$, we want to show that $(n\dplus) + (m\dplus)
+  = \left( \left( n\dplus \right) + m \right)\dplus$.  Looking at the left hand
+  side. By definition of addition it is equal to $\left( n + \left( m\dplus
+  \right) \right)\dplus$, which in turn, by the inductive hypothesis, is equal
+  to $\left(\left( n + m \right)\dplus\right)\dplus$. Now, examining the right
+  hand side. By the definition of addition, it is equal to $\left(\left( n + m
+  \right)\dplus\right)\dplus$. The two sides are equal, and this closes the
+  induction.
+\end{proof}
+We can now easily show the following result:
+\begin{crl*}
+  For all natural numbers $n$, $n\dplus = n + 1$.    
+\end{crl*}
+\begin{proof}
+  This is a special case of the previous lemma, where $m = 0$.  We have $n +
+  (m\dplus) = (n + m)\dplus$. Setting $m = 0$, we get $n + (0\dplus) = (n +
+  0)\dplus$. Evaluating the left hand side we get $n + 1$ and evaluating the
+  right hand side, we get $(n)\dplus = n\dplus$, which is what we wanted to
+  show.
+\end{proof}
+
+Now for one of the first major results. We can now prove that $a + b = b + a$.
+
+\begin{prp}[Addition is commutative]
+  For any natural numbers $n$ and $m$, $n + m = m + n$. 
+\end{prp}
+\begin{proof}
+  Using induction on $n$ keeping $m$ fixed.  First showing the base case, where
+  $n = 0$.  We want to show that $0 + m = m + 0$.  By the definition of
+  addition, the left hand side is equal to $m$. By lemma 2.2.2, the right hand
+  side is equal to $m$. Therefore, the base case is true.  Now, assuming that
+  it is shown that $n + m = m + n$.  We now want to show that $(n\dplus) + m =
+  m + (n\dplus)$.  Looking at the left hand side, we see that it is equal to
+  $(n + m)\dplus$, by definition of addition.  The right hand side, by lemma
+  2.2.3 must be equal to $(m + n)\dplus$. Since we assumed $n + m = m + n$, the
+  left and right hand side is equal and therefore the induction is closed.
+\end{proof}
+
+\begin{prp}[Addition is associative]
+  For any natural numbers $a, b, c$, we have $(a + b) + c = a + (b + c)$.  
+\end{prp}
+\begin{proof}
+  See Exercise 2.2.1.
+\end{proof}
+
+\begin{prp}[Cancellation law]
+  Let $a, b, c$ be natural numbers such that $a + b = a + c$. 
+\end{prp}
+
+Since we haven't explored the concept of subtraction or negative numbers yet we
+cannot use these properties to prove this law. This law is actually crucial in
+defining subtraction rigorously. 
+
+\begin{proof}
+  We prove this with induction on $a$, keeping $b$ and $c$ fixed.  Showing the
+  base case with $a = 0$. We have $0 + b = 0 + c$. Using the definition of
+  addition, $b = c$. Now, for the inductive hypothesis.  Assuming that it is
+  shown that $ a + b  = a + c$, we want to show that $(a\dplus) + b = (a\dplus)
+  + c$ implies $b = c$.  Left hand side evaluates to $(a+b)\dplus$ and the
+  right hand side evaluates to $(a + c)\dplus$ by the definition of addition.
+  By Axiom 2.4 we see that $(a + b) = (a + c)$, and therefore by our assumption
+  $b = c$. This closes the induction.
+\end{proof}
+
+We now want to look at how natural numbers interacts with positivity. First, a definition:
+\begin{defn}[Positive natural numbers]
+  A natural number $n$ is said to be \textit{positive} if and only if it is not equal to $0$.
+\end{defn}
+
+This leads to the following proposition.
+\begin{prp}
+  If $a$ is positive and $b$ is a natural number, then $a + b$ is positive (and hence $b + a$ is also, by Proposition 2.2.4).
+\end{prp}
+\begin{proof}
+  Using induction on $b$. Showing the base case where $b = 0$.  Assuming $a$ a
+  positive number and $b$ a natural number.  We then have $ a + b = a + 0 = a$,
+  and by assumption $a$ is a positive number.  Now for the inductive step. We
+  assume shown that $a + b$ is a positive number.  We want to show that $a + (
+  b\dplus)$ must also be a positive number. Using the commutativity of natural
+  numbers and the definition of addition we can show that this must be equal to
+  $(a + b)\dplus$. Since we know that $0$ is not the successor to any number,
+  and that $(a + b)$ is positive, we must have $(a + b)\dplus \neq 0$. This
+  closes the induction.
+\end{proof}
+
+\begin{crl}
+  If $a$ and $b$ are natural numbers such that $a + b = 0$, then $a = 0$ and $b = 0$. 
+\end{crl}
 
 
 \end{document}
