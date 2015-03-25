@@ -13,6 +13,7 @@
 \setlength{\marginparwidth}{2cm}
 
 \newcounter{dummy} \numberwithin{dummy}{section}
+\newcounter{exercise} \numberwithin{exercise}{section}
 \newcounter{axmcntr} \numberwithin{axmcntr}{chapter}
 \newtheorem{axm}[axmcntr]{Axiom}
 \newtheorem{prp}[dummy]{Proposition}
@@ -22,6 +23,13 @@
 \newtheorem*{crl*}{Corollary}
 \theoremstyle{definition}
 \newtheorem{defn}[dummy]{Definition}
+\newtheorem{exc}[exercise]{Exercise}
+\makeatletter
+\def\@endtheorem{\qed\endtrivlist\@endpefalse }
+\makeatother
+\newtheoremstyle{solution}{}{}{}{}{}{}{ }{}
+\theoremstyle{solution}
+\newtheorem*{sltn}{Solution}
 
 \newcommand{\dplus}{{+}{+}} % Double unary plus sign.
 
@@ -33,7 +41,9 @@
 }
 \author{Ivar Stangeby}
 \date{\today}
+
 \begin{document}
+
 \twocolumn[
 \begin{@twocolumnfalse}
 \maketitle
@@ -361,6 +371,7 @@ Now for one of the first major results. We can now prove that $a + b = b + a$.
 \end{proof}
 
 \begin{prp}[Addition is associative]
+  \label{prp_225}
   For any natural numbers $a, b, c$, we have $(a + b) + c = a + (b + c)$.  
 \end{prp}
 \begin{proof}
@@ -507,7 +518,38 @@ the principle of induction.
   is true, since in this case the hypothesis is vacuous.) Then we can conclude
   that $P(m)$ is true for all natural numbers $m \geq m_0$.
 \end{prp}
-\end{document}
+\begin{proof}
+  See Exercise 2.2.5.
+\end{proof}
 
+\begin{exc}
+  Prove \ref{prp_225}. (Hint: fix two of the variables and induct on the third).
+\end{exc}
+
+\begin{sltn}
+  Fixing $b$ and $c$ we induct on $a$.  Examining the base case where $a = 0$
+  yields $(0 + b) + c = 0 + (b + c)$. Evaluating both sides using the definition
+  of addition of natural numbers yields $b + c$ on both sides. Therefore the base
+  case holds.
+
+  For the inductive hypothesis we assume that we have shown that $( a + b ) + c =
+  a + (b + c)$ holds. We want to show that it also holds for $a\dplus$.  We get
+  $\left( \left( a\dplus \right) + b \right) + c = \left( a\dplus \right) + (b +
+  c)$.  Evaluating the left hand side by applying the definition of addition
+  twice, we get
+  \begin{align*}
+    \left( \left( a\dplus \right) + b \right) + c &= \left( \left(a + b\right)\dplus\right) + c \\
+    &= \left( \left( a + b \right) + c \right)\dplus.
+  \end{align*}
+
+  Similarily, evaluating the right hand side yields
+  \begin{align*}
+    \left( a\dplus \right) + (b + c) = (a + (b + c))\dplus.
+  \end{align*}
+
+  By our assumption we know $a + (b + c) = (a + b) + c$, and therefore this
+  closes the induction.
+\end{sltn}
+\end{document}
 
 
