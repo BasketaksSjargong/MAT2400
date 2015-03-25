@@ -27,7 +27,7 @@
 \makeatletter
 \def\@endtheorem{\qed\endtrivlist\@endpefalse }
 \makeatother
-\newtheoremstyle{solution}{}{}{}{}{}{}{ }{}
+\newtheoremstyle{solution}{}{}{}{}{\scshape}{:}{ }{}
 \theoremstyle{solution}
 \newtheorem*{sltn}{Solution}
 
@@ -431,6 +431,7 @@ This leads to the following proposition.
 \end{proof}
 
 \begin{lma}
+  \label{lma_2210}
   Let $a$ be a positive number. Then there exists exactly one natural number
   $b$ such that $b\dplus = a$.
 \end{lma}
@@ -549,6 +550,24 @@ the principle of induction.
 
   By our assumption we know $a + (b + c) = (a + b) + c$, and therefore this
   closes the induction.
+\end{sltn}
+
+\begin{exc}
+  Prove \ref{lma_2210}. (Hint: use induction.)
+\end{exc}
+\begin{sltn}
+  Let $a$ be a positive number. We want to show that there exists exactly one
+  natural number $b$ such that $b\dplus = a$.  Fixing $b$ we induct on $a$. We
+  first want to show the base case where $a = 1$.  It then follows that if we
+  set $b = 0$, then we have $b\dplus = 0\dplus = 1 = a$.  
+
+  For the inductive hypothesis we assume that we have shown that there exists
+  exactly one natural number $b$ such that $b\dplus = a$. We want to show that
+  it then follows that there exists exactly one natural number $c$ such that
+  $c\dplus = a\dplus$.  Substituting this for $a$ we get $c \dplus =
+  (b\dplus)\dplus$. From axiom 4 we know that $c = b\dplus$. This closes the
+  induction.
+
 \end{sltn}
 \end{document}
 
