@@ -9,13 +9,14 @@
 \usepackage[]{amssymb} 
 \usepackage[]{hyperref} 
 \usepackage[]{enumerate} 
+\usepackage[]{todo} 
 
 \newcounter{dummy} \numberwithin{dummy}{section}
 \newcounter{exercise} \numberwithin{exercise}{section}
 \newcounter{axmcntr} \numberwithin{axmcntr}{chapter}
 \newtheorem{axm}[axmcntr]{Axiom}
 \newtheorem{prp}[dummy]{Proposition}
-\newtheorem{asm}[dummy]{Assumption}
+\newtheorem{asm}[axmcntr]{Assumption}
 \newtheorem{lma}[dummy]{Lemma}
 \newtheorem{crl}[dummy]{Corollary}
 \newtheorem*{crl*}{Corollary}
@@ -92,6 +93,7 @@ the \textit{Peano axioms}. One can also define natural numbers through the
 notion of cardinality.
 
 \begin{defn}[Informal]
+  \label{defn_211}
   A \textit{natural number} is any element of the set
   \begin{equation}
     \notag
@@ -105,24 +107,29 @@ notion of cardinality.
 In order for us to rigorously define the set of natural numbers, we're going to
 use the two fundamental concepts of \textit{the number 0} and the
 \textit{increment operation}.  These will be covered in the Peano Axioms.
-We will use $n++$ to denote the \textit{successor} of $n$. 
+We will use $n\dplus$ to denote the \textit{successor} of $n$. 
 
 Starting with the first two: 
 \begin{axm}
+  \label{axm_21}
   0 is a natural number.
 \end{axm}
 \begin{axm}
-  If $n$ is a natural number, then $n++$ is also a natural number.
+  \label{axm_22}
+  If $n$ is a natural number, then $n\dplus$ is also a natural number.
 \end{axm}
 
 Now, in order to avoid having to deal with incredibly long strings of $+$'es.
 We're going to use an auxilliary definition.
+\addtocounter{dummy}{1}
 \begin{defn}
-  We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
+  \label{defn_213}
+  We define 1 to be the number $0\dplus$, 2 to be the number $(0\dplus)\dplus$, etc.
 \end{defn}
 We can based off of this, propse the following:
 
 \begin{prp}
+  \label{prp_214}
   3 is a natural number.
 \end{prp}
 \begin{proof}
@@ -134,41 +141,49 @@ In order for us to avoid the problem of having the successive numbers wrap
 around to previous numbers, we impose a new axiom, namely:
 
 \begin{axm}
-  0 is not the successor of any natural number: i.e., we have $n++ \neq 0$ for
+  \label{axm_23}
+  0 is not the successor of any natural number: i.e., we have $n\dplus \neq 0$ for
   every natural number $n$.
 \end{axm}
+
+\addtocounter{dummy}{1}
 
 We can, equipped with this new axiom, show for example the following:
 
 \begin{prp}
+  \label{prp_216}
   $4$ is not equal to $0$.
 \end{prp}
 \begin{proof}
-  By definition, $4 = 3++$. By the first two axioms, $3$ is a natural number.
-  Thus, since $0$ is not the successor of any natural number, $3++ \neq 0$,
+  By definition, $4 = 3\dplus$. By the first two axioms, $3$ is a natural number.
+  Thus, since $0$ is not the successor of any natural number, $3\dplus \neq 0$,
   i.e., $4 \neq 0$. 
 \end{proof}
+\addtocounter{dummy}{1}
 Assuming the following axiom allows us to rule out any behaviour where the
-successors wrap around, but not to $0$, i.e., $5++ = 1$.
+successors wrap around, but not to $0$, i.e., $5\dplus = 1$.
 \begin{axm}
+  \label{axm_24}
   Different natural numbers must have different successors; i.e., if $n, m$ are
-  natural numbers and $n \neq m$, then $n++ \neq m++$. Equivalently, if $n++ =
-  m++$, then we must have $n = m$.
+  natural numbers and $n \neq m$, then $n\dplus \neq m\dplus$. Equivalently, if $n\dplus =
+  m\dplus$, then we must have $n = m$.
 \end{axm}
 
 We can now prove extensions of the previous proposition where we do not have zeroes
 on the right hand side of the equation.
 
 \begin{prp}
+  \label{prp_218}
   $6$ is not equal to $2$.
 \end{prp}
 \begin{proof}
   Assume for contradiction that $6 = 2$. By the previous axiom we must have
-  $5++ = 1++$.  Applying the same axiom again, we have $5 = 1$ so that $4++ =
-  0++$. But, this leads to a contradiction, because by the same axiom, $4 = 0$.
+  $5\dplus = 1\dplus$.  Applying the same axiom again, we have $5 = 1$ so that $4\dplus =
+  0\dplus$. But, this leads to a contradiction, because by the same axiom, $4 = 0$.
   This contradicts our previously proven proposition.
 \end{proof}
 
+\addtocounter{dummy}{1}
 Assume now that we are presented with a weird number system
 \begin{equation}
   \notag
@@ -184,20 +199,23 @@ We want to introduce some axiom that does not allow other forms of successors to
 Therefore we introduce the following:
 
 \begin{axm}[Principle of mathematical induction]
+  \label{axm_25}
   Let $P\left( n \right)$ be any property pertaining to a natural number $n$.
   Suppose that $P\left( 0 \right)$ is true, and suppose that whenever $P\left(
-  n \right)$ is true, $P(n++)$ is also true. Then $P(n)$ is true for every
+  n \right)$ is true, $P(n\dplus)$ is also true. Then $P(n)$ is true for every
   natural number $n$. 
 \end{axm}
 
+\addtocounter{dummy}{1}
 We're now equipped with the tools required to deal with propositions of the following form:
 \begin{prp}
+  \label{prp_2111}
   A certain property $P(n)$ is true for every natural number $n$.  
 \end{prp}
 \begin{proof}
   Using induction, we show the base case of $P(0)$. Assume, for the sake of
   induction, that $P(n)$ is true. We now want to show that it has to follow
-  that $P(n++)$ also must be true. If this is the case, we have shown, using
+  that $P(n\dplus)$ also must be true. If this is the case, we have shown, using
   mathematical induction that $P(n)$ is true for every natural number $n$.
 \end{proof}
 
@@ -206,9 +224,15 @@ numbers.  We now want to more rigorously define the kind of number system we
 are to refer to as the \textit{natural numbers}.
 
 \begin{asm}[Informal]
+  \label{asm_26}
   There exists a number system $\mathbb{N}$, whose elements we will call
   \textrm{natural numbers}, for which Axioms 1-5, are true.
 \end{asm}
+
+\addtocounter{dummy}{1}
+\addtocounter{dummy}{1}
+\addtocounter{dummy}{1}
+\addtocounter{dummy}{1}
 
 This number system is what we refer to as \textit{the} natural number system.
 But one should not rule out the possibility that there are more than one
@@ -216,15 +240,15 @@ natural number system. But as long as these are \textit{isomorphic} one can
 consider them as equal.
 
 With only this, rather simplistic definition of natural numbers, the five
-axioms, some axioms from set theory we can build all other number systems,
+axioms, and some axioms from set theory we can build all other number systems,
 create functions and do the algebra and calculus that we are used to.
 
-An very common question now arises, and this is about the finiteness or
+A very common question now arises, and this is about the finiteness or
 infiniteness of the natural number system.  How can something infinite come
 from something strictly finite?  One can easily show that all the natural
 numbers are finite. It is clear that $0$ is finite. If $n$ is finite, then
-clearly $n++$ is finite. Therefore all natural numbers are finite.  It then
-follows that infinity is not a natural numbers. There are other number systems
+clearly $n\dplus$ is finite. Therefore all natural numbers are finite.  It then
+follows that infinity is not a natural number. There are other number systems
 that admit the infinite numbers.  
 
 It is an interesting fact that the definition of $\mathbb{N}$ is
@@ -244,18 +268,19 @@ building the next value in the sequence by means of a function.  This leads to
 the following:
 
 \begin{prp}[Recursive definitions]
+  \label{prp_2116}
   Suppose for each natural number $n$, we have some function $f_n:\mathbb{N}
   \rightarrow \mathbb{N}$ from the natural numbers to the natural numbers. Let
   $c$ be a natural number.  Then we can assign a unique natural number $a_n$ to
-  each natural number $n$, such that $a_0 = c$ and $a_{n++} = f_{n}\left( a_n
+  each natural number $n$, such that $a_0 = c$ and $a_{n\dplus} = f_{n}\left( a_n
   \right)$ for each natural number $n$. 
 \end{prp}
 \begin{proof}
   Using induction, we verify the base case. We clearly see that this procedure
   gives a single value to $a_0$, namely $c$. (We know from axiom 3 that $a_0$
   won't be redefined.) Suppose now inductively that the procedure gives a
-  single value to $a_n$. Then it gives a single value to $a_{n++}$, namely
-  $a_{n++} = f_n\left( a_n \right)$. (We know from axiom 4 that $a_{n++}$ won't
+  single value to $a_n$. Then it gives a single value to $a_{n\dplus}$, namely
+  $a_{n\dplus} = f_n\left( a_n \right)$. (We know from axiom 4 that $a_{n\dplus}$ won't
   be redefined.) This completes the induction, since $a_n$ is defined for every
   natural number $n$, with a single value assigned to each $a_n$.
 \end{proof}
@@ -274,16 +299,17 @@ $1$ to $5$, which is one increment more than adding $0$ to $5$. We can
 therefore easily give a recursive definition of addition.
 
 \begin{defn}[Addition of natural numbers]
+  \label{defn_221}
   Let $m$ be a natural number. To add zero to $m$, we define $0 + m = m$. Now
   suppose inductively that we have defined how to add $n$ to $m$. Then we can
-  add $n++$ to $m$ by defining $(n++) + m = (n + m)++$.        
+  add $n\dplus$ to $m$ by defining $(n\dplus) + m = (n + m)\dplus$.        
 \end{defn}
-
-For example, $2 + 3 = (3++)++ = 4++ = 5$. By using the priciple of mathematical
+  
+For example, $2 + 3 = (3\dplus)\dplus = 4\dplus = 5$. By using the priciple of mathematical
 induction, we see that we now have defined $n + m$ for every natural number
 $n$. We are specializing the previous general discussion about recursive
 definitions to the setting where $a_{n} = n + m$, and $f_{n}\left( a_n \right)
-= a_{n}++$.
+= a_{n}\dplus$.
 
 It's worth noting that this definition is actually \textit{asymmetric}. That
 is, while yielding the same result, $3 + 5$ is incrementing $5$ three times,
@@ -291,7 +317,7 @@ where as $5 + 3$ is incrementing $3$ five times. We shall soon see, that it is
 a general fact that $a + b = b + a$ for all natural numbers $a, b$. 
 
 One can easily prove, using the first two axioms and the principle of
-mathematical induction to show that the sum of two natural numbers us again a
+mathematical induction to show that the sum of two natural numbers is again a
 natural number.
 
 At the present moment, we have only two facts about addition. However, this is
@@ -299,6 +325,7 @@ perfectly sufficient to deduce everything else we know about addition. Starting
 with some basic lemmas.
 
 \begin{lma}
+  \label{lma_222}
   For any natural number $n$, $n + 0 = n$. 
 \end{lma}
 
@@ -309,13 +336,14 @@ know that $a + b = b + a$.
   Using induction. The base case $0 + 0 = 0$ follows from the definition of
   addition of natural numbers.  $0 + m = m$ for all natural numbers, and $0$ is
   known to be a natural number.  Suppose inductively that $n + 0 = n$. We now
-  wish to show that $(n++) + 0 = n++$. By definition of addition yields that
-  $(n++) + 0$ is equal to $(n + 0)++$, which is equal to $n++$ since $n + 0 =
+  wish to show that $(n\dplus) + 0 = n\dplus$. By definition of addition yields that
+  $(n\dplus) + 0$ is equal to $(n + 0)\dplus$, which is equal to $n\dplus$ since $n + 0 =
   n$. This closes the induction.
 \end{proof}
 
 \begin{lma}
-  For any natural numbers $n$ and $m$, $n + (m++) = (n + m)++$.
+  \label{lma_223}
+  For any natural numbers $n$ and $m$, $n + (m\dplus) = (n + m)\dplus$.
 \end{lma}
 
 Again, this is not obvious. 
@@ -350,6 +378,7 @@ We can now easily show the following result:
 Now for one of the first major results. We can now prove that $a + b = b + a$.
 
 \begin{prp}[Addition is commutative]
+  \label{prp_224}
   For any natural numbers $n$ and $m$, $n + m = m + n$. 
 \end{prp}
 \begin{proof}
@@ -373,6 +402,7 @@ Now for one of the first major results. We can now prove that $a + b = b + a$.
 \end{proof}
 
 \begin{prp}[Cancellation law]
+  \label{prp_226}
   Let $a, b, c$ be natural numbers such that $a + b = a + c$. 
 \end{prp}
 
@@ -393,6 +423,7 @@ defining subtraction rigorously.
 
 We now want to look at how natural numbers interacts with positivity. First, a definition:
 \begin{defn}[Positive natural numbers]
+  \label{defn_227}
   A natural number $n$ is said to be \textit{positive} if and only if it is not equal to $0$.
 \end{defn}
 
@@ -436,6 +467,7 @@ This leads to the following proposition.
 We can now, since we have a notion of addition, proceed with defining a notion
 of order on the natural numbers.
 \begin{defn}[Ordering of the natural numbers]
+  \label{defn_2211}
   Let $n$ and $m$ be natural numbers. We say that $n$ is \textit{greater than
   or equal to} $m$, and write $n \geq m$ or $m \leq n$, if and only if we have
   $n = m + a$ for some natural number $a$.  We say that $n$ is \textit{strictly
@@ -461,7 +493,7 @@ number $n\dplus$ is always larger.
     \item
       (Addition preserves order) $a \geq b$ if and only if $a + c \geq b + c$.
     \item
-      $ a < b $ if and only if $ a++ \leq b$.
+      $ a < b $ if and only if $ a\dplus \leq b$.
     \item 
       $a < b$ if and only if $ b = a + d$ for some \textrm{positive} number $d$.
   \end{enumerate}
@@ -471,6 +503,7 @@ number $n\dplus$ is always larger.
 \end{proof}
 
 \begin{prp}[Trichotomy of order for natural numbers]
+  \label{prp_2213}
   Let $a$ and $b$ be natural numbers. Then exactly one of the following
   statements is true: $a < b, a = b$ or $a > b$.
 \end{prp}
@@ -637,8 +670,249 @@ the principle of induction.
       not $0$ by definition, we know that $b \neq a$. Therefore, we have both $
       a \leq b$ as well as $a \neq b$.  This is the definition of $a < b$, and
       we are done.
-
   \end{enumerate}
 \end{sltn}
+
+\begin{exc}
+  Justify the three statements marked (why?) in the proof of \ref{prp_2213} 
+\end{exc}
+
+\begin{sltn}
+  Filling in the gaps in the proof of \ref{prp_2213}.
+  \begin{enumerate}[(a)]
+    \item When $a = 0$ we have $0 \leq b$ for all $b$\\
+      [0.2cm]
+      $a = 0$ means that in the definition of $\leq$ there exist some natural
+      number $c$ such that we have $b = 0 + c$.  Using \ref{lma_222} gives $b =
+      c$. Thus, just chosing $c$ to be equal to $b$ satisfies the definition of
+      $a \leq b$ for all $b$ in the cases where $a = 0$. Therefore the base
+      case of the mathematical induction holds.
+
+    \item If $a > b$, then $a\dplus > b$\\
+      [0.2cm]
+      Assuming $a > b$. From the definition we know we have $a \geq b$ and $a
+      \neq b$.  This again means there exists some natural number, $c$,
+      different from zero that satisfy $a = b + c$. In other words, a positive
+      number $c$.
+      
+      Incrementing both sides gives us $a\dplus = (b + c)\dplus$. This gives us
+      $a\dplus = b + (c + 1)$, by using the definition of addition and
+      associativity. This is the definition of $a\dplus \geq b$, but since $c$
+      cannot be $0$, there is no way of obtaining the equality $a\dplus =
+      b\dplus$, thus by \ref{axm_24} we have $a \neq b$ which gives us the
+      condition we need for setting $a \dplus > b$ which is what we wanted to
+      show.
+      
+    \item If $a = b$, then $a\dplus > b$.\\
+      [0.2cm]
+      Assuming $a = b$. This means, that in the definition of $a \geq b$, we
+      know that the natural number $c$ that satisfies $a = b + c$ must be zero
+      (this follows from the law of cancellation and \ref{lma_222}).
+      Incrementing both sides yield $a\dplus = (b+0)\dplus$, which in turn
+      gives us $a\dplus = b\dplus = b + 1$.  This satisfies the definition of
+      $a\dplus > b$ because there exist a positive number $1$ such that
+      $a\dplus = b + 1$.
+  \end{enumerate}
+\end{sltn}
+
+\begin{exc}
+  \todo{Finish this exercise}
+  Prove \ref{prp_2214}. (Hint: define $Q(n)$ to be the property that $P(m)$ is
+  true for all $m_0 \leq m < n$; note that $Q(n)$ is vacuously true when $n <
+  m_0$.)
+\end{exc}
+
+\begin{exc}
+  Let $n$ be a natural number, and let $P(m)$ be a property pertaining to the
+  natural numbers such that whenever $P(m\dplus)$ is true, then $P(m)$ is true.
+  Suppose that $P(n)$ is also true.  Prove that $P(m)$ is true for all natural
+  numbers $m \leq n$; this is known as the \textit{principle of backwards
+  induction}.  (Hint: apply induction to the variable $n$.)
+\end{exc}
+
+\begin{sltn}
+  Inducting on $n$ and examining the base case where $n = 1$ yields $P(1) =
+  P(0\dplus)$ being true.  By the properties of $P(m\dplus)$ it follows that $P(0)$
+  is true.
+  
+  Now, assume that we have shown this to be true up to $n = d\dplus$, we now want
+  to show that it holds for $(d\dplus)\dplus$.  $P((d\dplus)\dplus)$ true tells
+  us that $P(d\dplus)$ must be true. Since $P(d\dplus)$ is true $P(d)$ is true,
+  and so on and so forth.
+
+  Thus by \textit{backwards induction} we have shown $P(m)$ is true for all
+  natural numbers $m \leq n$. 
+\end{sltn}
+
+\section{Multiplication}
+
+We have now shown all the basic facts known to be true for the addition and
+ordering of natural numbers.  We now introduce multiplication. Just as addition
+is iterated incrementation, we can define multiplication to be iterated
+addition.
+
+\begin{defn}[Multiplication of natural numbers]
+  \label{defn_231}
+  Let $m$ be a natural number number. To multiply zero to $m$, we define $0
+  \times m = 0$. Now suppose inductively that we have defined how to multiply
+  $n$ to $m$. Then we can multiply $n\dplus$ to $m$ by defining $\left( n\dplus
+  \right) \times m = (n \times m)\dplus$.
+\end{defn}
+
+An example would be $2 \times m = 0 + m + m$. By induction, it is easily
+verified that the product of two natural numbers is also a natural number.
+
+\begin{lma}[Multiplication is commutative]
+  \label{lma_232} 
+  Let $n, m$ be natural numbers. Then $n \times m = m \times n$. 
+\end{lma}
+\begin{proof}
+  See Exercise 2.3.1.
+\end{proof}
+
+We now, in order to ease writing, start abbreviating $n \times m$ as $nm$.
+Using the usual rules of precedence there is no ambiguitiy. Therefore $ab + c$
+is equal to $(a\times b) + c$. We will also use the usual precedence rules for
+the other arithmetic operations as they are defined later.
+
+\begin{lma}[Natural numbers have no zero divisors]
+  \label{lma_233}
+  Let $n, m$ be natural numbers. Then $n \times m = 0$ if and only if at least
+  one of $n, m$ is equal to zero.  In particular, if $n$ and $m$ are both
+  positive, then $nm$ is also positive. 
+\end{lma}
+\begin{proof}
+  See Exercise 2.3.2.
+\end{proof}
+
+\begin{prp}
+  \label{prp_234}
+  For any natural numbers $a, b, c$, we have $a(b+c) = ab + ac$ and $(b+c)a =
+  ba + ca$.
+\end{prp}
+
+\begin{proof}
+  Assume $a, b, c$ to be natural numbers.  Using the commutativity of
+  multiplication, we see that $a(b+c) = (b+c)a$.  Therefore we only have to
+  show the first case.
+
+  Inducting on $a$ keeping $b$ and $c$ fixed.  The base case, with $a = 0$
+  gives us for the left hand side: $0(b+c)$ which is equal to $0$ by definition
+  of multiplication. Right hand side equates to $0a + 0b$, which is equal to
+  $0$. Therefore the two sides are equal and the statement holds.
+
+  Now, assume for the sake of induction that we have shown $a(b+c) = ab + ac$.
+  We now want to show that it must also hold for $(a\dplus)(b+c) = (a\dplus)b +
+  (a\dplus)c$.  By definition of mutlitplication, we have that the left side
+  equates to $a(b+c) + (b+c)$. Using our assumption this evaluates to $ab + ac
+  + (b+c)$.  Using the laws of commutativity we can rearrange this to $(ab + b)
+  + (ac + c)$.  From the definition of multiplication this is equal to
+  $(a\dplus)b + (a\dplus)c$ which is what we wanted to show. The induction is
+  closed.
+\end{proof}
+
+\begin{prp}[Multiplication is associative]
+  \label{prp_235} 
+  For any natural numbers $a, b, c$ we have $(a\times b) \times c = a \times
+  (b\times c)$
+\end{prp}
+\begin{proof}
+  See Exercise 2.3.3.
+\end{proof}
+
+\begin{prp}[Multiplication preserves order]
+  \label{prp_236}
+  If $a, b$ are natural numbers such that $a < b$, and $c$ is positive, then
+  $ac < bc$. 
+\end{prp}
+\begin{proof}
+  Assuming $a < b$, then by definition $a \leq b$ and $a \neq b$.  Thus, again
+  by definition there must exist some natural number $d$ such that $a + d = b$,
+  but since $a \neq b$, we must have $d \neq 0$. Therefore $d$ is a positive
+  number.  Multiplying by a positive number $c$ we get $(a + d)c = bc$, and
+  using the law of commutativity we have $ac + dc = bc$, thus by definition $ac
+  \leq bc$. But since $d \neq 0$ we cant have equality, and therefore $ac <
+  bc$. 
+\end{proof}
+
+\begin{crl}[Cancellation law]
+  \label{crl_237}
+  Let $a, b, c$ be natural numbers such that $ac = bc$ and $c$ is non-zero.
+  Then $a = b$. 
+\end{crl}
+\begin{proof}
+  Initially assume that $ac = bc$.  By the trichotomy of order (\ref{prp_2213}), exactly one of
+  the following must hold: $a = b$, $a < b$ or $a > b$.  Assume first that $a <
+  b$. By \ref{prp_236} we have $ac < bc$ which is a contradiction.  Similarly,
+  assuming $b < a$ we have by the same proposition that $bc < ac$ which also is
+  a contradiction.  Therefore, by the trichotomy of order, $a = b$ is the only
+  possibility. 
+\end{proof}
+
+We can now, since we have all the familiar operations of addition and
+multiplication discard the increment operation and just use the fact that
+$n\dplus = n+1$ in the cases where we need to describe incrementation.  We're
+getting closer and closer to things being the way they are used to.
+
+We're now proposing one of the fundamental theorems in number theory, namely the Euclidean algorithm
+
+\addtocounter{dummy}{1}
+\begin{prp}[Euclidean algorithm]
+  \label{prp_239}
+  Let $n$ be a natural number, and let $q$ be a positive number. Then there
+  exist natural numbers $m, r$ such that $0 \leq r < q$ and $n = mq + r$. 
+\end{prp}
+\begin{proof}
+  See Exercise 2.3.5
+\end{proof}
+
+\addtocounter{dummy}{1}
+
+Just like addition is iterated incrementation and multiplication is iterated
+addition, we can recursively define \textit{exponentiation} as iterated
+multiplication.
+
+\begin{defn}[Exponentiation for natural numbers]
+  Let $m$ be a natural number. To raise $m$ to the power $0$, we define $m^{0}
+  = 1$. Now suppose recursively that $m^{n}$ has been defined for some natural
+  number $n$, then we define $m^{n\dplus} = m^{n} \times m$.
+\end{defn}
+
+\begin{exc}
+  Prove Lemma \ref{lma_232}. (Hint: Modify the proofs of \ref{lma_222},
+  \ref{lma_223} and \ref{prp_224}.)
+\end{exc}
+\begin{sltn}
+  In order for us to show this we must first prove some auxilliary results.
+  \begin{enumerate}
+    \item For any natural number $n, n \times 0 = 0$.\\
+      [0.2cm]
+      We induct on $n$.  Base case where $n = 0$ gives $0 \times 0$ which by
+      definition is equal to $0$.  Assume now that $n \times 0 = 0$. We want to
+      show that $(n\dplus) \times 0 = 0$.  By definition of multiplication we
+      have $(0 \times n) + 0 = 0 + 0 = 0$.  This closes the induction.
+
+    \item For any natural number $n$ and $m$, $n\times(m\dplus) = (n\times m) + m$\\
+      [0.2cm]
+      We induct on $n$ keeping $m$ fixed.  Base case where $n = 0$ gives us the
+      left hand side equal to $0 \times (m \dplus)$ which is equal to $0$.
+      Right hand side equates to $(0\times m) + 0$, which is equal to $0$ by
+      definition.
+      
+      Now assume that it is shown that $n\times(m\dplus) = (n\times m) + m$.
+      We want to show that it holds for $n\dplus$.  $(n\dplus)\times(m\dplus) =
+      (n\times(m\dplus)) + (m\dplus)$ by definition.
+      \todo{Finish this auxilliary result.}
+
+  \end{enumerate}
+      We want to prove that $n \times m = m \times n$.
+      Inducting on $n$ keeping $m$ fixed yields the base case
+      $0 \times m = m \times 0$. From auxilliary result 1 we know this holds.
+
+      We now assume that we have shown that $n \times m = m \times n$.
+      Must now show that $\left( n\dplus \right) \times m = m \times \left( n\dplus \right)$.
+
+\end{sltn}
+\todos
 \end{document}
 
