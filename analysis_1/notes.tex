@@ -922,7 +922,7 @@ multiplication.
       n)\dplus$.  Finally, the commutativity of addition sets this equal to
       $(n\times m) + (n + m)\dplus$.  The two sides are equal. This closes the
       induction.
-\end{enumerate}
+  \end{enumerate}
   
   Equipped with these two auxilliary results, we can now show that
   multiplication is commutative.  In order to prove that $m \times n = n \times
@@ -936,8 +936,41 @@ multiplication.
   side is by definition equal to $(n \times m) + m$ and applying our assumption
   we have $(m \times n) + m$. The two sides are equal, and this closes the
   induction.
+\end{sltn}
+
+\begin{exc}
+  Prove Lemma \ref{lma_233}. (Hint: Prove the second statement first) 
+\end{exc}
+
+\begin{sltn}
+
+  We first want to prove that if $n, m$ are two positive numbers, then $nm$ is
+  also positive.
   
-  \end{sltn}
+  We induct on $n$ keeping $m$ fixed.  The base case is $n = 0\dplus$.  By
+  definition of multiplication we have $n \times m = (0\dplus) \times m =
+  (0\times m) + m = m$.  Since $m$ is a positive number the base case holds.
+
+  Now assume that $nm$ is positive.  We now want to show $(n\dplus)m$ is
+  positive.  By definition of multiplication, we have $(n\dplus)m = (n\times m)
+  + m$. By our assumption, we know that $n\times m$ is a positive number.
+  Proposition \ref{prp_228} tells us that the sum of two positive numbers is
+  also positive. Therefore $nm$ is positive. 
+
+  We now want to show that $n\times m = 0$ if and only if either one or both of
+  $n, m$ is $0$. We show the right implication first.
+  
+  Assume $n\times m = 0$. If we let be $n$ and $m$ are both positive numbers,
+  our previous result tells us that $n \times m$ is positive. By the definition
+  of positive, $n \times m \neq 0$ which is a contradiction. Therefore either
+  $n$, $m$ or both are zero.
+  
+  From the definition of multiplication, if we have either $m$, $n$ or both
+  zero then $n\times m$ is zero. Our previous result tells us that if both $m$
+  and $n$ are positive, i.e., non-zero. Then the product $mn$ is positive.
+  Therefore, both implications hold. 
+
+\end{sltn}
 \todos
 \end{document}
 
