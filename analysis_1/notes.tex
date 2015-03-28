@@ -44,35 +44,35 @@
 \begin{document}
 
 \twocolumn[
-\begin{@twocolumnfalse}
-\maketitle
-\begin{abstract}
-This document is going to be a way for me as a student of MAT2400 at the
-University of Oslo to gather my thoughts around the course Real Analysis.  I've
-struggled with my intuition for this subject, and this is a last ditch effort
-to build it all up from scratch.
+  \begin{@twocolumnfalse}
+    \maketitle
+    \begin{abstract}
+      This document is going to be a way for me as a student of MAT2400 at the
+      University of Oslo to gather my thoughts around the course Real Analysis.  I've
+      struggled with my intuition for this subject, and this is a last ditch effort
+      to build it all up from scratch.
 
-For this task, I've decided to use the text books written by Terence Tao,
-namely Analysis I and II. There is absolutely nothing wrong with the text book
-offered at my university, it is brilliantly written, but I have been exposed to
-the writings of Terence Tao before, and therefore I wish to give his books a
-try.
+      For this task, I've decided to use the text books written by Terence Tao,
+      namely Analysis I and II. There is absolutely nothing wrong with the text book
+      offered at my university, it is brilliantly written, but I have been exposed to
+      the writings of Terence Tao before, and therefore I wish to give his books a
+      try.
 
-The first part of this document related to the book Analysis I, is going to be
-mostly involved in building a solid foundation for the concepts discussed in
-Analysis II. The material included from Analysis I is very similar to the
-curriculum of the subject MAT1140 at the University of Oslo.
+      The first part of this document related to the book Analysis I, is going to be
+      mostly involved in building a solid foundation for the concepts discussed in
+      Analysis II. The material included from Analysis I is very similar to the
+      curriculum of the subject MAT1140 at the University of Oslo.
 
-The structure of this document is going to be me writing down the results
-encountered throughout the text books along the proofs I find extra intriguing.
-I'm going to attempt to prove the theorems myself, and if I find it reasonable
-I'm going to write down my own proof. Included will also be my attempted
-solutions to selected exercises. 
+      The structure of this document is going to be me writing down the results
+      encountered throughout the text books along the proofs I find extra intriguing.
+      I'm going to attempt to prove the theorems myself, and if I find it reasonable
+      I'm going to write down my own proof. Included will also be my attempted
+      solutions to selected exercises. 
 
-This document is mainly for my own good and well being, but if anyone can find
-any use from them, then that is great.
-\end{abstract}
-\end{@twocolumnfalse}
+      This document is mainly for my own good and well being, but if anyone can find
+      any use from them, then that is great.
+    \end{abstract}
+  \end{@twocolumnfalse}
 ]
 \chapter{Introduction}
 \chapter{Starting at the beginning: the natural numbers.}
@@ -304,7 +304,7 @@ therefore easily give a recursive definition of addition.
   suppose inductively that we have defined how to add $n$ to $m$. Then we can
   add $n\dplus$ to $m$ by defining $(n\dplus) + m = (n + m)\dplus$.        
 \end{defn}
-  
+
 For example, $2 + 3 = (3\dplus)\dplus = 4\dplus = 5$. By using the priciple of mathematical
 induction, we see that we now have defined $n + m$ for every natural number
 $n$. We are specializing the previous general discussion about recursive
@@ -639,7 +639,7 @@ the principle of induction.
       (equality when $d = 0$). Using associativity and the law of
       cancellation, we get $a = b + d$.  This is the definition of
       \textit{greater than}, therefore we can conclude that $a \geq b$. 
-      
+
       We have now shown both implications and the statement holds.
 
     \item $a < b$ if and only if $a\dplus \leq b$.\\
@@ -656,7 +656,7 @@ the principle of induction.
       other words, the definition of $ a < b$.
 
       The two implications have been shown and the statement holds.
-    
+
     \item $a < b$ if and only if $b = a + d$ for some positive number $d$.\\
       [0.2cm]
       Assume $a < b$. From the definition, we get $a \leq b$ and $ a \neq b$.
@@ -694,7 +694,7 @@ the principle of induction.
       \neq b$.  This again means there exists some natural number, $c$,
       different from zero that satisfy $a = b + c$. In other words, a positive
       number $c$.
-      
+
       Incrementing both sides gives us $a\dplus = (b + c)\dplus$. This gives us
       $a\dplus = b + (c + 1)$, by using the definition of addition and
       associativity. This is the definition of $a\dplus \geq b$, but since $c$
@@ -702,7 +702,7 @@ the principle of induction.
       b\dplus$, thus by \ref{axm_24} we have $a \neq b$ which gives us the
       condition we need for setting $a \dplus > b$ which is what we wanted to
       show.
-      
+
     \item If $a = b$, then $a\dplus > b$.\\
       [0.2cm]
       Assuming $a = b$. This means, that in the definition of $a \geq b$, we
@@ -718,7 +718,7 @@ the principle of induction.
 \begin{exc}
   \todo{Finish this exercise}
   Prove \ref{prp_2214}. (Hint: define $Q(n)$ to be the property that $P(m)$ is
-  true for all $m_0 \leq m < n$; note that $Q(n)$ is vacuously true when $n <
+    true for all $m_0 \leq m < n$; note that $Q(n)$ is vacuously true when $n <
   m_0$.)
 \end{exc}
 
@@ -734,7 +734,7 @@ the principle of induction.
   Inducting on $n$ and examining the base case where $n = 1$ yields $P(1) =
   P(0\dplus)$ being true.  By the properties of $P(m\dplus)$ it follows that $P(0)$
   is true.
-  
+
   Now, assume that we have shown this to be true up to $n = d\dplus$, we now want
   to show that it holds for $(d\dplus)\dplus$.  $P((d\dplus)\dplus)$ true tells
   us that $P(d\dplus)$ must be true. Since $P(d\dplus)$ is true $P(d)$ is true,
@@ -756,7 +756,7 @@ addition.
   Let $m$ be a natural number number. To multiply zero to $m$, we define $0
   \times m = 0$. Now suppose inductively that we have defined how to multiply
   $n$ to $m$. Then we can multiply $n\dplus$ to $m$ by defining $\left( n\dplus
-  \right) \times m = (n \times m)\dplus$.
+  \right) \times m = (n \times m) + m$.
 \end{defn}
 
 An example would be $2 \times m = 0 + m + m$. By induction, it is easily
@@ -884,35 +884,60 @@ multiplication.
 \end{exc}
 \begin{sltn}
   In order for us to show this we must first prove some auxilliary results.
+  Firstly, we need to show that multiplication commute with $0$.
+  We do this by showing $n \times 0 = 0 \times n$ for all natural numbers $n$.
+  Secondly, we need to prove that multiplication commutes with successors.
+  That is, $n \times \left( m\dplus \right) = (n \times m) + n$.
   \begin{enumerate}
-    \item For any natural number $n, n \times 0 = 0$.\\
+    \item For any natural number $n, n \times 0 = 0 \times n$.\\
       [0.2cm]
-      We induct on $n$.  Base case where $n = 0$ gives $0 \times 0$ which by
-      definition is equal to $0$.  Assume now that $n \times 0 = 0$. We want to
-      show that $(n\dplus) \times 0 = 0$.  By definition of multiplication we
-      have $(0 \times n) + 0 = 0 + 0 = 0$.  This closes the induction.
+      Inducting on $n$ gives us the base case $0 \times 0 = 0 \times 0$. It is
+      clear, that by definition of multiplication both sides equal $0$.
 
-    \item For any natural number $n$ and $m$, $n\times(m\dplus) = (n\times m) + m$\\
+      Now, for the inductive step, assume that it is shown that $n \times 0 = 0
+      \times n$.  We now want to show that this holds for the successor
+      $n\dplus$.
+
+      Evaluating the left hand side gives us; $(n\dplus) \times 0 = (n \times
+      0) + 0$ by definition.  By assumption this equals $(0 \times n) + 0 = 0 +
+      0 = 0$.  Right hand side gives $0$ by definition of multiplication.  This
+      closes the induction.
+
+    \item For any natural number $n$ and $m$, $n\times(m\dplus) = (n\times m) + n$\\
       [0.2cm]
-      We induct on $n$ keeping $m$ fixed.  Base case where $n = 0$ gives us the
-      left hand side equal to $0 \times (m \dplus)$ which is equal to $0$.
-      Right hand side equates to $(0\times m) + 0$, which is equal to $0$ by
-      definition.
-      
-      Now assume that it is shown that $n\times(m\dplus) = (n\times m) + m$.
-      We want to show that it holds for $n\dplus$.  $(n\dplus)\times(m\dplus) =
-      (n\times(m\dplus)) + (m\dplus)$ by definition.
-      \todo{Finish this auxilliary result.}
+      We induct on $n$ keeping $m$ fixed. This yields the base case
+      $0\times(m\dplus) = (0 \times m) + 0$.
+      By definition of multiplication, both the left and right hand side is equal to zero.
 
-  \end{enumerate}
-      We want to prove that $n \times m = m \times n$.
-      Inducting on $n$ keeping $m$ fixed yields the base case
-      $0 \times m = m \times 0$. From auxilliary result 1 we know this holds.
+      For our inductive step we assume that it is already shown that
+      $n\times(m\dplus) = (n\times m) + n$.  We now want to show that
+      $(n\dplus)\times(m\dplus) = (n\dplus)\times m) + (n\dplus)$.  Evaluating the
+      left hand side, we see that $(n\dplus) \times (m\dplus)$ is by definition
+      equal to $n \times (m \dplus) + (m\dplus)$. By our assumption, we know this
+      can be rewritten as $(n\times m) + n + (m\dplus)$. By the definition of
+      addition this is equal to $(n\times m) + (n+m)\dplus$.
 
-      We now assume that we have shown that $n \times m = m \times n$.
-      Must now show that $\left( n\dplus \right) \times m = m \times \left( n\dplus \right)$.
+      Right hand side is by definition equal to $(n\times m) + m + (n\dplus)$.
+      Definition of addition gives ut that this is equal to $(n\times m) + (m +
+      n)\dplus$.  Finally, the commutativity of addition sets this equal to
+      $(n\times m) + (n + m)\dplus$.  The two sides are equal. This closes the
+      induction.
+\end{enumerate}
+  
+  Equipped with these two auxilliary results, we can now show that
+  multiplication is commutative.  In order to prove that $m \times n = n \times
+  m$ we induct on $n$ keeping $m$ fixed.  The base case is $ m \times 0 = 0
+  \times m$. Left hand side equates to zero by our first auxilliary result. The
+  right hand side equates to zero by definition.
 
-\end{sltn}
+  We now assume that $m \times n = n \times m$. We want to show
+  $m\times(n\dplus) = n \times (m\dplus)$.  The left hand side, by the second
+  auxilliary result: $m \times (n\dplus) = (m\times n) + m$.  The right hand
+  side is by definition equal to $(n \times m) + m$ and applying our assumption
+  we have $(m \times n) + m$. The two sides are equal, and this closes the
+  induction.
+  
+  \end{sltn}
 \todos
 \end{document}
 
