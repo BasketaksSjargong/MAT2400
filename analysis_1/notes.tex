@@ -785,7 +785,7 @@ the other arithmetic operations as they are defined later.
   See Exercise 2.3.2.
 \end{proof}
 
-\begin{prp}
+\begin{prp}[Distributive law]
   \label{prp_234}
   For any natural numbers $a, b, c$, we have $a(b+c) = ab + ac$ and $(b+c)a =
   ba + ca$.
@@ -970,6 +970,49 @@ multiplication.
   and $n$ are positive, i.e., non-zero. Then the product $mn$ is positive.
   Therefore, both implications hold. 
 
+\end{sltn}
+
+\begin{exc}
+  Prove Proposition \ref{prp_235}. (Hint: modify the proof of Proposition
+  \ref{prp_225} and use the distributive law.) 
+\end{exc}
+
+\begin{sltn}
+  We want to prove that multiplication is associative.
+  That is for any natural numbers $a, b, c$ we have $(a\times b)\times c = a \times (b \times c)$.
+  We induct on $c$ keeping $a$ and $b$ fixed.
+
+  The base case where $c = 0$ gives us $0$ on both the left and right hand side
+  because of commutativity and the definition of multiplication.
+
+  Assume now that we have shown $(a\times b)\times c = a \times (b \times c)$. We now want to show
+  $(a\times b)\times (c\dplus) = a \times (b \times (c\dplus))$
+
+  The left hand, due to commutativity and definition of multiplication is equal
+  to $c(ab) + ab$.  This equals $(ab)c + ab$. The right hand side equals, by
+  definition and the distributive law, $a(cb + b) = a(cb) + ab = a(bc) + ab = (ab)c + ab$. The two sides
+  are equal and this closes the induction.  
+
+\end{sltn}
+
+\begin{exc}
+  Prove the identity $\left( a + b \right)^{2} = a^{2} + 2ab + b^{2}$ for all
+  natural numbers $a, b$. 
+\end{exc}
+\begin{sltn}
+  We induct on $a$ keeping $b$ fixed.  The base case where $a = 0$ gives for
+  the left hand side $(0 + b)^{2} = b^{2}$.  The right hand side equates to, by
+  definition of exponentiation $0\times 0^{1} + 0\times(2b) + b^{2} = b^2$.
+  
+  Now assume that the above identity holds for $a, b$. We want to show that it holds for
+  $a\dplus, b$.
+  That is $\left( (a\dplus) + b  \right)^{2} = (a\dplus)^{2} + 2(a\dplus)b + b^{2}$.
+  
+  Equating the left side yields $a^{2} + 2ab + b^{2} + 2b + (2a)\dplus$.
+  Equating the right side yields the same $a^{2} + 2ab + b^2 + 2b + (2a)\dplus$.
+  
+  The calculations involved are quite long, so they are left as an exercise to
+  the reader. (First time I'm not on the recieving end of this statement.)
 \end{sltn}
 \todos
 \end{document}
