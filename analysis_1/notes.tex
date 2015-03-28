@@ -1014,6 +1014,55 @@ multiplication.
   The calculations involved are quite long, so they are left as an exercise to
   the reader. (First time I'm not on the recieving end of this statement.)
 \end{sltn}
+
+\begin{exc}
+  Prove Proposition \ref{prp_239}. (Hint: fix $q$ and induct on $n$.)
+\end{exc}
+\begin{sltn}
+  We want to show that there exists natural numbers $m, r$ such that $0 \leq r
+  < q$ and $n = mq + r$, where $n$ is a natural number and $q$ a positive
+  number.  We induct on $n$ keeping $q$ fixed.
+
+  This yields the base case $n = mq + r = 0$. Chosing $m = r = 0$ this clearly
+  holds, even though $q$ is still a positive number. $0 \leq 0 < q$
+
+  We now assume that the statement holds for the natural number $n$. We now
+  want to show it must hold for $n\dplus$.
+
+  We have two cases, where $r\dplus < q$ and where $r\dplus = q$.  In the first
+  case, where $r\dplus < q$ we can just set $n\dplus = (mq + r)\dplus = (mq +
+  (r\dplus))$.
+
+  We now just have to show the second case.\todo{Show the second case}
+\end{sltn}
+
+\chapter{Set theory}
+
+In this chapter the more elementary aspects of axiomatic set theory is
+presented. Some of the more advanced concepts will be left for later chapters,
+but the finer subtetlies of set theory will be left out. 
+
+\section{Fundamentals}
+
+We start with an informal definition of what a set \textit{should} be.
+
+\begin{defn}[Informal]
+  \label{defn_311}
+  We define a \textit{set} $A$ to be any unordered collection of objects, e.g.,
+  $\left\{ 3, 8, 5, 2 \right\}$ is a set. If $x$ is an object, we say that $x$
+  \textit{is an element of} $A$ or $x \in A$ if $x$ lies in the collection;
+  otherwise we say that $x \notin A$. For instance, $3 \in \left\{ 1, 2, 3, 4,
+  5 \right\}$ but $7 \notin \left\{ 1, 2, 3, 4, 5 \right\}$.
+\end{defn}
+
+We first want to clarify the fact that sets themselves are considered objects.
+Therefore, we impose the following axiom:
+
+\begin{axm}[Sets are objects]
+  \label{axm_31}   
+  If $A$ is a set, then $A$ is also an object. In particular, given two sets
+  $A$ and $B$, it is meaningful to ask whether $A$ is also an element of $B$.
+\end{axm}
 \todos
 \end{document}
 
