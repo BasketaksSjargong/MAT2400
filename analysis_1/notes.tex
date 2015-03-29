@@ -31,12 +31,13 @@
 \newtheorem*{sltn}{Solution}
 
 \newcommand{\dplus}{{+}{+}} % Double unary plus sign.
+\newcommand{\union}{\cup}
 
 
 \title{
   \textsc{University of Oslo} \\
   \textsc{Real Analysis - MAT2400} \\
-  \textsc{Spring 2015}
+  \textsc{Spring 2015}\\
 }
 \author{Ivar Stangeby}
 \date{\today}
@@ -86,7 +87,6 @@ rationals $\mathbb{Q}$, the real numbers $\mathbb{R}$, and finally; the complex
 numbers $\mathbb{C}$. The latter being the main focus of the subject Complex
 Analysis.
 
-%TODO - Replace all occurances of double binary plus with double unary plus \dplus
 \section{The Peano axioms}
 One of the most standard ways of defining the natural numbers, is in terms of
 the \textit{Peano axioms}. One can also define natural numbers through the
@@ -106,8 +106,11 @@ notion of cardinality.
 
 In order for us to rigorously define the set of natural numbers, we're going to
 use the two fundamental concepts of \textit{the number 0} and the
-\textit{increment operation}.  These will be covered in the Peano Axioms.
-We will use $n\dplus$ to denote the \textit{successor} of $n$. 
+\textit{increment operation}.  These will be covered in the Peano Axioms.  We
+will use $n\dplus$ to denote the \textit{successor} of $n$.\footnote{When I've
+previously encountered the successor of a natural number, it has been described
+in terms of a successor function $S$, where $S(n)$ denotes the successor of
+$n$.}
 
 Starting with the first two: 
 \begin{axm}
@@ -1063,6 +1066,139 @@ Therefore, we impose the following axiom:
   If $A$ is a set, then $A$ is also an object. In particular, given two sets
   $A$ and $B$, it is meaningful to ask whether $A$ is also an element of $B$.
 \end{axm}
+
+An example of sets being elements of other sets would be the set $\left\{ 3,
+\left\{ 3, 4 \right\}, 4 \right\}$.  It consists of three distinct objects, one
+which happens to also be a set. Not all objects are sets. A natural number is
+not typically considered a set.\footnote{A natural number can be the
+\textit{cardinality} of a set however.}
+
+More specifically, if $x$ is an object and $A$ is a set, then either $x \in A$
+is true, or $x \in A$ is false. If $A$ is not a set, then the statement $x \in
+A$ is neither true nor false but meaningless.
+
+\addtocounter{dummy}{2}
+
+We now define the notion of equality between sets.
+\begin{defn}[Equality of sets]
+  \label{defn_314}
+  Two sets $A$ and $B$ are \textit{equal}, $A = B$ if and only if for every
+  element of $A$ is an element of $B$ and vice versa. To put it another way, $A
+  = B$ if and only if every element $x$ of $A$ belongs also to $B$, and every
+  element $y$ of $B$ belongs also to $A$.
+\end{defn}
+
+\addtocounter{dummy}{1}
+
+A neat little observation is that if $x \in A$ and $A = B$, then $x \in B$ by
+Definition \ref{defn_314}. Therefore, the ``is an element of'' relation $\in$
+obeys the axiom of substitution. That is, you can substitute $B$ for $A$ in the
+statement $x \in A$. This will, as we shall see, be the case for the remaining
+defintions in this section.
+
+Now that we have defined the notion of a set, we want do discern which objects
+can be considered sets and which objects cannot. Starting with a single set, the \textit{empty set}.
+
+\begin{axm}[Empty set]
+  \label{axm_32}
+  There exists a set $\emptyset$, known as the empty set, which contains no
+  elements, i.e., for every object $x$ we have $x \notin \emptyset$. 
+\end{axm}
+
+One can easily prove the uniqueness of the empty set by assuming that there are
+two empty sets and showing that they must be equal by Definition
+\ref{defn_314}. We now examine what it means for a set to be
+\textit{non-empty}.
+
+\begin{lma}[Single choice]
+  \label{lma_316}
+  Let $A$ be a non-empty set. Then there exists an object $x$ such that $x \in
+  A$.  
+\end{lma}
+
+\begin{proof}
+  Assume for contradiction that $A$ is non-empty, and there exist no objects
+  $x$ such that $x \in A$.  We see that our assumption about no objects $x \in
+  A$ coincides with Axiom \ref{axm_32}.  By definition
+  \ref{defn_314}, we must have $A = \emptyset$. However, this contradicts our
+  assumption about $A$ being non-empty. Therefore there must exist an object
+  $x$ such that $x \in A$. 
+\end{proof}
+
+If Axiom \ref{axm_32} was the only axiom set theory had, then there might be
+just a single set in existence, namely the empty set. The following axioms are
+here to enrich the number of sets we will have available to us. 
+
+\begin{axm}[Singleton sets and pair sets]
+  \label{axm_33}
+  If $a$ is an object, then there exists a set $\left\{ a \right\}$ whose only
+  element is $a$, i.e., for every object $y$, we have $y \in \left\{ a
+  \right\}$ if and only if $y = a$; we refer to $\left\{ a \right\}$ as the
+  \textrm{singleton set} whose element is $a$.  Furthermore, if $a$ and $b$ are
+  objects, then there exists a set $\left\{ a, b \right\}$ whose only elements
+  are $a$ and $b$; i.e., for every object $y$, we have $y \in \left\{ a, b
+  \right\}$ if and only if $y = a$ or $y = b$; we refer to this set as the
+  \textrm{pair set} formed by $a$ and $b$. 
+\end{axm}
+\addtocounter{dummy}{4}
+
+It is important to note that there is only one singleton set for each object
+$a$. This follows from definition \ref{defn_314}. Similarly, there is only one
+pair set formed by two objects $a$ and $b$. Definition \ref{defn_314} actually
+ensures that $\left\{ a, b \right\} = \left\{ b, a \right\}$ and that $\left\{
+a, a \right\} = \left\{ a \right\}$. One could keep assuming new axioms for larger and larger sets, with more and
+more elements, but it is shown that it suffices with the previous two once we assume the next axiom, namely;
+\begin{axm}[Pairwise union]
+  \label{axm_34}
+  Given any two sets $A$, $B$, there exists a set $A \union B$, called the \textit{union} $A \union B$ of $A$ and $B$, whose elements
+  consists of all the elements which belong to $A$ or $B$ or both. In other words, for any object $x$,
+  \begin{equation}
+    \notag
+    x \in A \union B \Longleftrightarrow \left( x \in A \text{ or } x \in B\right).
+  \end{equation}
+\end{axm}
+\addtocounter{dummy}{2}
+We now show some basic properties of unions.
+
+\begin{lma}
+  \label{lma_3113} 
+  If $a$ and $b$ are objects, then $\left\{ a, b \right\} = \left\{ a \right\}
+  \union \left\{ b \right\}$. If $A, B, C$ are sets, then the union operation
+  is commutative (i.e., $A \union B = B \union A$) and associative (i.e.,
+  $\left( A\union B \right)\union C = A\union(B\union C)$). Also, we have $A
+  \union A = A \union \emptyset = \emptyset \union A = A$. 
+\end{lma}
+
+\begin{proof}
+  We prove the associativity identity here and leave the rest for Exercise 3.1.3.
+
+  We want to show that $\left( A\union B \right)\union C = A\union(B\union C)$
+  By definition \ref{defn_314} we need to show that every element of $\left(
+  A\union B \right)\union C$ is also an element of $A\union(B\union C)$, and
+  vice versa.
+
+  Suppose first that $x$ is an element of $(A \union B) \union C$. By Axiom
+  \ref{axm_34} we have that either $x \in (A \union B)$ or $x \in C$. In other words, at
+  least one of the two statements must be true.
+  We now divide the proof into two cases:
+  
+  \begin{enumerate}
+    \item $ x \in C$ \\
+      [0.2cm]
+      Applying Axiom \ref{axm_34} several times tells us that if $x \in C$,
+      then $x \in (B \union C)$, and finally $x \in A \union (B \union C)$.
+
+    \item $ x \in (A \union B)$ \\
+      [0.2cm]
+      Again applying Axiom \ref{axm_34} several times gives that if $x \in (A
+      \union B)$ then $x \in A$ or $x \in B$.  If $x \in A$, then $x \in
+      A\union(B\union C)$, and if $x \in B$ then $x \in (B \union C)$, which in
+      turn means that $x \in A \union (B \union C)$. 
+  \end{enumerate}
+
+  A very similar argument shows that if $x \in A \union (B \union C)$, then $ x
+  \in (A\union B) \union C$.  Therefore $\left( A\union B \right)\union C = A\union(B\union C)$.
+\end{proof}
 \todos
 \end{document}
 
