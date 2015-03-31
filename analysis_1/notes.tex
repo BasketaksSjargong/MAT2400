@@ -1580,6 +1580,11 @@ objects.
       We need to show that $x \in A \Rightarrow x \in A \union B$.  Let $x \in
       A$. But then, by definition of pairwise union, we must have $x \in A
       \union B$. Therefore, $A \subseteq A \union B$. 
+
+    \item $B \subseteq A \union B$ \\
+      [0.2cm]
+      Same as above, use the definition of pairwise union.
+    
     
     \item $A \subseteq C$ and $B \subseteq C \Longleftrightarrow A \union B \subseteq C$.\\
       [0.2cm]
@@ -1594,6 +1599,44 @@ objects.
       \in A \union B$, then $x \in A$ or $x \in B$, but in either case, we also
       have $x \in C$, so therefore we have $A \subseteq C$ and $B \subseteq C$.
     
+  \end{enumerate}
+\end{sltn}
+
+\begin{exc}
+  Let $A, B$ be sets. Prove the \textit{absorbtion laws} $A \intrsct (A \union
+  B) = A$ and $A \union (A \intrsct B) = A$. 
+\end{exc}
+
+\begin{sltn}
+  For these we have to prove both left and right inclusion in order for them to be equal.
+
+  \begin{enumerate}
+    \item $A \intrsct (A \union B) = A$. \\
+      [0.2cm]
+      We start with the right inclusion. Assume that $x \in A \intrsct (A
+      \union B)$. By definition, we must have $x \in A$ and $x \in (A \union
+      B)$. Therefore we have $A \intrsct (A \union B) \subseteq A$. 
+
+      For the left inclusion, we assume $x \in A$. By definition of pairwise
+      union we must also have $x \in A \union B$, but then it follows that we
+      have $x \in A \intrsct (A \union B)$. Therefore $A \subseteq A \intrsct
+      (A \union B)$.
+
+      Since we have both inclusions, we must have equality.  $ A
+      \intrsct (A \union B) = A$.
+
+    \item $A \union (A \intrsct B) = A$. \\
+      [0.2cm]
+      We start with the right inclusion. Assume that $x \in A \union (A
+      \intrsct B)$.  By definition of pairwise union we have $x \in A$. Thus $A
+      \union (A \intrsct B) \subseteq A$.
+
+      For the left inclusion, assume $x \in A$. By definition of pairwise union
+      we have either $x \in A$, in which case we are done, or $x \in A \intrsct
+      B$, in which case we are also done, since $x \in A$ and $x \in B$.
+   
+      We have shown both inclusions, therefore we must have $A \union (A
+      \intrsct B) = A$.
   \end{enumerate}
 \end{sltn}
 \todos
