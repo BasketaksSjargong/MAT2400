@@ -32,6 +32,7 @@
 
 \newcommand{\dplus}{{+}{+}} % Double unary plus sign.
 \newcommand{\union}{\cup}
+\newcommand{\intrsct}{\cap}
 
 
 \title{
@@ -1199,6 +1200,401 @@ We now show some basic properties of unions.
   A very similar argument shows that if $x \in A \union (B \union C)$, then $ x
   \in (A\union B) \union C$.  Therefore $\left( A\union B \right)\union C = A\union(B\union C)$.
 \end{proof}
+\addtocounter{dummy}{1}
+
+We kan now define sets with arbitrarily many elements, however we are still not
+able to define a set with $n$ elements for any natural number $n$, because we
+haven't defined $n$-fold iteration.
+
+We now examine the concept of sets being larger than others. We do this through
+the notion of a \textit{subset}.
+\begin{defn}[Subsets]
+  \label{defn_3115}
+  Let $A, B$ be sets. We say that $A$ is a \textit{subset} of $B$, denoted $A
+  \subseteq B$, if and only if every element of $A$ is also an element of $B$,
+  i.e.,
+  \begin{equation}
+    \notag
+    \text{For any object } x, \quad x \in A \Longrightarrow x \in B.
+  \end{equation}
+  We say that $A$ is a \textit{proper subset} of $B$, denoted $A \subset
+  B$\footnote{Tao uses the symbol $\subsetneq$ to mean the same thing as the
+  symbol $\subset$}, if $A \subset B$ and $A \neq B$.
+\end{defn}
+
+\addtocounter{dummy}{2}
+
+Again, it is easily verified that this definition obey the axiom of
+substitution. The notion of a \textit{subset} for sets is similiar in many ways
+to the notion of ordering on the natural numbers. We shall see however that
+they are not strictly analogous. We therefore propose:
+
+
+\begin{prp}[Sets are partially ordered by set inclusion]
+  \label{prp_3118} 
+  Let $A, B, C$ be sets. If $A \subseteq B$ and $B \subseteq C$ then $A
+  \subseteq C$. If $A \subseteq B$ and $B \subseteq A$, then $A = B$. Finally,
+  if $A \subset B$ and $B \subset C$, then $A \subset C$
+\end{prp}
+\begin{proof}
+  We prove just the first claim. We want to show that $A \subseteq B$ and $B
+  \subseteq C$ implies $A \subseteq C$.  Let $x$ be an element in $A$. That is
+  $x \in A$. By Definition \ref{defn_3115}, we must have $x \in B$, and again,
+  by the same definition $x \in C$. Therefore, $A \subseteq C$. 
+\end{proof}
+
+We say that sets are \textit{partially ordered} by set inclusion because given
+any two distinct set it is not in general true that one of them is a subset of
+the other. An example would be the two sets $\left\{ 2n \mid n \in \mathbb{N}
+\right\}$ and $\left\{ 2n+1 \mid n \in \mathbb{N} \right\}$. The less than
+relation on natural numbers however is totally ordered.\footnote{See Axiom \ref{axm_35} for notation}
+
+\addtocounter{dummy}{3}
+
+The axiom now presented makes us able to create subsets out of larger subsets.
+
+\begin{axm}[Axiom of specification]
+  \label{axm_35}
+  Let $A$ be a set, and for each $x \in A$ let $P(x)$ be a property pertaining
+  to $x$ (i.e., $P(x)$ is either a true statement, or a false statement). Then
+  there exists a set, called $\left\{ x \in A : P(x) \text{ is true.} \right\}$
+  (or simply $\left\{x \in A : P(x)\right\}$ for short), whose elements are
+  precicely the elements $x$ in $A$ for which $Px)$ is true. In other words,
+  for any object $y$,
+\begin{equation}
+  \notag
+  y \in \left\{ x \in A : P(x) \right\} \Longleftrightarrow \left( y \in A \text{ and } P(y) \text{ is true}\right).
+\end{equation}
+\end{axm}
+
+This axiom is also known as the \textit{axiom of separation}. Note that
+$\left\{ x \in A : P(x) \right\}$ is always a subset of $A$. This easily
+follows from the definition of subset. 
+
+We sometimes write $\left\{ x \in A \mid P(x) \right\}$ instead of $\left\{ x
+\in A : P(x) \right\}$. I am going to use this bar-notation for the rest of this
+document.
+\addtocounter{dummy}{1}
+
+From the axiom of specification, we can now define some more operations on sets.
+
+\begin{defn}[Intersections]
+  \label{defn_3123} 
+  The \textit{intersection} $S_1 \intrsct S_2$ of two sets is defined to be the set
+  \begin{equation}
+    \notag
+    S_1 \intrsct S_2 = \left\{ x \in S_1 \mid x \in S_2 \right\}.
+  \end{equation}
+  In other words, $S_1 \intrsct S_2$ consists of all the elements which belong to both $S_1$ and $S_2$. Thus, for all objects $x$,
+  \begin{equation}
+    \notag
+    x \in S_1 \intrsct S_2 \Longleftrightarrow x \in S_1 \text { and } x \in S_2.
+  \end{equation}
+\end{defn}
+
+\addtocounter{dummy}{3}
+
+\begin{defn}[Difference sets]
+  \label{defn_3127}
+  Given any two sets $A$ and $B$, we define the set $A \setminus B$ to be the set $A$
+  with any elements of $B$ removed:
+  \begin{equation}
+    \notag
+    A \setminus B = \left\{ x \in A \mid x \notin B \right\};
+  \end{equation}
+  for instance, $\left\{ 1, 2, 3, 4 \right\} \setminus \left\{ 2, 4, 6 \right\} =
+  \left\{ 1, 3 \right\}$. In many cases, $B$ will be a subset of $A$, but not
+  necessarily.
+\end{defn}
+
+Now for some basic properties of unions, intersections and difference sets.
+\begin{prp}[Sets form a boolean algebra]
+  \label{prp_3128}
+  Let $A, B, C$ be sets and let $X$ be a set containing $A, B, C$ as subsets.
+  \begin{enumerate}[(a)]
+    \item (Minimal element) We have $A \union \emptyset = A$ and $A \intrsct \emptyset = \emptyset$.\\
+    \item (Maximal element) We have $A \union X = X $ and $A \intrsct X = A$. \\
+    \item (Identity) We have $A \intrsct A = A$ and $A \union A = A$. \\
+    \item (Commutativity) We have $A \union B = B \union A$ and $A \intrsct B = B \intrsct A$. \\
+    \item (Associativity) We have $(A \union B) \union C = A \union (B \union C)$ and $(A \intrsct B) \intrsct C = A \intrsct (B \intrsct C)$. \\
+    \item (Distributivity) We have $A \intrsct (B \union C) = (A \intrsct B) \union (A \intrsct C)$ and $A \union (B \intrsct C) = (A \union B) \intrsct (A \union C)$.\\
+    \item (Partition) We have $A \union (X \setminus A) = X$ and $A \intrsct (X \setminus A) = \emptyset$. \\
+    \item (De Morgan laws) We have $X \setminus (A \union B) = (X \setminus A) \intrsct (X \setminus B)$ and $X \setminus (A \intrsct B) = (X \setminus A) \union (X \setminus B)$.\\
+  \end{enumerate}
+\end{prp}
+
+\begin{proof}
+  See Exercise 3.1.6. 
+\end{proof}
+\addtocounter{dummy}{2}
+
+In order for us to take each element of a set and transform them in some way or another we need a new axiom, namely
+the axiom of replacement. 
+
+\begin{axm}[Replacement]
+  \label{axm_36} 
+  Let $A$ be a set. For any object $x \in A$, and any object $y$, suppose we
+  have a statement $P(x, y)$ pertaining to $x$ and $y$, such that for each $x
+  \in A$ there is at most one $y$ for which $P(x, y)$ is true. Then there
+  exists a set $\left\{ y \mid P(x, y) \text{ is true for some } x \in
+  A\right\}$, such that for any object $z$, 
+  \begin{align*}
+    z \in \left\{ y \mid P(x, y) \text{ is true for some } x \in A \right\} \\
+    \Longleftrightarrow P(x, z) \text { is true for some } x \in A.
+  \end{align*}
+\end{axm}
+
+An example of this axiom in use would be transforming the set $\left\{ 3, 5, 9
+\right\}$ to the set $\left\{ 4, 6, 10 \right\}$.  Define $P(x, y)$ to be the
+statement $y = x\dplus$. We know from Axiom \ref{axm_24} that at most one $y$
+will satisfy $P(x, y)$.  It then, by Axiom \ref{axm_36}, exists a set $\left\{
+3\dplus, 5\dplus, 9\dplus \right\} = \left\{ 4, 6, 10 \right\}$.
+
+We often abbreviate a set on the form
+\begin{equation}
+  \notag
+  \left\{ y \mid y = f(x) \text{ for some } x \in A \right\}
+\end{equation}
+as $\left\{ f(x) \mid x \in A \right\}$. Our previous example would then be the
+set $\left\{ x\dplus \mid x \in A \right\}$.  We can now also combine the axiom
+of replacement with the axiom of specification to create sets like $f(x) \mid x
+\in A; P(x) \text{ is true}$.
+
+We now formalize the notion that natural numbers are to be treated as objects.
+\begin{axm}[Infinity]
+  \label{axm_37}  
+  There exist a set $\mathbb{N}$, whose elements are called natural numbers, as
+  well as an object $0$ in $\mathbb{N}$, and an object $n++$ assigned to every
+  natural number $n \in \mathbb{N}$ such that the Peano axioms (Axioms
+  \ref{axm_21} - \ref{axm_25}) hold.
+\end{axm}
+This is a more formal version of Assumption \ref{asm_26}. This axiom is called
+the axiom of infinity because it introduces the most basic example of an
+infinite set. We now know, from Axiom \ref{axm_37} see that numbers such as $3,
+5$ and $9$ are infact objects, and we can therefore legitimately create sets
+with these as elements, because the elements of a set are required to be
+objects.
+
+\begin{exc}
+  Show that the definition of equality (\ref{defn_314}) is reflexive, symmetric
+  and transitive. 
+\end{exc}
+\begin{sltn}
+  We need to show the three properties reflexiveness, symmetry, and transistivity.  
+  \begin{enumerate}[(a)]
+    \item Reflexive \\
+      [0.2cm]
+      We want to show that for a set $A$, we have $A = A$.
+      By definition of equality, we have $A = A$ if all elements in $A$ are also in $A$.
+      They are, by definition, therefore equality is reflexive.
+    \item Symmetric \\
+      [0.2cm]
+      We want to show that for two sets $A, B$, $A = B \Longrightarrow B = A$.
+      Assume that $A = B$. This means, that for all elements $x \in A \Longrightarrow x \in B$, and
+      for all elements $y \in B \Longrightarrow y \in A$. But this is the definition of $B = A$.
+    \item Transitive \\
+      [0.2cm]
+      We need to show that given three sets $A, B, C$, $A = B$ and $B = C$
+      implies $A = C$.  Assume that $A = B$ and $B = C$. Let $x \in A$. By
+      definition of equality, we have $x \in B$, and since $x \in B$ we must
+      have $x \in C$. Therefore $A = C$.
+  \end{enumerate}
+  This concludes the proofs.
+\end{sltn}
+
+\begin{exc}
+  Using only Definition \ref{defn_314}, Axiom \ref{axm_32} and Axiom
+  \ref{axm_33} prove that the sets $\emptyset, \left\{ \emptyset \right\},
+  \left\{ \left\{ \emptyset\right\} \right\}$ and $\left\{ \emptyset, \left\{
+  \emptyset \right\}  \right\}$ are all distinct (i.e., no two of them are
+  equal to each other).
+\end{exc}
+
+\begin{sltn}
+  By Axiom \ref{axm_32} there exists a set, namely the empty set, that contains
+  no objects.  By Axiom \ref{axm_33} there exists a singleton set that consists
+  only of the object $\emptyset$, namely the set $\left\{ \emptyset \right\}$.
+  By definition of the empty set, $\emptyset \neq \left\{ \emptyset \right\}$.
+
+  Again, by \ref{axm_33} there exists a singleton set that consists only of the
+  object $\left\{ \emptyset \right\}$.  This is by Axiom \ref{axm_32} not equal
+  to the empty set. By the transistive property of equality it is not equal to
+  the set $\left\{ \emptyset \right\}$ either.
+
+  Finally, by \ref{axm_33} there exists a pair set formed by the objects
+  $\emptyset$ and $\left\{ \emptyset \right\}$.  This set is the set $\left\{
+  \emptyset, \left\{ \emptyset \right\} \right\}$. Again, by \ref{axm_32},
+  these two are not equal, and therefore not equal to any of the other sets.
+
+\end{sltn}
+
+\begin{exc}
+  Prove the remaining claims in Lemma \ref{lma_3113}.
+\end{exc}
+\begin{sltn}
+  \begin{enumerate}[(a)]
+    \item If $a$ and $b$ are objects, then $\left\{ a, b \right\} = \left\{ a \right\} \union \left\{ b \right\}$. \\
+      [0.2cm]
+      By Axiom \ref{axm_33} we know the sets $\left\{ a \right\}, \left\{ b
+      \right\}, \left\{ a, b \right\}$ exist. By definition of set union, we
+      know that $\left\{ a \right\} \union \left\{ b \right\}$ is the set
+      consisting of those elements that are either in $\left\{ a \right\}$, or
+      in $\left\{ b \right\}$. These two objects are $a$ and $b$, and they form
+      the pair set $\left\{ a, b \right\}$. 
+
+    \item If $A, B, C$ are sets, then the union operation is commutative. \\
+      [0.2cm]
+      We want to show that $A \union B = B \union A$.  Assume that $A \union
+      B$. If $x \in A \union B$, then $x \in A$ or $x \in B$, by definition.
+      But then, also by definition, we have $x \in B \union A$.  
+      
+      A similar argument goes for the other inclusion.  We therefore have $A
+      \union B = B \union A$. 
+
+    \item $A \union A = A \union \emptyset = \emptyset \union A = A$ \\
+      [0.2cm]
+      Assume $A \union A$, by definition we know if $x \in A \union A$, then $x
+      \in A$ and $x \notin \emptyset$ by definition of the empty set. But then
+      we have $x \in A \union \emptyset$.  Since pairwise union is commutative
+      we have $x \in \emptyset \union A$. We have then shown everything we need
+      to conclude that $A \union A = A \union \emptyset = \emptyset \union A =
+      A$.
+  \end{enumerate}
+\end{sltn}
+
+\begin{exc}
+  Prove the remaining claims in Proposition \ref{prp_3118}.
+\end{exc}
+\begin{sltn}
+  Let $A, B, C$ be sets.
+  \begin{enumerate}[(a)]
+    \item If $A \subseteq B$ and $B \subseteq A$ then $A = B$. \\
+      [0.2cm]
+      By definition of subsets, we have $x \in A \Rightarrow x \in B$, but
+      since we also have $y \in B \Rightarrow y \in A$, we see that we satisfy
+      the definiton for equality (\ref{defn_314}) between sets. Therefore $A =
+      B$. 
+
+    \item If $A \subset B$ and $B \subset C$ then $A \subset C$. \\
+      By definition of subsets we have $A \neq B$ and $B \neq C$. By the
+      transitive property of equality we must also have $A \neq C$. 
+      
+      We have $x \in A \Rightarrow x \in B$, and $x \in B \Rightarrow x \in C$.
+      Therefore $x \in A \Rightarrow x \in C$.  We have now shown the two
+      requirements for a set to be a proper subset. Therefore $A \subset C$.
+  \end{enumerate} 
+\end{sltn}
+
+\begin{exc}
+  Let $A, B$ be sets. Show that the three statements $A \subseteq B$, $A \union
+  B = B$ and $A \intrsct B = A$ are logically equivalent. That is, any one of
+  them implies the other two.
+  
+\end{exc}
+\begin{sltn}
+  By definition, we have from $A \subseteq B$ that $x \in A \Rightarrow x \in
+  B$.  From $A \union B = B$ we have that $x \in A \union B \Rightarrow x \in
+  B$, and $x \in B \Rightarrow x \in A \union B$.  $A \intrsct B = A$ tells us
+  that $ x \in A \intrsct B \Rightarrow x \in A$.
+  
+  If we first assume that $A \subseteq B$. Thus, if $x \in A$ then $x \in B$.
+  We need to show that This means that for the union $A \union B$, all the
+  elements that are in $A$ are also in $B$, therefore we have $A \union B = B$.
+  For the intersection, we have since $x \in A$ $x \in A \intrsct B$. But since
+  there only the elements that are in both $A$ and $B$ are included, we must
+  have $A \intrsct B = A$. 
+
+  A similar argument is used for the two other cases.
+\end{sltn}
+
+\begin{exc}
+  Prove Proposition \ref{prp_3128}. (Hint: one can use some of these claims to
+  prove others. Some of the claims have also appeared previously in Lemma
+  \ref{lma_3113}.)
+\end{exc}
+\begin{sltn}
+  \begin{enumerate}[(a)]
+    \item We want to show that $A \union \emptyset = A$ and $A \intrsct \emptyset = \emptyset$.
+    By definition of pairwise union, we know that $A \union \emptyset$ set
+    consists only of the elements that are in either $A$ or the $\emptyset$. By
+    Axiom \ref{axm_32}, the empty set contains no elements, therefore the union
+    must simply be $A$.
+
+    By definition of set intersection we know that $A \intrsct \emptyset$
+    consists of the elements that are in both $A$ and $\emptyset$, but since
+    the empty set contains no elements the intersection is also empty.
+    Therefore the intersection is simply $\emptyset$. 
+
+  \item  We assumed that $A \subseteq X$. From the previous exercise, we know
+    that $A \union X = X$ and that $A \intrsct X = A$.
+
+  \item Since we have $A \subseteq A$, we can use the previous result to
+    directly show that this holds.  Just substitute $X$ for $A$ and the
+    previous result turns into $A \intrsct A = A$ and $A \union A = A$.
+
+  \item Follows from Lemma \ref{lma_3113}
+
+  \item Follows from Lemma \ref{lma_3113}
+
+  \todo{Finish the rest of the claims} 
+    
+  \end{enumerate} 
+\end{sltn}
+
+\begin{exc}
+  Let $A, B, C$ be sets. Show that $A \intrsct B \subseteq A$ and $A \intrsct B
+  \subseteq B$.  Furthermore, show that $C \subseteq A$ and $C \subseteq B$ if
+  and only if $C \subseteq A \intrsct B$.  In a similar spirit, show that $A
+  \subseteq A\union B$ and $B \subseteq A \union B$, and furthermore that $A
+  \subseteq C$ and $B \subseteq C$ if and only if $A \union B \subseteq C$.
+\end{exc}
+
+\begin{sltn}
+  Showing one claim at the time.
+  \begin{enumerate}
+    \item $A \intrsct B \subseteq A$ \\
+      [0.2cm]
+      We need to show that $x \in A \intrsct B \Rightarrow x \in A$.  Let $x
+      \in A \intrsct B$, by definition of set intersection we have $x \in A$
+      and $x \in B$. Therefore $x \in A \intrsct B \Rightarrow x \in A$.
+
+    \item $A \intrsct B \subseteq B$ \\
+      [0.2cm]
+      Similar proof to the one above. Just use the definition of set
+      intersection.
+   
+    \item $C \subseteq A$ and $ C \subseteq B \Longleftrightarrow C \subseteq A \intrsct B$.\\
+      [0.2cm]
+      Showing right implication first. Assume $C \subseteq A$ and $C \subseteq
+      B$. Let $x \in C$.  From our assumption we must have $x \in A$ and $x \in
+      B$. Therefore, we have $x \in A \intrsct B$.  We can then conclude with
+      $C \subseteq A \intrsct B$. 
+
+      Now, the left implication. Assume $C \subseteq A \intrsct B$. Let $x \in
+      C$.  By definition, we have $x \in A \intrsct B$. From the definition of
+      set intersection, we must have $x \in A$ and $x \in B$, therefore, $C
+      \subseteq A$ and $C \subseteq B$. 
+   
+    \item $A \subseteq A \union B$ \\
+      [0.2cm]
+      We need to show that $x \in A \Rightarrow x \in A \union B$.  Let $x \in
+      A$. But then, by definition of pairwise union, we must have $x \in A
+      \union B$. Therefore, $A \subseteq A \union B$. 
+    
+    \item $A \subseteq C$ and $B \subseteq C \Longleftrightarrow A \union B \subseteq C$.\\
+      [0.2cm]
+      We show the right implication first. Assume that $A \subseteq C$ and $B
+      \subseteq C$.  $x \in A \Rightarrow x \in C$ and $x \in B \Rightarrow x
+      \in C$. Let $y \in A \union B$.  By definition we must have $y \in A$ or
+      $y \in B$, but in either case we also have $y \in C$.  Therefore $A
+      \union B \subseteq C$. 
+
+      Now for the left implication. Assume that $A \union B \subseteq C$. By
+      definition, we must have $x \in A \union B \Rightarrow x \in C$. If $x
+      \in A \union B$, then $x \in A$ or $x \in B$, but in either case, we also
+      have $x \in C$, so therefore we have $A \subseteq C$ and $B \subseteq C$.
+    
+  \end{enumerate}
+\end{sltn}
 \todos
 \end{document}
-
