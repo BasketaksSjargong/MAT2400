@@ -1639,5 +1639,78 @@ objects.
       \intrsct B) = A$.
   \end{enumerate}
 \end{sltn}
+
+\begin{exc}
+  Let $A, B, X$ be sets such that $A \union B = X$ and $A \intrsct B =
+  \emptyset$.  Show that $A = X \setminus B$ and $B = X \setminus A$. 
+\end{exc}
+
+\begin{sltn}
+  By assumption we have that $A$ and $B$ are disjoint sets, that is, they have
+  no elements in common.  We only show $A = X \setminus B$, the proof for $B =
+  X \setminus A$ is completely analogous.  We need to show both left and right
+  inclusion in order to have equality.
+
+  For the right inclusion, assume that $x \in A$. Since $x \in A$ we must have
+  $x \in X$.  From our assumption, we also have $x \notin B$. For $x \in X
+  \setminus B$ we must have $x \in X$ and $x \notin B$, which we have.  We have
+  therefore shown $A \subseteq X \setminus B$.
+
+  For the left inclusion, assume $x \in X \setminus B$. We must therefore have
+  $x \in X$ and $x \notin B$. By definition of $X = A \union B$, we must have
+  $x \in A$. We have therefore shown $X \setminus B \subseteq A$.
+
+  Since we have both inclusions, we must have equality.  The proof for $B = X
+  \setminus A$ is symmetric.
+\end{sltn}
+  
+\begin{exc}
+  Let $A, B$ be sets. Show that the three sets $A \setminus B$, $A \intrsct B$
+  and $B \setminus A$ are disjoint, and that their union is $A \union B$.
+\end{exc}
+
+\begin{sltn}
+  To show that the three sets are disjoint we must show that they have no common elements.
+  We do this by showing that if an object is a memeber of one of them, it can't be in any of the other two.
+  \begin{enumerate}
+    \item Assume $x \in A \setminus B$. \\
+      [0.2cm]
+      By definition of set difference we have $x \in A$ and $x \notin B$.
+      Since $x \notin B$ we have $x \notin B \setminus A$, and similarly we
+      have $x \notin A \intrsct B$.
+
+    \item Assume $x \in A \intrsct B$. \\
+      [0.2cm]
+      We have $x \in A$ and $x \in B$, but then we must have $x \notin A
+      \setminus B$ and $x \notin B \setminus A$. 
+
+    \item Assume $x \in B \setminus A$. \\
+      [0.2cm]
+      We have $x \in B$ and $x \notin A$. Since $x \notin A$ we have $x \notin
+      A \setminus B$, and $x \notin A \intrsct B$.
+  \end{enumerate}
+
+  Since the three sets have no elements in common, they are disjoint. That is
+  $\left( A \setminus B \right) \intrsct \left( A \intrsct B \right) \intrsct
+  \left( B\setminus A \right) = \emptyset$.
+
+  We now need to show that the union of the three sets is $A \union B$.
+  We do this by showing both left and right inclusion.
+
+  \begin{enumerate}
+    \item Assume $x \in (A \setminus B)\union (A\intrsct B) \union (B\setminus A)$.\\
+      [0.2cm]
+      We therefore have three cases, $x \in A, x \notin B$, or $x \in A, x \in
+      B$ or $x \notin A, x \in B$. In any case we have $x \in A \union B$.
+
+    \item Assume $x \in A \union B$.
+      We have the same three cases as before. In either case, we have $x$ an
+      element of exactly one of the three sets.
+  \end{enumerate}
+
+  We therefore have that the union between the three sets is $A \union B$.
+\end{sltn}
+
 \todos
+
 \end{document}
