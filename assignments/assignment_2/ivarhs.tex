@@ -1,0 +1,114 @@
+%        File: ivarhs.tex
+%     Created: Sat Apr 04 04:00 PM 2015 C
+% Last Change: Sat Apr 04 04:00 PM 2015 C
+%
+\documentclass[a4paper]{article}
+\usepackage[]{amsmath} 
+\usepackage[]{amssymb} 
+\usepackage[]{amsthm} 
+\usepackage[]{enumitem} 
+
+\usepackage[utf8]{inputenc} 
+
+\theoremstyle{definition}
+\newtheorem{prb}{Problem}
+\newtheorem{sltn}{Solution}
+
+\newcommand{\dist}{\text{dist}}
+\newcommand{\rimply}{\Longrightarrow}
+\newcommand{\limply}{\Longleftarrow}
+\newcommand{\equivalence}{\Longleftrightarrow}
+
+\setlist[enumerate, 1]{label=\bfseries\alph*), leftmargin=*}
+
+\title{
+  \textsc{University of Oslo}\\
+  \textsc{Real Analysis - MAT2400}\\
+  \textsc{Assignment 2}\\
+}
+\author{Ivar Haugaløkken Stangeby}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{prb}
+  Let $\left( X, d \right)$ be a bounded metric space, and let $P\left( X \right)$ denote the
+  collection of non-empty closed subsets of $X$. For $A$ and $B$ in $P\left( X \right)$, let
+  \begin{equation}
+    \notag
+    h\left( A, B \right) = \sup_{x\in X} \left| \dist(x, A) - \dist(x, B) \right|,
+  \end{equation}
+  where $\dist(x, C)$ is given by
+  \begin{equation}
+    \notag
+    \dist\left( x, C \right) = \inf_{c\in C}d(x, c).
+  \end{equation}
+  The function $h$ is called the \textit{Hausdorff metric}.
+  \begin{enumerate}
+    \item Show that if $h(A, B) = 0$ then $A = B$. Here $A$ and $B$ are two non-empty closed subsets of $X$.
+    \item Show that $h$ is a metric on $P\left( X \right)$.
+    \item For $A$ and $B$ in $P\left( X \right)$, let $\hat{h}$ be defined as
+      \begin{equation}
+        \notag
+        \hat{h}\left( A, B \right) = \max \left\{ \sup_{a \in A}\dist\left( a, B \right), \sup_{b\in B}\dist\left( b, A\right) \right\}.
+      \end{equation}
+  \end{enumerate}
+  Show that
+  \begin{equation}
+    \notag
+    \hat{h}\left( A,B \right) = h\left( A, B \right) \text{ for all } A, B \text{ in } P\left( X \right).
+  \end{equation}
+  (\textbf{Hint:} Show the two inequalities $h\left( A, B \right) \geq \hat{h}\left( A, B \right)$ and $\hat{h}\left( A, B \right) = h\left( A, B \right)$.) 
+\end{prb}
+
+\begin{sltn}
+  Before I start, I want to jot down the properties of the various mathematical
+  objects presented.  We are given a metric space $\left( X, d \right)$ and it
+  is said to be bounded. What this means, is that there exists some number $r$
+  such that $d(x, y) \leq r$ for all $x, y \in X$.  $P\left( X \right)$ is a
+  collection of non-empty closed subsets of $X$.  In other words, the elements
+  of $P\left( X \right)$ are sets that contain their own boundary.
+
+  We want to show that $h\left( A, B \right) = 0 \rimply A = B$. Let us therefore assume that
+  $h\left( A, B \right) = 0$. This gives us the following equation:
+  \begin{equation}
+    \notag
+    \sup_{x\in X}\left|\dist(x, A) - \dist(x, B)\right| = 0. 
+  \end{equation}
+  This means that the largest difference we can have between $\dist(x, A)$ and
+  $\dist(x, B)$ is $0$, however, since we are working with absolute values this
+  actually means that the $\dist(x, A) - \dist(x, B) = 0$ for all $x \in X$.
+  We can therefore meaningfully examine the equation, 
+  \begin{equation}
+    \notag
+    \dist(x, A) = \dist(x, B).
+  \end{equation}
+  This equation being true means that if you pick the element in $A$ that is the smallest
+  distance away from $x$ then this distance is exactly equal to the distance
+  between the element in $B$ that is the smallest distance away from $x$. Or, strictly
+  speaking
+  \begin{equation}
+    \notag
+    \inf_{a \in A} d(x, a) = \inf_{b \in B} d(x, b). 
+  \end{equation}
+
+
+\end{sltn}
+
+\begin{prb}
+  Let $0 < r < 1$ and consider the series
+  \begin{equation}
+    \notag
+    \sum_{n=-\infty}^{\infty}r^{|n|}e^{inx}.
+  \end{equation}
+  Show that the series converges uniformly for all $x \in \mathbb{R}$, and that
+  its sum equals
+  \begin{equation}
+    \notag
+    P_{r}(x) = \frac{1-r^{2}}{1 - 2r \cos(x)+r^{2}}.
+  \end{equation}
+\end{prb}
+\end{document}
+
