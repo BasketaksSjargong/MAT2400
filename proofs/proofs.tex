@@ -11,35 +11,157 @@
 \usepackage[]{amsmath} 
 \usepackage[]{amsthm} 
 \usepackage[]{amssymb} 
+\usepackage[]{enumerate} 
 
-\newtheorem{prop}{Proposition}
+\newtheorem{prp}{Proposition}
+\newtheorem{thrm}{Theorem}
+\newtheorem{lma}{Lemma}
+\newtheorem{crl}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
 
 \begin{document}
 
-\chapter{Series of Functions}
+\chapter{Metric Spaces}
+\section{Definitions and examples}
 
-\begin{prop}
+\begin{prp}[Inverse Triangle Inequality]
+  For all elements $x, y, z$ in a metric space $\left(X, d\right)$, we have:
   \begin{equation}
     \notag
-    \lim\limits_{n\rightarrow\infty} a_{n} = b
+    |d(x, y) - d(x, z)| \leq |d(y, z)|
   \end{equation}
-  if and only if
-  \begin{equation}
-    \notag
-    \lim\limits_{n\rightarrow\infty}\sup a_{n} = \lim\limits_{n\rightarrow\infty}\inf a_{n} = b
-  \end{equation}
-\end{prop}
+\end{prp}
+
 \begin{proof}
-  \item\paragraph{Proving the left implication first}
-  Assuming $\lim\limits_{n\rightarrow\infty}\sup a_{n} = \lim\limits_{n\rightarrow\infty}\inf a_{n} = b$.
-  We then have
+  Let $(X, d)$ be a metric space, and let $x, y, z$ be three aribtrary elements
+  in $X$.  From the triangle inequality, that we know $d$ satisfy from the
+  definition of a metric space, we have:
   \begin{equation}
     \notag
-    m_{n} < a_{n} < M_{n}
+    d(x, y) \leq d(x, z) + d(z, y).
   \end{equation}
 
+  Now, in order to show that the inverse triangle inequality holds, note that
+  the absolute value involved is going to be the largest of the two numbers
+  $d(x, y) - d(x, z)$ and $d(x, z) - d(x, y)$. It therefore suffices to show
+  that both of these must be smaller than $d(y, z)$. 
+  
+  Simply rearranging the triangle inequality shows us that the first inequality
+  holds.
+  \begin{equation}
+    \notag
+    d(x, y) - d(x, z) \leq d(y, z)
+  \end{equation}
+  Applying the triangle inequality to the points $x, z$ with $y$ as an
+  intermediate point gives us
+  \begin{equation}
+    \notag
+    d(x, z) \leq d(x, y) + d(y, z),
+  \end{equation}
+  and this can be rearranged to give the second inequality.
 \end{proof}
 
+\section{Convergence and continuity}
+\begin{defn}
+  Let $(X, d)$ be a metric space. A sequence $\left\{ x_n \right\}$ in $X$
+  converges to a point $a \in X$ if there for every $\varepsilon > 0$ exists an
+  $N \in \mathbb{N}$ such that $d(x_{n}, a) < \varepsilon$ for all $n \geq N$.
+  We write $\lim\limits_{n\rightarrow \infty} x_n = a$ or $x_{n} \rightarrow a$.
+\end{defn}
+
+\begin{lma}
+  A sequence $\left\{ x_{n}\right\}$ in a metric space $(X, d)$ converges to
+  $a$ if and only if $\lim\limits_{n\rightarrow\infty} d(x_{n}, a) = 0$.
+\end{lma}
+\begin{proof}
+  This is simply a reformulation of the previous definition, but we prove it
+  rigorously by showing that these statements are equivalent.
+  Let $(X, d)$ be a metric space, and let $\left\{ x_n \right\}$ be a sequence
+  in this metric space.  
+  
+  Let $a \in X$ and assume that $\left\{ x_n \right\}$ converges to $a$. By
+  definition of convergence, for every $\varepsilon > 0$ we can chose an $N \in
+  \mathbb{N}$ such that $d(x_{n}, a) < \varepsilon$ for all $n \geq N$.  This
+  simply means that we can force the distance between the elements in $\left\{
+  x_{n} \right\}$ and $a$ to be arbitrarily close to zero by picking elements
+  far out in the sequence. 
+  
+  We can generate a new sequence of the distances
+  between the elements of $\left\{ x_n \right\}$ and $a$, namely the sequence
+  $\left\{d(x_n, a)\right\}$.  Since we have $\lim\limits_{n\rightarrow\infty} x_n
+  = a$ we know that the following limit must equate to zero:
+  \begin{equation}
+    \notag
+    \lim\limits_{n\rightarrow\infty}d(x_n, a) = d(a, a) = 0.
+  \end{equation}
+
+  Now, assume that $\lim\limits_{n\rightarrow\infty} d(x_{n}, a) = 0$.  For
+  this equation to be true, we must have $\lim\limits_{n\rightarrow\infty}x_n =
+  a$, because we have equality only when $x_n = a$, by the definition of a
+  metric.  But then, by definition, the sequence $\left\{ x_n \right\}$
+  converges to $a$.
+\end{proof}
+
+\begin{prp}
+  A sequence in a metric space can not converge to more than one point. 
+\end{prp}
+
+\begin{proof}
+  Let $\left\{ x_n \right\}$ be a sequence in a metric space $(X, d)$. Assume
+  for contradiction that $\left\{ x_{n} \right\}$ converges to both the point
+  $a$ and the point $a'$.  By definition of convergence, we have
+  $\lim\limits_{n\rightarrow\infty} x_n = a$ and
+  $\lim\limits_{n\rightarrow\infty} x_n = a'$.
+  Using the triangle inequality we have:
+  \begin{equation}
+    \notag
+    d(a, a') \leq d(a, x_n) + d(x_n, a').
+  \end{equation}
+  Taking the limits we get the following inequality:
+  \begin{equation}
+    \notag
+    d(a, a') \leq \lim\limits_{n\rightarrow\infty} d(a, x_n) + \lim\limits_{n\rightarrow\infty} d(x_n, a') = 0 + 0 = 0, 
+  \end{equation}
+  but this is only possible if $a = a'$. (The limits equal zero, due to the previous lemma.)
+\end{proof}
+
+\begin{defn}
+  Assume that $(X, d_{X})$ and $(Y, d_{Y})$ are two metric spaces. A function
+  $f : X \rightarrow Y$ is \textit{continuous} at a point $a \in X$ if for
+  every $\varepsilon > 0$ there is a $\delta > 0$ such that $d_{Y}(f(x), f(a))
+  < \varepsilon$ whenever $d_{X}(x, a) < \delta$.
+\end{defn}
+
+\begin{prp}
+  The following are equivalent for a function $f : X \rightarrow Y$ between metric spaces:
+  \begin{enumerate}[(i)]
+    \item $f$ is continuous at a point $a \in X$.
+    \item For all sequences $\left\{ x_n \right\}$ converging to $a$, the sequence $\left\{ f(x_n) \right\}$ converges
+      to $f(a)$.
+  \end{enumerate}
+\end{prp}
+
+\begin{proof}
+  We show that this is true by showing both the left and right implication.
+  Let us first assume that $f$ is continuous at a point $a \in X$. By
+  definition of continuity we have that for all $\varepsilon > 0$ there is a
+  $\delta > 0$ such that $d(f(x), f(a)) < \varepsilon$ whenever $d(x, a) <
+  \delta$.
+
+  Assume now that an arbitrary sequence $\left\{ x_n \right\}$ converges to
+  $a$. This means that $\lim\limits_{n\rightarrow\infty} x_n = a$.  Therefore,
+  we must have $\lim\limits_{n\rightarrow\infty} f(x_n) = f(a)$ since functions
+  obey the axiom of substitiom from zet theory. Thus the right implication is shown.
+  We now need to show the left implication.
+
+  Assume that for all sequences $\left\{ x_n \right\}$ converging to $a$, the
+  sequence $\left\{ f(x_n) \right\}$ converges to $f(a)$.  We must now show
+  that this implies that $f$ is continuous at $a$. Since we have $f(x_n) \rightarrow f(a)$
+  there exists, for all $\varepsilon > 0$ an $N \in \mathbb{N}$ such that picking elements farther
+  than $N$ into the sequence, we can get the distance between these elements and $f(a)$ arbitrarily small.
+  But this is the definition of $f$ being continuous at the point $a$.
+\end{proof}
 \end{document}
 
 
