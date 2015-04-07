@@ -71,30 +71,25 @@
   collection of non-empty closed subsets of $X$.  In other words, the elements
   of $P\left( X \right)$ are sets that contain their own boundary.
 
-  We want to show that $h\left( A, B \right) = 0 \rimply A = B$. Let us therefore assume that
-  $h\left( A, B \right) = 0$. This gives us the following equation:
+  We want to show $h(A, B) = 0 \rimply A = B$. We want to show $A \neq B
+  \rimply h(A, B) \neq 0$.
+  From the left side of our implication we have
   \begin{equation}
     \notag
-    \sup_{x\in X}\left|\dist(x, A) - \dist(x, B)\right| = 0. 
-  \end{equation}
-  This means that the largest difference we can have between $\dist(x, A)$ and
-  $\dist(x, B)$ is $0$, however, since we are working with absolute values this
-  actually means that the $\dist(x, A) - \dist(x, B) = 0$ for all $x \in X$.
-  We can therefore meaningfully examine the equation, 
-  \begin{equation}
-    \notag
-    \dist(x, A) = \dist(x, B).
-  \end{equation}
-  This equation being true means that if you pick the element in $A$ that is the smallest
-  distance away from $x$ then this distance is exactly equal to the distance
-  between the element in $B$ that is the smallest distance away from $x$. Or, strictly
-  speaking
-  \begin{equation}
-    \notag
-    \inf_{a \in A} d(x, a) = \inf_{b \in B} d(x, b). 
+    \exists y \in X : y \notin A \lor y \notin B
   \end{equation}
 
+  Let us now look at $|\dist(y, A) - \dist(y, B)|$.
+  \begin{align*}
+    |\dist(y, A) - \dist(y, B)| = |\inf_{a\in A}d(y, a) - \inf_{b\in B}d(y, b)|
+    =  |d(y, a') - d(y, b')|
+  \end{align*}, for some $a' \in A$ and some $b' \in B$. 
 
+  Since $y \notin A$ and $A$ is closed we can construct a ball $B(y,
+  \varepsilon_2)$ such that $B(y, \varepsilon) \cap A = \emptyset$.  Therefore,
+  $d(y, a) > \varepsilon_1$. Similarly we can construct a ball around $y$ whose
+  intersection with $B$ is empty, and therefore $\dist(y, A) > 0$ and $\dist(y,
+  B) > 0$.  
 \end{sltn}
 
 \begin{prb}
