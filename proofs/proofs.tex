@@ -21,7 +21,6 @@
 \newtheorem{defn}{Definition}
 
 \begin{document}
-
 \chapter{Metric Spaces}
 \section{Definitions and examples}
 
@@ -46,7 +45,7 @@
   the absolute value involved is going to be the largest of the two numbers
   $d(x, y) - d(x, z)$ and $d(x, z) - d(x, y)$. It therefore suffices to show
   that both of these must be smaller than $d(y, z)$. 
-  
+
   Simply rearranging the triangle inequality shows us that the first inequality
   holds.
   \begin{equation}
@@ -79,14 +78,14 @@
   rigorously by showing that these statements are equivalent.
   Let $(X, d)$ be a metric space, and let $\left\{ x_n \right\}$ be a sequence
   in this metric space.  
-  
+
   Let $a \in X$ and assume that $\left\{ x_n \right\}$ converges to $a$. By
   definition of convergence, for every $\varepsilon > 0$ we can chose an $N \in
   \mathbb{N}$ such that $d(x_{n}, a) < \varepsilon$ for all $n \geq N$.  This
   simply means that we can force the distance between the elements in $\left\{
   x_{n} \right\}$ and $a$ to be arbitrarily close to zero by picking elements
   far out in the sequence. 
-  
+
   We can generate a new sequence of the distances
   between the elements of $\left\{ x_n \right\}$ and $a$, namely the sequence
   $\left\{d(x_n, a)\right\}$.  Since we have $\lim\limits_{n\rightarrow\infty} x_n
@@ -161,6 +160,171 @@
   there exists, for all $\varepsilon > 0$ an $N \in \mathbb{N}$ such that picking elements farther
   than $N$ into the sequence, we can get the distance between these elements and $f(a)$ arbitrarily small.
   But this is the definition of $f$ being continuous at the point $a$.
+\end{proof}
+
+\chapter{Preliminaries}
+\chapter{Spaces of continuous functions}
+
+\section{The spaces $C(X, Y)$}
+
+
+\begin{lma}
+  \label{lma_331} 
+  Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces, and assume that $X$ is
+  compact. If $f, g : X \rightarrow Y$ are continuous functions, then
+  \begin{equation}
+    \notag
+    \rho(f, g) = \sup\left\{ d_{Y}\left( f(x), g(x) \right) \mid x \in X
+      \right\}\footnote{The basic idea is to measure the distance between two
+    functions by looking at the point they are the furthest apart}.
+  \end{equation}
+  is finite, and there is a point $x \in X$ such that $d_{Y}\left( f(x), g(x)
+  \right) = \rho(f, g)$.
+\end{lma}
+\begin{proof}
+
+  The condition that $X$ is compact is crucial in this situation, because it
+  allows us to make use of the extreme value theorem. This theorem states that
+  if $X$ is compact, and if the function with $X$ as its domain is continuous,
+  then said function has a maximum and minimum point in $X$. 
+
+  We introduce the function
+  \begin{equation}
+    \notag
+    h(x) = d_Y(f(x), g(x)).
+  \end{equation}
+  We need to show that this function is continuous. We do this by showing that
+  $|h(x) - h(y)|$ can be forced to be less than $\varepsilon$.  Using the
+  triangle inequality and the inverse triangle inequality we get
+  \begin{align*}
+    |h(x) - h(y)| &= | d_{Y}\left( f(x), g(x) \right) - d_{Y}\left( f(y), g(y) \right) | \\
+    &= | d_{Y}\left( f(x), g(x) \right) - d_{Y}\left( f(x), g(y) \right) + d_{Y}\left( f(x), g(y) \right) - d_{Y}\left( f(y), g(y) \right) | \\
+    &\leq | d_{Y}\left( f(x), g(x) \right) - d_{Y}\left( f(x), g(y) \right)| + |d_{Y}\left( f(x), g(y) \right) - d_{Y}\left( f(y), g(y) \right) | \\
+    &\leq d_{Y}\left( g(x), g(y) \right) + d_{Y}\left( f(x), f(y) \right)
+  \end{align*}
+  Since both $f$ and $g$ are continuous functions, we can always chose a
+  $\delta > 0$ such that $\leq d_{Y}\left( g(x), g(y) \right) < \varepsilon/2$
+  and $ d_{Y}\left( f(x), f(y) \right) < \varepsilon/2$.
+
+  We therefore have
+  \begin{equation}
+    \notag
+    |h(x) - h(y)| \leq d_{Y}\left( g(x), g(y) \right) + d_{Y}\left( f(x), f(y)
+    \right) < \varepsilon/2 + \varepsilon/2 = \varepsilon, 
+  \end{equation}
+  and by the extreme value theorem $p(f, g)$ is finite and there is a point $x
+  \in X$ such that $d_{Y}\left( f(x), g(x) \right) = \rho(f, g)$.
+
+\end{proof}
+We can now show that $\rho$ is a metric on $C(X, Y)$.
+
+\begin{prp}
+  \label{prp_332}
+  Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces, and assume that $X$ is
+  compact. Then
+  \begin{equation}
+    \notag
+    \rho(f, g) = \sup\left\{ d_{Y}\left( f(x), g(x) \right) \mid x \in X\right\}
+  \end{equation}
+  defines a metric on $C\left( X, Y \right)$.
+\end{prp}
+\begin{proof}
+  We need to show symmetry, positivity and the triangle inequality.  
+  \begin{enumerate}
+    \item Symmetry \\
+      [0.2cm]
+      We need to show that $\rho(f, g) = \rho(g, f)$. Since $d_Y$ is a metric,
+      we have $d_Y(f(x), g(x)) = d_Y(g(x), f(x))$ therefore this property
+      follows from the $d_Y$ metric.
+
+    \item Positivity \\
+      [0.2cm]
+      Again, this follows from the metric $d_Y$.     
+
+    \item Triangle inequality \\
+      [0.2cm]
+      Need to show that $\rho(f, g) \leq \rho(f, h) + \rho(h, g)$.
+      By Lemma \ref{lma_331}, there is an $x \in X$ such that $\rho(f, g) = d_Y(f(x), g(x))$. 
+      We therefore have
+      \begin{align*}
+        \rho(f, g) &= d_Y(f(x), g(x)) \\
+        &\leq d_Y(f(x), h(x)) + d_Y(h(x), g(x)) \\
+        &= \rho(f, h) + \rho(h, g).
+      \end{align*}
+      as we wanted to show.
+  \end{enumerate}
+\end{proof}
+
+\begin{prp}
+  \label{prp_333}
+  A sequence $\left\{ f_n \right\}$ converges to $f$ in $\left( C(X, Y), \rho
+  \right)$ if and only if it converges uniformly to $f$.
+\end{prp}
+\begin{proof}
+  By Proposition 3.2.3, $\left\{ f_n \right\}$ converges uniformly to $f$ if
+  and only if 
+  \begin{equation}
+    \notag
+    \sup\left\{ d_Y(f_n(x), f(x)) \right\} \rightarrow 0, 
+  \end{equation}
+  as $n \rightarrow \infty$. But this is just saying that $\rho(f_n, f) \rightarrow
+  0$ as $n \rightarrow \infty$.
+\end{proof}
+
+\begin{thrm}
+  \label{thm_334}
+  Assume that $\left( X, d_X \right)$ is a compact and $(Y, d_Y)$ a complete
+  metric space. Then $\left( C(X, Y), \rho \right)$ is complete. 
+\end{thrm}
+\begin{proof}
+  Assume that $\left\{ f_n \right\}$ is a Cauchy sequence in $C(X, Y)$. We must
+  prove that it converges, by the definition of a complete space, to a function
+  $f \in C(X, Y)$.
+\end{proof}
+
+\section{Applications to differential equations}
+\section{Compact subsets of $C(X, \mathbb{R}^{m})$}
+\begin{defn}
+  \label{defn_351}
+  Let $(X, d)$ be a metric space and assume that $A$ is a subset of $X$. We say
+  that $A$ is \textit{dense} in $X$ if for each $x \in X$ there is a sequence from $A$
+  converging to $x$.
+\end{defn}
+\begin{defn}
+  \label{defn_352} 
+  A metric set $(X, d)$ is called \textit{separable} if it has a countable,
+  dense subset $A$.
+\end{defn}
+
+\begin{prp}
+  \label{prp_353} 
+  All compact metric spaces $(X, d)$ are separable. We can choose the countable
+  dense set $A$ in such a way that for any $\delta > 0$, there is a finite
+  subset $A_{\delta}$ of $A$ such that all elements of $X$ are within distance
+  less than $\delta$ of $A_{\delta}$, i.e., for all $x \in X$ there is an $a
+  \in A_{\delta}$ such that $d(x, a) < \delta$. 
+\end{prp}
+
+\begin{proof}
+  We need to show that $(X, d)$ has a countable dense subset $A$.  We know that
+  by definition, a compact set $X$ is totally bounded.  This means that there
+  exists a finite number of subsets of $X$ whose union contains $X$. More
+  formally, for all $n \in \mathbb{N}$ there is a finite number of balls of
+  radius $\frac{1}{n}$ that cover $X$. The centers of these balls constitute a
+  countable subset of $X$, lets call it $A$. 
+
+  All we need to do now, is show that this countable subset $A$ of $X$ is also
+  dense.  For $A$ to be dense, we need that for each $x \in X$ there is a
+  sequence from $A$ converging to $x$. Let $x$ be an element of $X$. We need to
+  find a sequence $\left\{ a_n \right\}$ that converges to $x$ in $A$. 
+  
+  That is $d(\left\{ a_n \right\}, x) \rightarrow 0$ as $n \rightarrow \infty$.
+  First we pick the center $a_1$ of one of the balls of radius $1$ that $x$
+  belongs to. Then we pick the center $a_2$ of one of the balls of radius
+  $\frac{1}{2}$ that $x$ belongs to, and so on and so forth. To find the set
+  $A_\delta$ just chose $m \in \mathbb{N}$ so big that $\frac{1}{m} < \delta$
+  and let $A_\delta$ consist of the centers of the balls of radius
+  $\frac{1}{m}$.
 \end{proof}
 \end{document}
 
