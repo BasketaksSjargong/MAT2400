@@ -184,12 +184,32 @@ and we are done.
 We want to show that 
 \begin{equation}
   \notag
-  \omega = \lim\limits_{r\uparrow 1} \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-y)P_r(y) \, dy = f(x).
+  \Omega = \lim\limits_{r\uparrow 1} \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-y)P_r(y) \, dy = f(x).
 \end{equation}
-We observe that we are working with a \textit{convolution}.\footnote{http://en.wikipedia.org/wiki/Convolution}
-Since the convolution is commutative (it does not matter which function we slide along the $y$ axis) we can rewrite our expression as
+
+Taking the limit as $r \uparrow 1$, our expression for $P_r(y)$ turns into something we recognise
+as the Dirichlet kernel, $D_N(y) = \sum_{n=-N}^{N}e^{iny}$.  \footnote{I am here following the derivation at page 138 and 139 in the compendium}
 \begin{equation}
-  \omega = \lim\limits_{r\uparrow 1} \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-y)P_r(y) \, dy = f(x).
+  \notag
+  \lim\limits_{r\uparrow 1} P_r(y) = \lim\limits_{N\rightarrow\infty}\sum_{n = -N}^{N}e^{iny} = \lim_{N\rightarrow \infty}D_N(y).
+\end{equation}
+We can now look at the partial sums of $\Omega$:
+\begin{equation}
+  \notag
+  s_N(x) = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x - y)D_N(y)\, dy.
+\end{equation}
+If we can show that these partial sums converge to $f(x)$ we're done.  Using
+Dirichlet's Theorem we know that if $f$ has a finite number of minima and
+maxima, then the Fourier series of $f$ converges pointwise to $f$. Since $f$ is
+$2\pi$ periodic, it has a finite number of min and max. Therefore, we have
+\begin{equation}
+  \notag
+  \Omega = \lim\limits_{N \rightarrow \infty} s_N(x) = \lim\limits_{r\uparrow 1}\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x - y)P_r(y) \, dy = f(x).
+\end{equation}
+This holds because we actually looking at partial sums $s_N$ of the Fourier series for $f$, 
+\begin{equation}
+  \notag
+  s_N(x) = \sum_{n=-N}^{N}\langle f, e_n \rangle e_n(x).
 \end{equation}
 \end{document}
 
