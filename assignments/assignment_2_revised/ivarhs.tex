@@ -1,0 +1,153 @@
+%        File: ivarhs.tex
+%     Created: Mon Apr 27 02:00 PM 2015 C
+% Last Change: Mon Apr 27 02:00 PM 2015 C
+%
+\documentclass[a4paper]{article}
+
+\usepackage[]{amsmath} 
+\usepackage[]{amsthm} 
+\usepackage[]{amssymb} 
+\usepackage[]{fourier} 
+\usepackage[T1]{fontenc} 
+\newcommand{\dist}{\text{dist}}
+
+\title{
+  Mandatory assignment 2\\
+  MAT2400
+}
+\author{Ivar Stangeby}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\paragraph{a)}
+  We want to show that $h(A, B) = 0$ implies that $A = B$. We assume that $A$
+  and $B$ are two non-empty closed subsets of $X$. In other words, $A, B \in
+  P(X)$.  If we can show the contrapositive, then the original implication must
+  hold.  We therefore assume that $A \neq B$ and we want to show that then
+  $h(A, B) \neq 0$.
+  
+  Let $x\in X$ be such that $x \in A$ and $x \neq B$. By the definition of
+  $\dist(x, A)$ and $\dist(x, B)$ we see that since $x \in A$, $\dist(x, A) =
+  0$ and since $x$ is not in $B$ we have $\dist(x, B) > 0$ by the definition of
+  $d$. Since we take the supremum of all of these values we must have that
+  \begin{equation}
+    \notag
+    \sup_{x \in X}|\dist(x, A) - \dist(x, B)| \geq \dist(x, B) > 0.
+  \end{equation}
+
+  Hence, $h(A, B) = 0$ implies that $A = B$.
+
+\paragraph{b)}
+We now want to show that $h$ is a metric on $P(X)$. Positivity and symmetry
+follows directly from the absolute values in the expression for $h(A, B)$. 
+We therefore need to show that $h$ obeys the triangle inequality. 
+
+\begin{align*}
+  h(A, B) &= \sup_{x \in X}|\dist(x, A) - \dist(x, B)| \\
+  &= \sup_{x \in X}|\dist(x, A) - \dist(x, C) + \dist(x, C) - \dist(x, B)|\\
+  &\leq \sup_{x \in X}\left(| \dist(x, A) - \dist(x, C)| + |\dist(x, C) - \dist(x, B)|\right)\\
+  &\leq \sup_{x \in X}| \dist(x, A) - \dist(x, C)| + \sup_{x \in X}|\dist(x, C) - \dist(x, B)|\\
+  &= h(A, C) + h(C, B)
+\end{align*}
+Hence $h$ is a metric on $P(X)$.
+
+\paragraph{c)}
+We want to show the two inequalities
+\begin{equation}
+  h(A, B) \geq \hat{h}(A, B), 
+\end{equation}
+\begin{equation}
+  \hat{h}(A, B) \geq h(A, B).
+\end{equation}
+
+\section*{Problem 2}
+\paragraph{a)}
+\subsubsection*{Convergence}
+We want to show that the series
+\begin{equation}
+  \notag
+  \Upsilon = \sum_{n = - \infty}^{\infty}r^{|n|}e^{inx}
+\end{equation}
+converges uniformly for all $x \in \mathbb{R}$ and that its sum equals $P_r(x)$. 
+We observe that we can split $\Upsilon$ into three subseries:\footnote{Note the change of summation index and the removal of absolute values}
+\begin{equation}
+  \notag
+  \Upsilon = 1 + \sum_{n=1}^{\infty}r^{n}e^{inx} + \sum_{n=1}^{\infty}r^{n}e^{-inx}.
+\end{equation}
+Applying Eulers formula, we can simplify this to the series\footnote{The imaginary terms cancel out}
+\begin{equation}
+  \notag
+  \Upsilon = 1 + \sum_{n=1}^{\infty}r^n\cos(nx) + \sum_{n=1}^{\infty}r^n\cos(nx) = 1 + 2 \sum_{n=1}^{\infty}r^n\cos(nx).
+\end{equation}
+We know that since we have $0 < r < 1$ and $\cos(nx) \leq 1$ that
+\begin{equation}
+  \notag
+  \Upsilon \leq 1 + 2\sum_{n=1}^{\infty}r^n, 
+\end{equation}
+but since this series converges, so must $\Upsilon$. 
+
+\subsubsection*{Sum}
+
+We want to show that the sum of $\Upsilon$ is equal to
+\begin{equation}
+  \notag
+  P_r(x) = \frac{1 - r^2}{1 - 2r\cos(x) + r^2}.
+\end{equation}
+We rewrite $\Upsilon$ to the following form, in order for us to be able to apply the formula for
+finite geometric series:\footnote{Notice again the change of summation index. That is where the $-1$ originates from.}
+\begin{equation}
+  \notag
+  \Upsilon = \lim\limits_{N \rightarrow \infty}\left(\sum_{n=0}^{N}\left( e^{ix}r \right)^n + \sum_{n=0}^{N}\left(e^{-ix}r\right)^{n} - 1\right).
+\end{equation}
+We then get that the sum of $\Upsilon$ is equal to
+\begin{equation}
+  \notag
+  \Upsilon = \lim\limits_{N\rightarrow\infty} \left(\frac{1 - (e^{ix}r)^{N+1}}{1 - e^{ix}r} + \frac{1-\left( e^{-ix}r \right)^{N+1}}{1 - e^{-ix}r} - 1\right).
+\end{equation}
+Applying Eulers formula again which yields\footnote{Some algebra required}
+\begin{equation}
+  \notag
+  \Upsilon = \frac{1 - r^{2}}{1 - 2r\cos(x) + r^{2}} = P_r(x).
+\end{equation}
+
+\paragraph{b)}
+We want to show that $P_r(x)$ is positive or zero for all $x$. 
+We have
+\begin{align*}
+  P_r(x) &= \frac{1 - r^{2}}{1 - r2\cos(x) + r^{2}} \\
+  &\geq \frac{1 - r^{2}}{1 - 2r + r^{2}}\\
+  & = \frac{(1 - r)(1 + r)}{(1-r)^{2}} = \frac{1 + r}{1 - r} > 1.
+\end{align*}
+Therefore, we can conclude that no matter what $x$ is, $P(x)$ is greater or
+equal to zero.
+
+\paragraph{c)}
+We want to show that $P_r(x) \rightarrow 0$ as $r\uparrow 1$ on the interval $X = \left[ -\pi, -\delta \right]\cup\left[ \delta, \pi \right]$.
+
+We first state the definition of uniform convergence.\footnote{This is a bit informal, but used just as a reminder}
+
+\begin{quote}
+  A sequence $\left\{ f_n \right\}$ of functions converges uniformly to a function $f$
+  if and only if for all $\varepsilon > 0$ there exists an $N > 0$ such that $|f_n(x) - f(x)| < \varepsilon$ for all $x \in X$ and for all $n \geq N$.
+\end{quote}
+
+In our case, we need to rewrite $P_r(x)$ to a form which we can express in terms of a natural number $n$.
+We want to create the sequence $\left\{ r_n \right\}$ of rational numbers defined as
+\begin{equation}
+  \notag
+  r_n = \frac{n - 1}{n}.
+\end{equation}
+This series converges to $1$ as $n \rightarrow \infty$. We now want to show that for all $\varepsilon>0$ there exists an $N > 0$ such that what was stated above holds. That is
+\begin{equation}
+  \notag
+  |P_{r_n}(x) - 0| < \varepsilon, 
+\end{equation}
+for all $x \in X$ and for all $n > N$.
+Writing it out and taking the limit we see that
+\begin{align*}
+  \lim\limits_{n\rightarrow\infty}\frac{1 - \left(\frac{n - 1}{n}\right)^2}{1 - \left( \frac{n-1}{n} \right)\cos(x) + \left( \frac{n-1}{n} \right)^{2}} = \frac{0}{2 - 2\cos(x)} = 0 < \varepsilon.
+\end{align*}
+We have $\cos(x) \neq 1$ for all $x \in X$ since $0 \notin X$, therefore our proof is done.
+\end{document}
+
+
