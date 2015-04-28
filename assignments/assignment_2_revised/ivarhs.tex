@@ -148,6 +148,49 @@ Writing it out and taking the limit we see that
   \lim\limits_{n\rightarrow\infty}\frac{1 - \left(\frac{n - 1}{n}\right)^2}{1 - \left( \frac{n-1}{n} \right)\cos(x) + \left( \frac{n-1}{n} \right)^{2}} = \frac{0}{2 - 2\cos(x)} = 0 < \varepsilon.
 \end{align*}
 We have $\cos(x) \neq 1$ for all $x \in X$ since $0 \notin X$, therefore our proof is done.
+
+\paragraph{d)}
+We want to show that
+\begin{equation}
+  \notag
+  \int\limits_{-\pi}^{\pi}P_r(x)\, dx = 2\pi.
+\end{equation}
+Recall that
+\begin{equation}
+  \notag
+  P_r(x) = 1 + 2\sum_{n=1}^{\infty}r^n\cos(nx).
+\end{equation}
+We can therefore write the integral as follows
+\begin{equation}
+  \notag
+  \int\limits_{-\pi}^{\pi} \left(1 + 2\sum_{n=1}^{\infty}r^n\cos(nx)\right) \, dx = \int_{-\pi}^{\pi} 1 dx + 2\int_{-\pi}^{\pi}\left(\sum_{n=1}^{\infty}\left(r^n\cos(nx)\right)\right)dx
+\end{equation}
+
+We know that since $P_r(x)$ converges uniformly on all of $\mathbb{R}$ the sum and integrals are interchangeable.\footnote{Corollary 4.2.3}
+Therefore we can rewrite this expression as
+\begin{equation}
+  \notag
+  \int_{-\pi}^{\pi} 1 \, dx + 2\sum_{n=1}^{\infty}\left( \int_{-\pi}^{\pi}r^n\cos(nx) \, dx \right).
+\end{equation}
+The integral contained in the sum evaluates to zero, therefore we are left with
+\begin{equation}
+  \notag
+  \int_{-\pi}^{\pi}P_r(x) \, dx = \int_{-\pi}^{\pi}1 \, dx = 2\pi, 
+\end{equation}
+and we are done.
+
+\paragraph{e)}
+  
+We want to show that 
+\begin{equation}
+  \notag
+  \omega = \lim\limits_{r\uparrow 1} \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-y)P_r(y) \, dy = f(x).
+\end{equation}
+We observe that we are working with a \textit{convolution}.\footnote{http://en.wikipedia.org/wiki/Convolution}
+Since the convolution is commutative (it does not matter which function we slide along the $y$ axis) we can rewrite our expression as
+\begin{equation}
+  \omega = \lim\limits_{r\uparrow 1} \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-y)P_r(y) \, dy = f(x).
+\end{equation}
 \end{document}
 
 
