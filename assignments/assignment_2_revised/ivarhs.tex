@@ -187,30 +187,73 @@ We want to show that
   \Omega = \lim\limits_{r\uparrow 1} \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x-y)P_r(y) \, dy = f(x).
 \end{equation}
 
-Taking the limit as $r \uparrow 1$, our expression for $P_r(y)$ turns into something we recognise
-as the Dirichlet kernel, $D_N(y) = \sum_{n=-N}^{N}e^{iny}$.  \footnote{I am here following the derivation at page 138 and 139 in the compendium}
+Seeing that this expression looks a lot like a convolution we're going to look
+at the properties of the Dirichlet kernel in order to show that $\Omega =
+f(x)$.  The Dirichlet kernel is defined as follows:
 \begin{equation}
   \notag
-  \lim\limits_{r\uparrow 1} P_r(y) = \lim\limits_{N\rightarrow\infty}\sum_{n = -N}^{N}e^{iny} = \lim_{N\rightarrow \infty}D_N(y).
+  D_N(y) = \sum_{n=-N}^{N}e^{iny}.
 \end{equation}
-We can now look at the partial sums of $\Omega$:
+We observe that
 \begin{equation}
   \notag
-  s_N(x) = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x - y)D_N(y)\, dy.
+  \lim\limits_{r\uparrow 1}P_r(y) = \sum_{n = -\infty}^{\infty} e^{inx} = \lim\limits_{N \rightarrow \infty}\sum_{n=-N}^{N}e^{inx} = \lim\limits_{N \rightarrow \infty} D_N(y).
 \end{equation}
-If we can show that these partial sums converge to $f(x)$ we're done.  Using
-Dirichlet's Theorem we know that if $f$ has a finite number of minima and
-maxima, then the Fourier series of $f$ converges pointwise to $f$. Since $f$ is
-$2\pi$ periodic, it has a finite number of min and max. Therefore, we have
+It can be shown that
 \begin{equation}
   \notag
-  \Omega = \lim\limits_{N \rightarrow \infty} s_N(x) = \lim\limits_{r\uparrow 1}\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x - y)P_r(y) \, dy = f(x).
+  \lim\limits_{N \rightarrow \infty} D_N(y) = \delta(y),
 \end{equation}
-This holds because we actually looking at partial sums $s_N$ of the Fourier series for $f$, 
+where $\delta$ is the Dirac Delta Function, which is what we call a
+\textit{unit impulse}. That is, $\delta(x) = 0$ over the entire real line,
+except for $x = 0$, however it has the curious property that its integral over
+the entire real line is equal to one.
+
+If we look at the \textit{convolution} between $f$ and $\delta$ over the
+interval $\left[ -\pi, \pi \right]$ it can be written as
 \begin{equation}
   \notag
-  s_N(x) = \sum_{n=-N}^{N}\langle f, e_n \rangle e_n(x).
+  (f * \delta) = \int_{-\pi}^{\pi}f(x - y)\delta(y) \, dy.
 \end{equation}
+
+however since $\delta$ is a unit impulse, the convolution $(f * \delta)$ is
+what we call a unit inpulse response.  This means that
+\begin{equation}
+  \notag
+  (f * \delta) = \int_{-\pi}^{\pi}f(x - y)\delta(y) \, dy = f(x).
+\end{equation}
+This becomes evident if we first look at the case where $x = 0$.  Since the
+integral of $\delta(y) = 0$ everywhere except at $y = 0$ where the integral is
+one, the only contribution to the whole integral is going to be at $y = 0$, at
+that point we get the term
+\begin{equation}
+  \notag
+  f(0) \delta(0) = f(0) \cdot 1 = f(0).
+\end{equation}
+If we instead let $x$ be any arbitrary number, we see that at the spike we get
+\begin{equation}
+  \notag
+  f(x - 0) \delta(0) = f(x) \cdot 1 = f(x).
+\end{equation}
+
+We can therefore look back at our original expression, we know that the
+integrand is equal to zero at every point except at the point $y = 0$ where the
+integrand is equal to $f(x)$.
+
+\paragraph{g)}
+We want to show that
+\begin{equation}
+  \notag
+  \lim\limits_{r\uparrow 1}\sum_{n=-\infty}^{\infty} c_nr^{|n|}e^{inx} = f(x).
+\end{equation}
+The big question here is under what conditions we are allowed to interchange limits and sums.
+We know from (f) that the series converges uniformly. We are therefore allowed to interchange the limit
+such that we get
+\begin{equation}
+  \notag
+  \sum_{n=-\infty}^{\infty}\lim\limits_{r\uparrow 1} c_nr^{|n|}e^{inx} = \sum_{n=-\infty}^{\infty}c_ne^{inx},
+\end{equation}
+which we recognise as the Fourier series for $f(x)$.
 \end{document}
 
 
