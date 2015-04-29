@@ -207,20 +207,25 @@ It can be shown that
 where $\delta$ is the Dirac Delta Function, which is what we call a
 \textit{unit impulse}. That is, $\delta(x) = 0$ over the entire real line,
 except for $x = 0$, however it has the curious property that its integral over
-the entire real line is equal to one.
+the entire real line is equal to one. Multiplying $\delta$ by $2\pi$ and examining the
+fourier series we get
+\begin{equation}
+  \notag
+  2\pi\delta = \sum_{n=-\infty}^{\infty}e^{inx} = \lim\limits_{r\uparrow 1} P_r(x)
+\end{equation}
 
-If we look at the \textit{convolution} between $f$ and $\delta$ over the
+If we look at the \textit{convolution} between $f$ and $2\pi\delta$ over the
 interval $\left[ -\pi, \pi \right]$ it can be written as
 \begin{equation}
   \notag
-  (f * \delta) = \int_{-\pi}^{\pi}f(x - y)\delta(y) \, dy.
+  f * 2\pi\delta = \int_{-\pi}^{\pi}f(x - y)2\pi\delta(y) \, dy.
 \end{equation}
 
-however since $\delta$ is a unit impulse, the convolution $(f * \delta)$ is
+however since $\delta$ is a unit impulse, the convolution $f * 2\pi\delta$ is
 what we call a unit impulse response.  This means that
 \begin{equation}
   \notag
-  (f * \delta) = \int_{-\pi}^{\pi}f(x - y)\delta(y) \, dy = f(x).
+  f * (2\pi\delta) = \int_{-\pi}^{\pi}f(x - y)2\pi\delta(y) \, dy = 2\pi f(x).
 \end{equation}
 This becomes evident if we first look at the case where $x = 0$.  Since the
 integral of $\delta(y) = 0$ everywhere except at $y = 0$ where the integral is
@@ -238,7 +243,11 @@ If we instead let $x$ be any arbitrary number, we see that at the spike we get
 
 We can therefore look back at our original expression, we know that the
 integrand is equal to zero at every point except at the point $y = 0$ where the
-integrand is equal to $f(x)$.
+integrand is equal to $2\pi f(x)$.
+\begin{equation}
+  \notag
+  \frac{1}{2\pi} (f * (2\pi\delta) = \frac{2\pi f(x)}{2\pi} = f(x)
+\end{equation}
 
 \paragraph{g)}
 We want to show that
