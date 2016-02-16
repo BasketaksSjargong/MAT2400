@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage{fontenc} 
+\usepackage{fontspec} 
+
+\usepackage{amsthm} 
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+
+
+\usepackage{hyperref} 
+\usepackage{cleveref} 
+
+\title{Mandatory Assignment --- MAT2400}
+\author{Ivar Haugaløkken Stangeby}
+
+\begin{document}
+    \maketitle
+
+    \section*{Problem 1}
+    
+    In this problem we consider the series given by
+    \begin{equation}
+        \label{eq:series}
+        \sum^{\infty}_{n=1} \frac{1}{1 + n^2x}.
+    \end{equation}
+    First and foremost, we are interested in under what values of $x$ this
+    series converge.  We see that by setting $x = 0$, then the series read $1 +
+    1 + 1 + \ldots$ which clearly sums to infinity. So we can conclude that for
+    $x = 0$ the series diverges. For $x > 0$ we now have a contribution from
+    the $n$'s again.  We know that $1 /(1 + n^2x)$ is certainly smaller than $1
+    / (n^2x)$ for all $x > 0$.  Hence we have the following inequality:
+    \begin{equation}
+        \notag
+        \sum^{\infty}_{n=1} \frac{1}{1 + n^2x} 
+        < \sum^{\infty}_{n = 1} \frac{1}{n^2x} 
+        = \frac{1}{x} \sum^{\infty}_{n=1} \frac{1}{n^2} = \frac{M}{x}.
+    \end{equation}
+    Hence no matter what $x$ we chose, the limit is always smaller than $M /
+    x$.\footnote{$M$ was shown by Euler to be equal to $\pi^2 / 6$.} 
+    Hence the series converges for any $x > 0$.
+
+    We are now interested in whether the convergence is uniform or not on the
+    interval $[a, \infty)$. Weierstrass' $M$-test immediately tells us that the
+    convergence is uniform for the interval under the condition that $a
+    \geq 1$. The problem lies in the area between zero and one.
+
+\end{document}
+
